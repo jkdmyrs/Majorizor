@@ -6,7 +6,7 @@
 <head runat="server">
     <title>Majorizor</title>
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="Content/bootstrap-theme.min.css"
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap-theme.min.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
