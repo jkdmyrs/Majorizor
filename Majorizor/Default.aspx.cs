@@ -22,6 +22,7 @@ namespace Majorizor
             x = hashUser["userName"].ToString();
             y= hashUser["userGroup"].ToString();
             */
+
             if (Application["CurrentUser"] != null)
             {
                 Hashtable userHash = (Hashtable)this.Application["CurrentUser"];
