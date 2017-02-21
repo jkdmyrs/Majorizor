@@ -86,6 +86,9 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="UserGroups\Admins\AdminLanding.aspx" />
+    <Content Include="UserGroups\Advisors\AdvisorLanding.aspx" />
+    <Content Include="UserGroups\Students\StudentLanding.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -116,6 +119,27 @@
     <Compile Include="Resources\DataAccess\AccountControls.cs" />
     <Compile Include="Resources\Security\Security.cs" />
     <Compile Include="Resources\UserGroup.cs" />
+    <Compile Include="UserGroups\Admins\AdminLanding.aspx.cs">
+      <DependentUpon>AdminLanding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserGroups\Admins\AdminLanding.aspx.designer.cs">
+      <DependentUpon>AdminLanding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroups\Advisors\AdvisorLanding.aspx.cs">
+      <DependentUpon>AdvisorLanding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserGroups\Advisors\AdvisorLanding.aspx.designer.cs">
+      <DependentUpon>AdvisorLanding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserGroups\Students\StudentLanding.aspx.cs">
+      <DependentUpon>StudentLanding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserGroups\Students\StudentLanding.aspx.designer.cs">
+      <DependentUpon>StudentLanding.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
@@ -127,6 +151,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
