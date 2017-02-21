@@ -5,5 +5,5 @@ using System.Web;
 
 namespace Majorizor.Resources
 {
-        public enum userGroup { USER, ADVISOR, ADMIN };
+        public enum userGroup { DEFUALT, USER, ADVISOR, ADMIN };
 }
