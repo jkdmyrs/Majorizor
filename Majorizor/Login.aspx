@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Majorizor.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Majorizor.Login" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainMaster_Head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainMaster_MainContent" runat="server">
       <div class="container">
         <ul class="nav nav-tabs">
 		    <li class="active"><a  href="#1" data-toggle="tab">Login</a></li>

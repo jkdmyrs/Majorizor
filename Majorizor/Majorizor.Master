@@ -5,9 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Majorizor</title>
-    <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="Content/bootstrap-theme.min.css" />
-    <asp:ContentPlaceHolder ID="head" runat="server">
+    <link rel="stylesheet" type="text/css" href="/Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/bootstrap-theme.min.css" />
+    <asp:ContentPlaceHolder ID="MainMaster_Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="Default.aspx">Majorizor</a>
+                    <a class="navbar-brand" href="/Default.aspx">Majorizor</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -80,13 +80,13 @@
             </div><!-- /.container-fluid -->
         </nav>
         <div class="container">
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <asp:ContentPlaceHolder ID="MainMaster_MainContent" runat="server">
 
         </asp:ContentPlaceHolder>
         </div>
     </div>
     </form>
-    <script src="Scripts/jquery-3.1.1.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

@@ -13,13 +13,13 @@ namespace Majorizor {
     public partial class Majorizor {
         
         /// <summary>
-        /// head control.
+        /// MainMaster_Head control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainMaster_Head;
         
         /// <summary>
         /// form1 control.
@@ -49,12 +49,12 @@ namespace Majorizor {
         protected global::System.Web.UI.WebControls.Button LogoutNavBar;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// MainMaster_MainContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainMaster_MainContent;
     }
 }

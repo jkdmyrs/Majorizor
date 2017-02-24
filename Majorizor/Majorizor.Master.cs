@@ -40,13 +40,13 @@ namespace Majorizor
 
         protected void loginNavbar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("/Login.aspx");
         }
 
         protected void LogoutNavBar_Click(object sender, EventArgs e)
         {
             this.Application["CurrentUser"] = null;
-            Response.Redirect("Default.aspx");
+            Response.Redirect("/Default.aspx");
         }
     }
 }

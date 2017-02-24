@@ -50,7 +50,7 @@ namespace Majorizor
 
                 this.Application["CurrentUser"] = htblCurrentUser;
 
-                Response.Redirect("Default.aspx");
+                Response.Redirect("/Default.aspx");
             }
             //If login was not successful, inform the user
             //TODO - Make this better xD
