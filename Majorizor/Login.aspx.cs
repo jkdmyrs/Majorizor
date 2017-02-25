@@ -25,35 +25,29 @@ namespace Majorizor
         
         private void UserLogin(string email, string password)
         {
-            userGroup userGroup = userGroup.DEFUALT;
-            string userName = null;
-
-            //Login DataAccess Call
-            Resources.DataAccess.AccountControls.Login(email, password, out userGroup, out userName);
+            UserGroup userGroup = Resources.DataAccess.AccountControls.Login(email, password);
             
             //If Login was successful, build global application state hashtable
-            if (userName != null && userGroup != userGroup.DEFUALT)
+            if (userGroup != UserGroup.DEFUALT)
             {
-                //build Global Application State hashtable
-                Hashtable htblCurrentUser = null;
-                if (Application["CurrentUser"] != null)
+                Session["UserName"] = email;
+                Session["UserGroup"] = userGroup;
+
+                switch(userGroup)
                 {
-                    htblCurrentUser = (Hashtable)Application["CurrentUser"];
+                    case UserGroup.USER:
+                        Response.Redirect("~/Screens/Students/StudentLanding.aspx");
+                        break;
+                    case UserGroup.ADVISOR:
+                        Response.Redirect("~/Screens/Advisors/AdvisorLanding.aspx");
+                        break;
+                    case UserGroup.ADMIN:
+                        Response.Redirect("~/Screens/Admins/AdminLanding.aspx");
+                        break;
                 }
-                else
-                {
-                    htblCurrentUser = new Hashtable();
-                }
-
-                htblCurrentUser.Add("userName", userName);
-                htblCurrentUser.Add("userGroup", userGroup);
-
-                this.Application["CurrentUser"] = htblCurrentUser;
-
-                Response.Redirect("/Default.aspx");
             }
             //If login was not successful, inform the user
-            //TODO - Make this better xD
+            //TODO - Make this better 
             else
                 Response.Write("Login failed");
         }
@@ -78,10 +72,10 @@ namespace Majorizor
                 Resources.DataAccess.AccountControls.RegisterUser(firstName, lastName, email, hashedPass, salt);
                 UserLogin(email, password);
             }
+            //If register was not successful, inform the user
+            //TODO - Make this better 
             else
-            {
                 Response.Write("Register Failed.");
-            }
         }
     }
 }

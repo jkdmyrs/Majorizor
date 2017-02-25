@@ -5,36 +5,52 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Majorizor.Resources;
 
 namespace Majorizor
 {
     public partial class Majorizor : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
-        {/*
-            Example of how to access this.Application
-
-            
-            string x, y;
-            Hashtable hashUser = (Hashtable)this.Application["CurrentUser"];
-
-            x = hashUser["userName"].ToString();
-            y= hashUser["userGroup"].ToString();
-            */
-
+        {
             Button loginNavbar = (Button)FindControl("loginNavbar");
             Button logoutNavbar = (Button)FindControl("logoutNavbar");
 
-            if (Application["CurrentUser"] == null)
+            if (Session["UserName"] == null)
             {
                 logoutNavbar.Visible = false;
                 loginNavbar.Visible = true;
+
+                student_dropDown.Visible = false;
+                advisor_dropDown.Visible = false;
+                admin_dropDown.Visible = false;
+                navBar_Brand.HRef = "~/Default.aspx";
             }
             else
             {
-                Hashtable userHash = (Hashtable)this.Application["CurrentUser"];
                 logoutNavbar.Visible = true;
                 loginNavbar.Visible = false;
+                switch ((UserGroup)Session["UserGroup"])
+                {
+                    case UserGroup.USER:
+                        student_dropDown.Visible = true;
+                        advisor_dropDown.Visible = false;
+                        admin_dropDown.Visible = false;
+                        navBar_Brand.HRef = "~/Screens/Students/StudentLanding.aspx";
+                        break;
+                    case UserGroup.ADVISOR:
+                        student_dropDown.Visible = true;
+                        advisor_dropDown.Visible = true;
+                        admin_dropDown.Visible = false;
+                        navBar_Brand.HRef = "~/Screens/Advisors/AdvisorLanding/aspx";
+                        break;
+                    case UserGroup.ADMIN:
+                        student_dropDown.Visible = true;
+                        advisor_dropDown.Visible = true;
+                        admin_dropDown.Visible = true;
+                        navBar_Brand.HRef = "~/Screens/Admins/AdminLanding.aspx";
+                        break;
+                }
             }
         }
 
@@ -45,7 +61,8 @@ namespace Majorizor
 
         protected void LogoutNavBar_Click(object sender, EventArgs e)
         {
-            this.Application["CurrentUser"] = null;
+            Session["UserName"] = null;
+            Session["UserGroup"] = null;
             Response.Redirect("/Default.aspx");
         }
     }

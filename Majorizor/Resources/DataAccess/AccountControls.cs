@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Data;
 using MySql.Data.MySqlClient;
+using Majorizor.Resources;
 
 namespace Majorizor.Resources.DataAccess
 {
@@ -15,10 +16,9 @@ namespace Majorizor.Resources.DataAccess
 
         //Returns the userGroup and userName if the login is successful, 
         //  else rueturns userName = null, userGroup = DEFAULT
-        public static void Login(string email, string password, out userGroup userGroup, out string userName)
+        public static UserGroup Login(string email, string password)
         {
-            userGroup = userGroup.DEFUALT;
-            userName = null;
+            UserGroup userGroup;
 
             using (MySqlConnection connection = new MySqlConnection(connString))
             {
@@ -50,22 +50,23 @@ namespace Majorizor.Resources.DataAccess
                         switch (user_group_out.Value.ToString())
                         {
                             case "ADMIN":
-                                userGroup = userGroup.ADMIN;
+                                userGroup = UserGroup.ADMIN;
                                 break;
                             case "ADVISOR":
-                                userGroup = userGroup.ADVISOR;
+                                userGroup = UserGroup.ADVISOR;
                                 break;
                             case "USER":
-                                userGroup = userGroup.USER;
+                                userGroup = UserGroup.USER;
                                 break;
                             default:
-                                userGroup = userGroup.DEFUALT;
+                                userGroup = UserGroup.DEFUALT;
                                 break;
                         }
-                        userName = email;
+                        return userGroup;
                     }
                 }
             }
+            return UserGroup.DEFUALT;
         }
 
         //Add a new user to the user, user_password tables.

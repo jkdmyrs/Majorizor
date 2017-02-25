@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Majorizor.Resources;
 
 namespace Majorizor.UserGroups.Advisors
 {
@@ -11,7 +12,15 @@ namespace Majorizor.UserGroups.Advisors
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (Resources.UserGroups.userHasAccess(UserGroup.ADVISOR, (UserGroup)Session["UserGroup"]) != true)
+                    Response.Redirect("~/Default.aspx");
+            }
+            catch (System.NullReferenceException)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
     }
 }
