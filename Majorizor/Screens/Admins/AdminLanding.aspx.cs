@@ -22,5 +22,21 @@ namespace Majorizor.UserGroups.Admins
                 Response.Redirect("~/Default.aspx");
             }
         }
+
+        protected void upload_Btn_Click(object sender, EventArgs e)
+        {
+            int contentLength = scheduleUpload.PostedFile.ContentLength;
+            string contentType = scheduleUpload.PostedFile.ContentType;
+            string fileName = scheduleUpload.PostedFile.FileName;
+
+            if(fileName == "masterSchedule.txt" && contentLength > 0)
+            {
+                string savePath = Server.MapPath("" + fileName);
+                // TODO - Change how/where we save this.
+                //We may want to save it, we may just want to read it and then process the information straight into the database.
+
+                //scheduleUpload.PostedFile.SaveAs(savePath);
+            }
+        }
     }
 }

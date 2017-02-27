@@ -7,8 +7,10 @@
     <title>Majorizor</title>
     <link rel="stylesheet" type="text/css" href="/Content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/Content/bootstrap-theme.min.css" />
+    
     <asp:ContentPlaceHolder ID="MainMaster_Head" runat="server">
     </asp:ContentPlaceHolder>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -56,19 +58,7 @@
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown" id="admin_dropDown" runat="server">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-								aria-haspopup="true" aria-expanded="false">Admins <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
+                        <li id="admin_dropDown" runat="server"><a href="/Screens/Admins/AdminLanding.aspx">Admins </a></li>
 
                     </ul>
                 
@@ -80,13 +70,18 @@
             </div><!-- /.container-fluid -->
         </nav>
         <div class="container">
-        <asp:ContentPlaceHolder ID="MainMaster_MainContent" runat="server">
 
+        <asp:ContentPlaceHolder ID="MainMaster_MainContent" runat="server">
         </asp:ContentPlaceHolder>
+        
         </div>
     </div>
     </form>
     <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    
+    <asp:ContentPlaceHolder ID="MainMaster_Scripts" runat="server">
+    </asp:ContentPlaceHolder>
+    
     <script src="/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
