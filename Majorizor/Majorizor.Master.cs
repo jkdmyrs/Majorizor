@@ -42,7 +42,7 @@ namespace Majorizor
                         student_dropDown.Visible = true;
                         advisor_dropDown.Visible = true;
                         admin_dropDown.Visible = false;
-                        navBar_Brand.HRef = "~/Screens/Advisors/AdvisorLanding/aspx";
+                        navBar_Brand.HRef = "~/Screens/Advisors/AdvisorLanding.aspx";
                         break;
                     case UserGroup.ADMIN:
                         student_dropDown.Visible = true;
