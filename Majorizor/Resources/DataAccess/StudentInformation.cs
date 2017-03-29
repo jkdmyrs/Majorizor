@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 namespace Majorizor.Resources.DataAccess
 {
 
-    public class StudentInformation
+    public class StudentInformation : Student
     {
         static string connString = WebConfigurationManager.ConnectionStrings["MajorizorConnectionString"].ConnectionString;
 
@@ -17,9 +17,7 @@ namespace Majorizor.Resources.DataAccess
         {
             Student student = new Student();
             DataSet ds = new DataSet("studentDS");
-
-            //SQL stored procedure
-            //Make sure stored procedure uses names in studentClassMapping below
+            
             using (MySqlConnection connection = new MySqlConnection(connString))
             {
                 MySqlCommand command = new MySqlCommand("GetStudentByID", connection);
@@ -44,7 +42,7 @@ namespace Majorizor.Resources.DataAccess
             student.userID = userID;
             student.firstName = (string)dr["first_name"];
             student.lastName = (string)dr["last_name"];
-            student.graduation = (int)dr["graduation"];
+            student.graduation = (string)dr["graduation"];
 
             switch ((string)dr["year"])
             {
