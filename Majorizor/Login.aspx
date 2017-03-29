@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainMaster_MainContent" runat="server">
       <div class="container">
-        <ul class="nav nav7-tabs">
+        <ul class="nav nav-tabs">
 		    <li class="active"><a  href="#1" data-toggle="tab">Login</a></li>
 		    <li><a href="#2" data-toggle="tab">Register</a></li>
 	    </ul>
