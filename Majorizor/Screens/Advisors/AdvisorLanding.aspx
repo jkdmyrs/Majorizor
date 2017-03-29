@@ -6,8 +6,7 @@
     <h1>Advisor Portal</h1>
 
     <!-- Panels for each student that is an advisee -->
-    <!-- TODO - Acutally make this in the backend =D -->
-
+    <!-- TODO - Acutally make this in the backend -->
 
     <div class="panel panel-primary">
         <div class="panel-heading">Joey Johnson</div>

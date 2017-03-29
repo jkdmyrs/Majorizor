@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Majorizor.Resources;
+using Majorizor.Resources.DataAccess;
 
 namespace Majorizor.UserGroups.Advisors
 {
@@ -21,6 +22,8 @@ namespace Majorizor.UserGroups.Advisors
             {
                 Response.Redirect("~/Default.aspx");
             }
+
+            StudentInformation.getStudentByID(7);
         }
     }
 }

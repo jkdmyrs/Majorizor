@@ -113,7 +113,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\DataAccess\AccountControls.cs" />
+    <Compile Include="Resources\DataAccess\StudentInformation.cs" />
     <Compile Include="Resources\Security\Security.cs" />
+    <Compile Include="Resources\Student.cs" />
     <Compile Include="Resources\UserGroup.cs" />
     <Compile Include="Screens\Admins\AdminLanding.aspx.cs">
       <DependentUpon>AdminLanding.aspx</DependentUpon>
