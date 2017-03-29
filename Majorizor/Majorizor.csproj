@@ -75,6 +75,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Screens\Advisors\SelectAdvisees.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Majorizor.Master" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -112,8 +113,12 @@
       <DependentUpon>Majorizor.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Advisor.cs" />
     <Compile Include="Resources\DataAccess\AccountControls.cs" />
+    <Compile Include="Resources\DataAccess\AdvisorInformation.cs" />
+    <Compile Include="Resources\DataAccess\StudentInformation.cs" />
     <Compile Include="Resources\Security\Security.cs" />
+    <Compile Include="Resources\Student.cs" />
     <Compile Include="Resources\UserGroup.cs" />
     <Compile Include="Screens\Admins\AdminLanding.aspx.cs">
       <DependentUpon>AdminLanding.aspx</DependentUpon>
@@ -128,6 +133,13 @@
     </Compile>
     <Compile Include="Screens\Advisors\AdvisorLanding.aspx.designer.cs">
       <DependentUpon>AdvisorLanding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Advisors\SelectAdvisees.aspx.cs">
+      <DependentUpon>SelectAdvisees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Screens\Advisors\SelectAdvisees.aspx.designer.cs">
+      <DependentUpon>SelectAdvisees.aspx</DependentUpon>
     </Compile>
     <Compile Include="Screens\Students\StudentLanding.aspx.cs">
       <DependentUpon>StudentLanding.aspx</DependentUpon>
