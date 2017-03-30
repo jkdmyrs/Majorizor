@@ -6,11 +6,13 @@ using Majorizor.Resources.DataAccess;
 
 namespace Majorizor.Resources
 {
+
+    public enum StudentYear { FRESHMAN, SOPHOMORE, JUNIOR, SENIOR };
+    public enum Major { NONE, CE, CS, EE, MA, SE };
+    public enum Minor { NONE, CS, EE, MA, SE };
+
     public class Student
     {
-        public enum StudentYear { FRESHMAN, SOPHOMORE, JUNIOR, SENIOR };
-        public enum Major { NONE, CE, CS, EE, MA, SE };
-        public enum Minor { NONE, CS, EE, MA, SE };
 
         public int userID;
         public string firstName;

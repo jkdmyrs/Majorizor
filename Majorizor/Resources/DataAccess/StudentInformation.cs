@@ -47,35 +47,35 @@ namespace Majorizor.Resources.DataAccess
             switch ((string)dr["year"])
             {
                 case "Freshman":
-                    student.year = Student.StudentYear.FRESHMAN;
+                    student.year = StudentYear.FRESHMAN;
                     break;
                 case "Sophomore":
-                    student.year = Student.StudentYear.SOPHOMORE;
+                    student.year = StudentYear.SOPHOMORE;
                     break;
                 case "Junior":
-                    student.year = Student.StudentYear.JUNIOR;
+                    student.year = StudentYear.JUNIOR;
                     break;
                 case "Senior":
-                    student.year = Student.StudentYear.SENIOR;
+                    student.year = StudentYear.SENIOR;
                     break;
             }
 
             switch ((string)dr["major1"])
             {
                 case "CE":
-                    student.major1 = Student.Major.CE;
+                    student.major1 = Major.CE;
                     break;
                 case "CS":
-                    student.major1 = Student.Major.CS;
+                    student.major1 = Major.CS;
                     break;
                 case "EE":
-                    student.major1 = Student.Major.EE;
+                    student.major1 = Major.EE;
                     break;
                 case "MA":
-                    student.major1 = Student.Major.MA;
+                    student.major1 = Major.MA;
                     break;
                 case "SE":
-                    student.major1 = Student.Major.SE;
+                    student.major1 = Major.SE;
                     break;
             }
 
@@ -84,63 +84,63 @@ namespace Majorizor.Resources.DataAccess
                 switch ((string)dr["major2"])
                 {
                     case "CE":
-                        student.major1 = Student.Major.CE;
+                        student.major1 = Major.CE;
                         break;
                     case "CS":
-                        student.major1 = Student.Major.CS;
+                        student.major1 = Major.CS;
                         break;
                     case "EE":
-                        student.major1 = Student.Major.EE;
+                        student.major1 = Major.EE;
                         break;
                     case "MA":
-                        student.major1 = Student.Major.MA;
+                        student.major1 = Major.MA;
                         break;
                     case "SE":
-                        student.major1 = Student.Major.SE;
+                        student.major1 = Major.SE;
                         break;
                 }
             }
-            else student.minor1 = Student.Minor.NONE;
+            else student.minor1 = Minor.NONE;
 
             if (dr["minor1"] != DBNull.Value)
             {
                 switch ((string)dr["minor1"])
                 {
                     case "CS":
-                        student.minor1 = Student.Minor.CS;
+                        student.minor1 = Minor.CS;
                         break;
                     case "EE":
-                        student.minor1 = Student.Minor.EE;
+                        student.minor1 = Minor.EE;
                         break;
                     case "MA":
-                        student.minor1 = Student.Minor.MA;
+                        student.minor1 = Minor.MA;
                         break;
                     case "SE":
-                        student.minor1 = Student.Minor.SE;
+                        student.minor1 = Minor.SE;
                         break;
                 }
             }
-            else student.minor1 = Student.Minor.NONE;
+            else student.minor1 = Minor.NONE;
 
             if (dr["minor2"] != DBNull.Value)
             {
                 switch ((string)dr["minor2"])
                 {
                     case "CS":
-                        student.minor2 = Student.Minor.CS;
+                        student.minor2 = Minor.CS;
                         break;
                     case "EE":
-                        student.minor2 = Student.Minor.EE;
+                        student.minor2 = Minor.EE;
                         break;
                     case "MA":
-                        student.minor2 = Student.Minor.MA;
+                        student.minor2 = Minor.MA;
                         break;
                     case "SE":
-                        student.minor2 = Student.Minor.SE;
+                        student.minor2 = Minor.SE;
                         break;
                 }
             }
-            else student.minor2 = Student.Minor.NONE;
+            else student.minor2 = Minor.NONE;
 
             return student;
         }

@@ -25,6 +25,11 @@ namespace Majorizor.UserGroups.Admins
 
         protected void upload_Btn_Click(object sender, EventArgs e)
         {
+            HttpPostedFile file = Request.Files["test.txt"];
+            if (file != null && file.ContentLength > 0)
+            {
+
+            }
             int contentLength = scheduleUpload.PostedFile.ContentLength;
             string contentType = scheduleUpload.PostedFile.ContentType;
             string fileName = scheduleUpload.PostedFile.FileName;

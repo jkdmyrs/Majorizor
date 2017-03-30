@@ -8,6 +8,8 @@ namespace Majorizor.Resources
 {
     public class Advisor
     {
+        public List<int> AdviseeIDs;
+
         public static List<int> GetAllAdviseeIDs(string advisorEmail)
         {
             return AdvisorInformation.GetAllAdviseeIDs(advisorEmail);

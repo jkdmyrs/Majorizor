@@ -24,7 +24,9 @@ namespace Majorizor.UserGroups.Advisors
                 Response.Redirect("~/Default.aspx");
             }
 
-            BuildAdviseePanelHtml(Advisor.GetAllAdviseeIDs(Session["UserName"].ToString()));
+            Advisor currAdvisor = new Advisor();
+            currAdvisor.AdviseeIDs = Advisor.GetAllAdviseeIDs(Session["UserName"].ToString());
+            BuildAdviseePanelHtml(currAdvisor.AdviseeIDs);
         }
 
         protected void BuildAdviseePanelHtml(List<int> IDs)
@@ -41,12 +43,12 @@ namespace Majorizor.UserGroups.Advisors
                     string minor;
                     student = Student.GetStudentByID(ID);
                     name = student.firstName + " " + student.lastName;
-                    major = (student.major2 == Student.Major.NONE) ? 
+                    major = (student.major2 == Major.NONE) ? 
                         major = student.major1.ToString() : 
                         major = student.major1 + ", " + student.major2;
-                    if (student.minor1 == Student.Minor.NONE)
+                    if (student.minor1 == Minor.NONE)
                         minor = "N/A";
-                    else if (student.minor1 != Student.Minor.NONE & student.minor2 == Student.Minor.NONE)
+                    else if (student.minor1 != Minor.NONE & student.minor2 == Minor.NONE)
                         minor = student.minor1.ToString();
                     else
                         minor = student.minor1 + ", " + student.minor2;
