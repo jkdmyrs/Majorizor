@@ -24,8 +24,7 @@ namespace Majorizor.UserGroups.Advisors
                 Response.Redirect("~/Default.aspx");
             }
 
-            Advisor currAdvisor = new Advisor();
-            currAdvisor.AdviseeIDs = Advisor.GetAllAdviseeIDs(Session["UserName"].ToString());
+            Advisor currAdvisor = new Advisor(Session["UserName"].ToString());
             BuildAdviseePanelHtml(currAdvisor.AdviseeIDs);
         }
 
@@ -37,11 +36,10 @@ namespace Majorizor.UserGroups.Advisors
                 foreach (int ID in IDs)
                 {
                     //Setup variables needed for the HTMLTextWriter 'writer'
-                    Student student;
+                    Student student = new Student(ID);
                     string name;
                     string major;
                     string minor;
-                    student = Student.GetStudentByID(ID);
                     name = student.firstName + " " + student.lastName;
                     major = (student.major2 == Major.NONE) ? 
                         major = student.major1.ToString() : 

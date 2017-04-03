@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 namespace Majorizor.Resources.DataAccess
 {
 
-    public class StudentInformation : Student
+    public class StudentInformation
     {
         static string connString = WebConfigurationManager.ConnectionStrings["MajorizorConnectionString"].ConnectionString;
 

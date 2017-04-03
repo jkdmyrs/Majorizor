@@ -14,17 +14,33 @@ namespace Majorizor.Resources
     public class Student
     {
 
-        public int userID;
-        public string firstName;
-        public string lastName;
-        public StudentYear year;
-        public Major major1;
-        public Major major2;
-        public Minor minor1;
-        public Minor minor2;
-        public string graduation;
+        public int userID { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public StudentYear year { get; set; }
+        public Major major1 { get; set; }
+        public Major major2 { get; set; }
+        public Minor minor1 { get; set; }
+        public Minor minor2 { get; set; }
+        public string graduation { get; set; }
 
-        public static Student GetStudentByID(int userID)
+        public Student() { }
+
+        public Student(int ID)
+        {
+            Student student = GetStudentByID(ID);
+            this.userID = student.userID;
+            this.firstName = student.firstName;
+            this.lastName = student.lastName;
+            this.year = student.year;
+            this.major1 = student.major1;
+            this.major2 = student.major2;
+            this.minor1 = student.minor1;
+            this.minor2 = student.minor2;
+            this.graduation = student.graduation;
+        }
+
+        private static Student GetStudentByID(int userID)
         {
             return StudentInformation.getStudentByID(userID);
         }

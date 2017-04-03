@@ -7,8 +7,8 @@ namespace Majorizor.Resources
 {
     public class Time
     {
-        public int Hours;
-        public int Minutes;
+        public int Hours { get; private set; }
+        public int Minutes { get; private set; }
 
         public Time(int h, int m)
         {

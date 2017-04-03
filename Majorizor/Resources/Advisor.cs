@@ -8,9 +8,15 @@ namespace Majorizor.Resources
 {
     public class Advisor
     {
-        public List<int> AdviseeIDs;
+        public List<int> AdviseeIDs { get; private set; }
 
-        public static List<int> GetAllAdviseeIDs(string advisorEmail)
+        public Advisor() { }
+        public Advisor(string userName)
+        {
+            this.AdviseeIDs = GetAllAdviseeIDs(userName);
+        }
+
+        private static List<int> GetAllAdviseeIDs(string advisorEmail)
         {
             return AdvisorInformation.GetAllAdviseeIDs(advisorEmail);
         }
