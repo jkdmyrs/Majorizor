@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Majorizor.UserGroups.Advisors {
+namespace Majorizor.Screens.Advisors {
     
     
     public partial class AdvisorLanding {

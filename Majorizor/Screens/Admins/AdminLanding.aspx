@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Majorizor.Master" AutoEventWireup="true" CodeBehind="AdminLanding.aspx.cs" Inherits="Majorizor.UserGroups.Admins.AdminLanding" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Majorizor.Master" AutoEventWireup="true" CodeBehind="AdminLanding.aspx.cs" Inherits="Majorizor.Screens.Admins.AdminLanding" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainMaster_Head" runat="server">
     <!-- plugins -->
@@ -45,7 +45,11 @@
                     <tr>
                         <td>Jackson DeMeyers</td>
                         <td>demeyejg@clarkson.edu</td>
-                        <td><asp:DropDownList ID="DropDownList3" runat="server"></asp:DropDownList></td>
+                        <td><asp:DropDownList ID="i8" runat="server" OnSelectedIndexChanged="userGroup_ItemChanged" AutoPostBack="True">
+                            <asp:ListItem Value="USER" Selected="True">User</asp:ListItem>
+                            <asp:ListItem Value="ADVISOR">Advisor</asp:ListItem>
+                            <asp:ListItem Value="ADMIN">Admin</asp:ListItem>
+                            </asp:DropDownList></td>
                         <td><a href="#"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Delete User"></span></a></td>
                     </tr>
                     <tr>

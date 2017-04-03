@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Majorizor.UserGroups.Admins {
+namespace Majorizor.Screens.Admins {
     
     
     public partial class AdminLanding {
@@ -31,13 +31,13 @@ namespace Majorizor.UserGroups.Admins {
         protected global::System.Web.UI.WebControls.Button uploadBtn;
         
         /// <summary>
-        /// DropDownList3 control.
+        /// i8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.DropDownList i8;
         
         /// <summary>
         /// DropDownList4 control.

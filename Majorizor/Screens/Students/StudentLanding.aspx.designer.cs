@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Majorizor.UserGroups.Students
+namespace Majorizor.Screens.Students
 {
 
 

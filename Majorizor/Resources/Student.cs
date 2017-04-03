@@ -29,7 +29,7 @@ namespace Majorizor.Resources
         public Student(int ID)
         {
             Student student = GetStudentByID(ID);
-            setUserID(ID);
+            setUserID(student.userID);
             setFirstName(student.firstName);
             setLastName(student.lastName);
             setStudentYear(student.year);
@@ -45,6 +45,7 @@ namespace Majorizor.Resources
             return StudentInformation.getStudentByID(userID);
         }
 
+        //Setters
         public void setUserID(int ID)
         {
             this.userID = ID;

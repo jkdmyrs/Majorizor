@@ -115,5 +115,21 @@ namespace Majorizor.Resources.DataAccess
                 return command.Parameters["@o_salt"].Value.ToString();
             }
         }
+
+        public static void UpdateUserGroup(int userID, UserGroup userGroup)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connString))
+            {
+                MySqlCommand command = new MySqlCommand("UpdateUserGroup",connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@i_userID", userID);
+                command.Parameters.AddWithValue("@i_userGroup", userGroup.ToString());
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }

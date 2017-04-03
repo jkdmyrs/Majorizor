@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Majorizor.Resources;
 
-namespace Majorizor.UserGroups.Admins
+namespace Majorizor.Screens.Admins
 {
     public partial class AdminLanding : System.Web.UI.Page
     {
@@ -42,6 +42,30 @@ namespace Majorizor.UserGroups.Admins
 
                 //scheduleUpload.PostedFile.SaveAs(savePath);
             }
+        }
+
+        protected void userGroup_ItemChanged(object sender, EventArgs e)
+        {
+            UserGroup userGroup;
+            DropDownList ddl = (DropDownList)sender;
+            string value = ddl.SelectedValue;
+            int ID = Int32.Parse(ddl.ID.Substring(1));
+            switch (value)
+            {
+                case "ADMIN":
+                    userGroup = UserGroup.ADMIN;
+                    break;
+                case "ADVISOR":
+                    userGroup = UserGroup.ADVISOR;
+                    break;
+                case "USER":
+                    userGroup = UserGroup.USER;
+                    break;
+                default:
+                    userGroup = UserGroup.USER;
+                    break;
+            }
+            UserGroups.UpdateUserGroup(ID, userGroup);
         }
     }
 }

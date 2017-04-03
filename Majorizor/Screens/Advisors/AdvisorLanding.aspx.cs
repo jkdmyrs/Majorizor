@@ -8,7 +8,7 @@ using Majorizor.Resources;
 using Majorizor.Resources.DataAccess;
 using System.IO;
 
-namespace Majorizor.UserGroups.Advisors
+namespace Majorizor.Screens.Advisors
 {
     public partial class AdvisorLanding : System.Web.UI.Page
     {
