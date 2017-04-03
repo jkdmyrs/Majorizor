@@ -39,43 +39,43 @@ namespace Majorizor.Resources.DataAccess
             DataRow dr = ds.Tables[0].Rows[0];
 
             //Class Mapping code
-            student.userID = userID;
-            student.firstName = (string)dr["first_name"];
-            student.lastName = (string)dr["last_name"];
-            student.graduation = (string)dr["graduation"];
+            student.setUserID( userID);
+            student.setFirstName((string)dr["first_name"]);
+            student.setLastName((string)dr["last_name"]);
+            student.setGraduation((string)dr["graduation"]);
 
             switch ((string)dr["year"])
             {
                 case "Freshman":
-                    student.year = StudentYear.FRESHMAN;
+                    student.setStudentYear(StudentYear.FRESHMAN);
                     break;
                 case "Sophomore":
-                    student.year = StudentYear.SOPHOMORE;
+                    student.setStudentYear(StudentYear.SOPHOMORE);
                     break;
                 case "Junior":
-                    student.year = StudentYear.JUNIOR;
+                    student.setStudentYear(StudentYear.JUNIOR);
                     break;
                 case "Senior":
-                    student.year = StudentYear.SENIOR;
+                    student.setStudentYear(StudentYear.SENIOR);
                     break;
             }
 
             switch ((string)dr["major1"])
             {
                 case "CE":
-                    student.major1 = Major.CE;
+                    student.setMajor1(Major.CE);
                     break;
                 case "CS":
-                    student.major1 = Major.CS;
+                    student.setMajor1(Major.CS);
                     break;
                 case "EE":
-                    student.major1 = Major.EE;
+                    student.setMajor1(Major.EE);
                     break;
                 case "MA":
-                    student.major1 = Major.MA;
+                    student.setMajor1(Major.MA);
                     break;
                 case "SE":
-                    student.major1 = Major.SE;
+                    student.setMajor1(Major.SE);
                     break;
             }
 
@@ -84,63 +84,63 @@ namespace Majorizor.Resources.DataAccess
                 switch ((string)dr["major2"])
                 {
                     case "CE":
-                        student.major1 = Major.CE;
+                        student.setMajor2(Major.CE);
                         break;
                     case "CS":
-                        student.major1 = Major.CS;
+                        student.setMajor2(Major.CS);
                         break;
                     case "EE":
-                        student.major1 = Major.EE;
+                        student.setMajor2(Major.EE);
                         break;
                     case "MA":
-                        student.major1 = Major.MA;
+                        student.setMajor2(Major.MA);
                         break;
                     case "SE":
-                        student.major1 = Major.SE;
+                        student.setMajor2(Major.SE);
                         break;
                 }
             }
-            else student.minor1 = Minor.NONE;
+            else student.setMajor2(Major.NONE);
 
             if (dr["minor1"] != DBNull.Value)
             {
                 switch ((string)dr["minor1"])
                 {
                     case "CS":
-                        student.minor1 = Minor.CS;
+                        student.setMinor1(Minor.CS);
                         break;
                     case "EE":
-                        student.minor1 = Minor.EE;
+                        student.setMinor1(Minor.EE);
                         break;
                     case "MA":
-                        student.minor1 = Minor.MA;
+                        student.setMinor1(Minor.MA);
                         break;
                     case "SE":
-                        student.minor1 = Minor.SE;
+                        student.setMinor1(Minor.SE);
                         break;
                 }
             }
-            else student.minor1 = Minor.NONE;
+            else student.setMinor1(Minor.NONE);
 
             if (dr["minor2"] != DBNull.Value)
             {
                 switch ((string)dr["minor2"])
                 {
                     case "CS":
-                        student.minor2 = Minor.CS;
+                        student.setMinor2(Minor.CS);
                         break;
                     case "EE":
-                        student.minor2 = Minor.EE;
+                        student.setMinor2(Minor.EE);
                         break;
                     case "MA":
-                        student.minor2 = Minor.MA;
+                        student.setMinor2(Minor.MA);
                         break;
                     case "SE":
-                        student.minor2 = Minor.SE;
+                        student.setMinor2(Minor.SE);
                         break;
                 }
             }
-            else student.minor2 = Minor.NONE;
+            else student.setMinor2(Minor.NONE);
 
             return student;
         }
