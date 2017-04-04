@@ -121,7 +121,6 @@
     <Compile Include="Resources\MasterScheduleparser.cs" />
     <Compile Include="Resources\Security\Security.cs" />
     <Compile Include="Resources\Student.cs" />
-    <Compile Include="Resources\Time.cs" />
     <Compile Include="Resources\UserGroup.cs" />
     <Compile Include="Screens\Admins\AdminLanding.aspx.cs">
       <DependentUpon>AdminLanding.aspx</DependentUpon>
