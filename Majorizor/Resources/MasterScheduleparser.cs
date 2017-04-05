@@ -14,6 +14,7 @@ namespace Majorizor.Resources
         public List<Course> SE;
         public List<Course> CS;
         public List<Course> MA;
+        public MasterScheduleparser() { }
         public MasterScheduleparser(string filename)
         {
             StreamReader reader = new StreamReader(filename);
@@ -62,4 +63,5 @@ namespace Majorizor.Resources
 
 
     }
+
 }
