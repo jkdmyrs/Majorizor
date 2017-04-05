@@ -12,13 +12,13 @@ namespace Majorizor.Resources
         public int catalog { get; private set; }
         public int section { get; private set; }
         public string name { get; private set; }
-        public Time startTime { get; private set; }
-        public Time endTime { get; private set; }
+        public DateTime startTime { get; private set; }
+        public DateTime endTime { get; private set; }
         public string days { get; private set; }
 
         public Course() { }
 
-        public Course(int _ID, string _subject, int _catalog, int _section, string _name, Time _start, Time _end, string _days)
+        public Course(int _ID, string _subject, int _catalog, int _section, string _name, DateTime _start, DateTime _end, string _days)
         {
             this.id = _ID;
             this.subject = _subject;
