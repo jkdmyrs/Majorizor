@@ -117,8 +117,9 @@
     <Compile Include="Resources\Course.cs" />
     <Compile Include="Resources\DataAccess\AccountControls.cs" />
     <Compile Include="Resources\DataAccess\AdvisorInformation.cs" />
+    <Compile Include="Resources\DataAccess\ScheduleImport.cs" />
     <Compile Include="Resources\DataAccess\StudentInformation.cs" />
-    <Compile Include="Resources\MasterScheduleparser.cs" />
+    <Compile Include="Resources\MasterScheduleParser.cs" />
     <Compile Include="Resources\Security\Security.cs" />
     <Compile Include="Resources\Student.cs" />
     <Compile Include="Resources\UserGroup.cs" />

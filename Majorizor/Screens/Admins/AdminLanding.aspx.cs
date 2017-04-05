@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Majorizor.Resources;
+using System.IO;
 
 namespace Majorizor.UserGroups.Admins
 {
@@ -25,23 +26,31 @@ namespace Majorizor.UserGroups.Admins
 
         protected void upload_Btn_Click(object sender, EventArgs e)
         {
-            HttpPostedFile file = Request.Files["test.txt"];
-            if (file != null && file.ContentLength > 0)
+            const string expctName = "MasterSchedule.csv";
+
+            HttpPostedFile file;
+            string fileName;
+            int contentLength;
+
+            file = Request.Files[0];
+            fileName = file.FileName;
+            contentLength = file.ContentLength;
+            
+            if (contentLength > 0 && fileName == expctName)
             {
-
+                Stream s = file.InputStream;
+                MasterScheduleParser p = new MasterScheduleParser(s);
             }
-            int contentLength = scheduleUpload.PostedFile.ContentLength;
-            string contentType = scheduleUpload.PostedFile.ContentType;
-            string fileName = scheduleUpload.PostedFile.FileName;
-
-            if(fileName == "masterSchedule.txt" && contentLength > 0)
+            else if (fileName != expctName)
             {
-                string savePath = Server.MapPath("" + fileName);
-                // TODO - Change how/where we save this.
-                //We may want to save it, we may just want to read it and then process the information straight into the database.
-
-                //scheduleUpload.PostedFile.SaveAs(savePath);
+                //Error code for incorrect file
             }
+            else if (contentLength <= 0)
+            {
+                //Error code for blank file
+            }
+
+
         }
     }
 }

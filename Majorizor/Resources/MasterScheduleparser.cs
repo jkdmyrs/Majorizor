@@ -7,17 +7,17 @@ using System.IO;
 
 namespace Majorizor.Resources
 {
-    public class MasterScheduleparser
+    public class MasterScheduleParser
     {
         public List<Course> EE;
         public List<Course> CE;
         public List<Course> SE;
         public List<Course> CS;
         public List<Course> MA;
-        public MasterScheduleparser() { }
-        public MasterScheduleparser(string filename)
+        public MasterScheduleParser() { }
+        public MasterScheduleParser(Stream scheduleStream)
         {
-            StreamReader reader = new StreamReader(filename);
+            StreamReader reader = new StreamReader(scheduleStream);
             string line;
             while(!reader.EndOfStream)
             {
