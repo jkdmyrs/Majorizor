@@ -22,7 +22,7 @@ namespace Majorizor.Resources
             while(!reader.EndOfStream)
             {
                 line = reader.ReadLine();
-                string[] lineElements = line.Split(',');
+                string[] lineElements = line.Split('|');
                 if (lineElements[1] == "CS")
                 {
                     int id = Convert.ToInt16(lineElements[0]);
