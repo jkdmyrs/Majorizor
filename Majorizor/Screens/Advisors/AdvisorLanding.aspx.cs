@@ -24,11 +24,11 @@ namespace Majorizor.Screens.Advisors
                 Response.Redirect("~/Default.aspx");
             }
 
-            Advisor currAdvisor = new Advisor(Session["UserName"].ToString());
-            BuildAdviseePanelHtml(currAdvisor.AdviseeIDs);
+            Resources.Advisor currAdvisor = new Resources.Advisor(base.Session["UserName"].ToString());
+            buildAdviseePanelHtml(currAdvisor.AdviseeIDs);
         }
 
-        protected void BuildAdviseePanelHtml(List<int> IDs)
+        private void buildAdviseePanelHtml(List<int> IDs)
         {
             StringWriter htmlString = new StringWriter();
             using (HtmlTextWriter writer = new HtmlTextWriter(htmlString))
@@ -36,7 +36,7 @@ namespace Majorizor.Screens.Advisors
                 foreach (int ID in IDs)
                 {
                     //Setup variables needed for the HTMLTextWriter 'writer'
-                    Student student = new Student(ID);
+                    Resources.Student student = new Resources.Student(ID);
                     string name;
                     string major;
                     string minor;

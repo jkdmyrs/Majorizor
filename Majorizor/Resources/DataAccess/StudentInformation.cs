@@ -28,18 +28,17 @@ namespace Majorizor.Resources.DataAccess
                 adapter.SelectCommand = command;
                 adapter.Fill(ds);
             }
-
-            student = studentClassMapping(ds, userID);
+            student = studentClassMapping(ds.Tables[0].Rows[0]);
             return student;
         }
 
-        private static Student studentClassMapping(DataSet ds, int userID)
+        private static Student studentClassMapping(DataRow _dr)
         {
             Student student = new Student();
-            DataRow dr = ds.Tables[0].Rows[0];
+            DataRow dr = _dr;
 
             //Class Mapping code
-            student.setUserID( userID);
+            student.setUserID((int)dr["userID"]);
             student.setFirstName((string)dr["first_name"]);
             student.setLastName((string)dr["last_name"]);
             student.setGraduation((string)dr["graduation"]);

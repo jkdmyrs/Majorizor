@@ -31,21 +31,21 @@ namespace Majorizor.Screens.Admins {
         protected global::System.Web.UI.WebControls.Button uploadBtn;
         
         /// <summary>
-        /// i8 control.
+        /// userTable_PlcHldr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList i8;
+        protected global::System.Web.UI.WebControls.PlaceHolder userTable_PlcHldr;
         
         /// <summary>
-        /// DropDownList4 control.
+        /// Table1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.Table Table1;
     }
 }

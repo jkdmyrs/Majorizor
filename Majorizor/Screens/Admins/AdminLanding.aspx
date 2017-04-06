@@ -42,7 +42,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                        <asp:PlaceHolder ID="userTable_PlcHldr" runat="server"></asp:PlaceHolder>
+
+                    <%--<tr>
                         <td>Jackson DeMeyers</td>
                         <td>demeyejg@clarkson.edu</td>
                         <td><asp:DropDownList ID="i8" runat="server" OnSelectedIndexChanged="userGroup_ItemChanged" AutoPostBack="True">
@@ -51,18 +53,13 @@
                             <asp:ListItem Value="ADMIN">Admin</asp:ListItem>
                             </asp:DropDownList></td>
                         <td><a href="#"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Delete User"></span></a></td>
-                    </tr>
-                    <tr>
-                        <td>Frank Ocean</td>
-                        <td>frank@ocean.com</td>
-                        <td><asp:DropDownList ID="DropDownList4" runat="server"></asp:DropDownList></td>
-                        <td><a href="#"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Delete User" ></span></a></td>
-                    </tr>
+                    </tr>--%>
+
                 </tbody>
             </table>
         </div>
     </div>
-
+<asp:Table ID="Table1" runat="server"></asp:Table>
 
 </asp:Content>
 
