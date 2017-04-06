@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Majorizor.Resources.DataAccess;
 
 namespace Majorizor.Resources
 {
@@ -25,6 +26,11 @@ namespace Majorizor.Resources
                 return (userGroup == UserGroup.ADMIN);
             else
                 return false;
+        }
+
+        public static void UpdateUserGroup(int userID, UserGroup userGroup)
+        {
+            AccountControls.UpdateUserGroup(userID, userGroup);
         }
     }
 }

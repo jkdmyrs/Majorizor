@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Majorizor.Resources;
 
-namespace Majorizor.UserGroups.Students
+namespace Majorizor.Screens.Students
 {
     public partial class StudentLanding : System.Web.UI.Page
     {
