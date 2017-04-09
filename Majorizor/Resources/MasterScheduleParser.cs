@@ -9,24 +9,20 @@ namespace Majorizor.Resources
 {
     public class MasterScheduleParser
     {
-        public List<Course> EE = new List<Course>();
-        public List<Course> CE = new List<Course>();
-        public List<Course> SE = new List<Course>();
-        public List<Course> CS = new List<Course>();
-        public List<Course> MA = new List<Course>();
+        public List<Course> ParsedMasterSchedule = new List<Course>();
+        public List<string> MajorList = new List<string> { "EE", "CS", "MA","FY" };
+        public List<string> ES_ElectiveList = new List<string> { "100", "110", "220", "222", "250", "260", "340", "405", "499" };
         public MasterScheduleParser() { }
         public MasterScheduleParser(Stream scheduleStream)
         {
             StreamReader reader = new StreamReader(scheduleStream);
             string line;
-            string NewMasterSchedule = " ";
             while(!reader.EndOfStream)
             {
                 line = reader.ReadLine();
                 string[] lineElements = line.Split('|');
-                if (lineElements[1] == "CS")
+                if (MajorList.Contains(lineElements[1]))
                 {
-                   NewMasterSchedule = NewMasterSchedule.Insert(0, line + Environment.NewLine);
                     int id = Convert.ToInt16(lineElements[0]);
                     int catalog = Convert.ToInt16(lineElements[2]);
                     if (lineElements[8] != "")
@@ -36,7 +32,7 @@ namespace Majorizor.Resources
                         DateTime end = DateTime.Parse(lineElements[9]);
                         end.ToShortTimeString();
                         Course currentCourse = new Course(id, lineElements[1], catalog, lineElements[3], lineElements[4], start, end, lineElements[10]);
-                        CS.Add(currentCourse);
+                        ParsedMasterSchedule.Add(currentCourse);
                     }
                     else
                     {
@@ -45,64 +41,18 @@ namespace Majorizor.Resources
                         DateTime end = Convert.ToDateTime("23:59:59");
                         end.ToShortTimeString();
                         Course currentCourse = new Course(id, lineElements[1], catalog, lineElements[3], lineElements[4], start, end,"NA");
-                        CS.Add(currentCourse);
+                        ParsedMasterSchedule.Add(currentCourse);
                     }
 
                 }
-                if (lineElements[1] == "EE")
-                {
-                   NewMasterSchedule = NewMasterSchedule.Insert(0, line + Environment.NewLine);
-                    int id = Convert.ToInt16(lineElements[0]);
-                    int catalog = Convert.ToInt16(lineElements[2]);
-                    if (lineElements[8] != "")
-                    {
-                        DateTime start = DateTime.Parse(lineElements[8]);
-                        start.ToShortTimeString();
-                        DateTime end = DateTime.Parse(lineElements[9]);
-                        end.ToShortTimeString();
-                        Course currentCourse = new Course(id, lineElements[1], catalog, lineElements[3], lineElements[4], start, end, lineElements[10]);
-                        EE.Add(currentCourse);
-                    }
-                    else
-                    {
-                        DateTime start = Convert.ToDateTime("23:58:59");
-                        start.ToShortTimeString();
-                        DateTime end = Convert.ToDateTime("23:59:59");
-                        end.ToShortTimeString();
-                        Course currentCourse = new Course(id, lineElements[1], catalog, lineElements[3], lineElements[4], start, end, "NA");
-                        EE.Add(currentCourse);
-                    }
-
-                }
-                if (lineElements[1] == "MA")
-                {
-                   NewMasterSchedule =  NewMasterSchedule.Insert(0, line + Environment.NewLine);
-                    int id = Convert.ToInt16(lineElements[0]);
-                    int catalog = Convert.ToInt16(lineElements[2]);
-                    if (lineElements[8] != "")
-                    {
-                        DateTime start = DateTime.Parse(lineElements[8]);
-                        start.ToShortTimeString();
-                        DateTime end = DateTime.Parse(lineElements[9]);
-                        end.ToShortTimeString();
-                        Course currentCourse = new Course(id, lineElements[1], catalog, lineElements[3], lineElements[4], start, end, lineElements[10]);
-                        MA.Add(currentCourse);
-                    }
-                    else
-                    {
-                        DateTime start = Convert.ToDateTime("23:58:59");
-                        start.ToShortTimeString();
-                        DateTime end = Convert.ToDateTime("23:59:59");
-                        end.ToShortTimeString();
-                        Course currentCourse = new Course(id, lineElements[1], catalog, lineElements[3], lineElements[4], start, end, "NA");
-                        MA.Add(currentCourse);
-                    }
+              
                    
 
-                    }
-                if ((lineElements[1] == "CM"  && ((lineElements[2] == "131") || (lineElements[2] == "132"))) || (lineElements[1]=="PH" &&  ((lineElements[2] == "131") || (lineElements[2] == "132"))) )
+                if ((lineElements[1] == "CM"  && ((lineElements[2] == "131") || (lineElements[2] == "132"))) ||
+                    (lineElements[1]=="PH" &&  ((lineElements[2] == "131") || (lineElements[2] == "132"))) ||
+                    (lineElements[1] == "ES" && (ES_ElectiveList.Contains(lineElements[2]))) ||
+                    (lineElements[1] == "UNIV" && (lineElements[2] == "190")) || (lineElements[1] == "STAT" && (lineElements[2] == "383")))
                 {
-                    NewMasterSchedule =  NewMasterSchedule.Insert(0, line + Environment.NewLine);
                     int id = Convert.ToInt16(lineElements[0]);
                     int catalog = Convert.ToInt16(lineElements[2]);
                     if (lineElements[8] != "")
@@ -112,9 +62,7 @@ namespace Majorizor.Resources
                         DateTime end = DateTime.Parse(lineElements[9]);
                         end.ToShortTimeString();
                         Course currentCourse = new Course(id, lineElements[1], catalog, lineElements[3], lineElements[4], start, end, lineElements[10]);
-                        EE.Add(currentCourse);
-                        CE.Add(currentCourse);
-                        SE.Add(currentCourse);
+                        ParsedMasterSchedule.Add(currentCourse);
                     }
                     else
                     {
@@ -123,15 +71,14 @@ namespace Majorizor.Resources
                         DateTime end = Convert.ToDateTime("23:59:59");
                         end.ToShortTimeString();
                         Course currentCourse = new Course(id, lineElements[1], catalog, lineElements[3], lineElements[4], start, end, "NA");
-                        EE.Add(currentCourse);
-                        CE.Add(currentCourse);
-                        SE.Add(currentCourse);
+                        ParsedMasterSchedule.Add(currentCourse);
                     }
 
 
 
                 }
                 }
+
 
 
         }
