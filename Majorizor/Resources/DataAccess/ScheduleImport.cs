@@ -17,6 +17,7 @@ namespace Majorizor.Resources.DataAccess
             using (MySqlConnection connection = new MySqlConnection(connString))
             {
                 connection.Open();
+                MySqlTransaction sqlTran = connection.BeginTransaction();
                 foreach (Course course in schedule)
                 {
                     try
@@ -32,17 +33,36 @@ namespace Majorizor.Resources.DataAccess
                         command.Parameters.AddWithValue("@i_endTime", course.endTime.TimeOfDay);
                         command.Parameters.AddWithValue("@i_days", course.days);
 
+                        command.Transaction = sqlTran;
                         command.ExecuteNonQuery();
                     }
-                    catch (MySqlException e)
-                    // TODO - Handle when an update fails.
+                    catch (MySqlException executeEx)
                     {
+                        // TODO - Handle when an update fails.
+
+                        // gracefully dispose objects
+                        sqlTran.Rollback();
+                        sqlTran.Dispose();
                         connection.Close();
-                        string error = "Update failed on course " + course.id + " with error: " + e.Message;
-                        throw new Exception(error, e);
+                        connection.Dispose();
+                        string error = "Update failed on course " + course.id + " with error: " + executeEx.Message;
+                        throw new Exception(error, executeEx);
                     }
                 }
-                connection.Close();
+                try
+                {
+                    sqlTran.Commit();
+                }
+                catch (MySqlException commitEx)
+                {
+                    // gracefully dispose objects
+                    sqlTran.Rollback();
+                    sqlTran.Dispose();
+                    connection.Close();
+                    connection.Dispose();
+                    string error2 = "Commit failed with error: " + commitEx.Message;
+                    throw new Exception(error2, commitEx);
+                }
             }
         }
     }

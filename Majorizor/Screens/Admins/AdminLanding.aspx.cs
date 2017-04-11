@@ -135,7 +135,7 @@ namespace Majorizor.Screens.Admins
 
         protected void upload_Btn_Click(object sender, EventArgs e)
         {
-            const string expctName = "MasterSchedule.csv";
+            //const string expctName = "MasterSchedule.csv";
 
             HttpPostedFile file;
             string fileName;
@@ -145,7 +145,8 @@ namespace Majorizor.Screens.Admins
             fileName = file.FileName;
             contentLength = file.ContentLength;
             
-            if (contentLength > 0 && fileName == expctName)
+            //if (contentLength > 0 && fileName == expctName)
+            if (contentLength > 0)
             {
                 Stream s = file.InputStream;
                 MasterScheduleLoader loader = new MasterScheduleLoader(s);
@@ -155,16 +156,10 @@ namespace Majorizor.Screens.Admins
                 } catch (Exception ex)
                 {
                     string error = ex.Message;
-                    // TODO - handle Ex
+                    // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
+                    // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
+                    // parameters, and to add popup error messages built in clean bootstrap html.
                 }
-            }
-            else if (fileName != expctName)
-            {
-                //Error code for incorrect file
-            }
-            else if (contentLength <= 0)
-            {
-                //Error code for blank file
             }
 
 
