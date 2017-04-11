@@ -120,7 +120,7 @@
     <Compile Include="Resources\DataAccess\ScheduleImport.cs" />
     <Compile Include="Resources\DataAccess\StudentInformation.cs" />
     <Compile Include="Resources\DataAccess\UserInformation.cs" />
-    <Compile Include="Resources\MasterScheduleParser.cs" />
+    <Compile Include="Resources\MasterScheduleLoader.cs" />
     <Compile Include="Resources\Security\Security.cs" />
     <Compile Include="Resources\Student.cs" />
     <Compile Include="Resources\UserGroup.cs" />
