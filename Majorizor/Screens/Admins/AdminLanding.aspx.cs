@@ -148,7 +148,15 @@ namespace Majorizor.Screens.Admins
             if (contentLength > 0 && fileName == expctName)
             {
                 Stream s = file.InputStream;
-                MasterScheduleParser p = new MasterScheduleParser(s);
+                MasterScheduleLoader loader = new MasterScheduleLoader(s);
+                try
+                {
+                    loader.LoadSchedule();
+                } catch (Exception ex)
+                {
+                    string error = ex.Message;
+                    // TODO - handle Ex
+                }
             }
             else if (fileName != expctName)
             {
