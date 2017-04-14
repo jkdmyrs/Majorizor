@@ -115,7 +115,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Advisor.cs" />
     <Compile Include="Resources\Course.cs" />
-    <Compile Include="Resources\DataAccess\AccountControls.cs" />
+    <Compile Include="Resources\DataAccess\AccountController.cs" />
     <Compile Include="Resources\DataAccess\AdvisorInformation.cs" />
     <Compile Include="Resources\DataAccess\ScheduleImport.cs" />
     <Compile Include="Resources\DataAccess\StudentInformation.cs" />

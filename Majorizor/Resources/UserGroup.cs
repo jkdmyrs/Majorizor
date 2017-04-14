@@ -30,7 +30,7 @@ namespace Majorizor.Resources
 
         public static void UpdateUserGroup(int userID, UserGroup userGroup)
         {
-            AccountControls.UpdateUserGroup(userID, userGroup);
+            AccountController.UpdateUserGroup(userID, userGroup);
         }
     }
 }

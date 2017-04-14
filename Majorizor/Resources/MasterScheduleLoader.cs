@@ -10,9 +10,9 @@ namespace Majorizor.Resources
 {
     public class MasterScheduleLoader
     {
-        public List<Course> ParsedMasterSchedule { get; private set; } // = new List<Course>();
-        public List<string> MajorList { get; private set; } // = new List<string> { "EE", "CS", "MA","FY" };
-        public List<string> ES_ElectiveList { get; private set; } // = new List<string> { "100", "110", "220", "222", "250", "260", "340", "405", "499" };
+        public List<Course> ParsedMasterSchedule { get; private set; }
+        public List<string> MajorList { get; private set; } 
+        public List<string> ES_ElectiveList { get; private set; } 
         public StreamReader reader { get; private set; }
 
         public MasterScheduleLoader(Stream scheduleStream)

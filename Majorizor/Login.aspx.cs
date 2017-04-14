@@ -25,7 +25,7 @@ namespace Majorizor
         
         private void UserLogin(string email, string password)
         {
-            UserGroup userGroup = Resources.DataAccess.AccountControls.Login(email, password);
+            UserGroup userGroup = Resources.DataAccess.AccountController.Login(email, password);
             
             //If Login was successful, build global application state hashtable
             if (userGroup != UserGroup.DEFUALT)
@@ -69,7 +69,7 @@ namespace Majorizor
                 salt = Security.generateSalt(10);
                 hashedPass = Security.generateHash(password, salt);
 
-                Resources.DataAccess.AccountControls.RegisterUser(firstName, lastName, email, hashedPass, salt);
+                Resources.DataAccess.AccountController.RegisterUser(firstName, lastName, email, hashedPass, salt);
                 UserLogin(email, password);
             }
             //If register was not successful, inform the user

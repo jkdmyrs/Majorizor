@@ -10,7 +10,7 @@ using Majorizor.Resources;
 
 namespace Majorizor.Resources.DataAccess
 {
-    public class AccountControls
+    public class AccountController
     {
         static string connString = WebConfigurationManager.ConnectionStrings["MajorizorConnectionString"].ConnectionString;
 
@@ -91,7 +91,7 @@ namespace Majorizor.Resources.DataAccess
         }
         
         //Return the password's salt based on user email
-        public static String getSalt(string email)
+        private static String getSalt(string email)
         {
             using (MySqlConnection connection = new MySqlConnection(connString))
             {
