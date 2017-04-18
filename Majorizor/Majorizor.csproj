@@ -78,6 +78,7 @@
     <Content Include="Screens\Advisors\SelectAdvisees.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Majorizor.Master" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\fileinput.min.js" />

@@ -20,6 +20,8 @@ namespace Majorizor.Resources.DataAccess
             using (MySqlConnection connection = new MySqlConnection(connString))
             {
                 MySqlCommand command = new MySqlCommand("GetAllUsers", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = command;
                 adapter.Fill(ds);
@@ -32,6 +34,26 @@ namespace Majorizor.Resources.DataAccess
             }
 
             return users;
+        }
+
+        public static User GetUserByID(int userID)
+        {
+            DataSet ds = new DataSet("userDS");
+
+            using (MySqlConnection connection = new MySqlConnection(connString))
+            {
+                MySqlCommand command = new MySqlCommand("GetUserById", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                
+                command.Parameters.AddWithValue("@i_userID", userID);
+
+                MySqlDataAdapter adpater = new MySqlDataAdapter();
+                adpater.SelectCommand = command;
+                adpater.Fill(ds);
+            }
+            DataRow dr = ds.Tables[0].Rows[0];
+            User user = userClassMapping(dr);
+            return user;
         }
 
         private static User userClassMapping(DataRow _dr)

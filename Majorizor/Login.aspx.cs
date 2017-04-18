@@ -25,15 +25,16 @@ namespace Majorizor
         
         private void UserLogin(string email, string password)
         {
-            UserGroup userGroup = Resources.DataAccess.AccountController.Login(email, password);
+            User user = Resources.DataAccess.AccountController.Login(email, password);
             
             //If Login was successful, build global application state hashtable
-            if (userGroup != UserGroup.DEFUALT)
+            if (user.userGroup != UserGroup.DEFUALT)
             {
                 Session["UserName"] = email;
-                Session["UserGroup"] = userGroup;
+                Session["UserGroup"] = user.userGroup;
+                Session["UserID"] = user.userID;
 
-                switch(userGroup)
+                switch(user.userGroup)
                 {
                     case UserGroup.USER:
                         Response.Redirect("~/Screens/Students/StudentLanding.aspx");

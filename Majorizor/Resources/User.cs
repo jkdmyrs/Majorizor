@@ -14,11 +14,23 @@ namespace Majorizor.Resources
         public string email { get; private set; }
         public UserGroup userGroup { get; private set; }
 
-        public User() { }
-
-        public User(User ID)
+        public User()
         {
+            userID = -1;
+            firstName = "";
+            lastName = "";
+            email = "";
+            userGroup = UserGroup.DEFUALT;
+        }
 
+        public User(int _userID)
+        {
+            User _user = UserInformation.GetUserByID(_userID);
+            userID = _user.userID;
+            firstName = _user.firstName;
+            lastName = _user.lastName;
+            email = _user.email;
+            userGroup = _user.userGroup;
         }
 
         public static List<User> GetAllUsers()

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Majorizor.Resources.DataAccess.AccountController">
+    <Position X="0.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ECAAAAAAAACAAAAAAABAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Resources\DataAccess\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Majorizor.Resources.DataAccess.AdvisorInformation">
+    <Position X="0.5" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Resources\DataAccess\AdvisorInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Majorizor.Resources.DataAccess.ScheduleImport">
+    <Position X="2.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\DataAccess\ScheduleImport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Majorizor.Resources.DataAccess.StudentInformation">
+    <Position X="0.5" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\DataAccess\StudentInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Majorizor.Resources.DataAccess.UserInformation">
+    <Position X="2.75" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Resources\DataAccess\UserInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

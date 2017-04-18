@@ -16,9 +16,9 @@ namespace Majorizor.Resources.DataAccess
 
         //Returns the userGroup and userName if the login is successful, 
         //  else rueturns userName = null, userGroup = DEFAULT
-        public static UserGroup Login(string email, string password)
+        public static User Login(string email, string password)
         {
-            UserGroup userGroup;
+            User user = new User();
 
             using (MySqlConnection connection = new MySqlConnection(connString))
             {
@@ -33,40 +33,27 @@ namespace Majorizor.Resources.DataAccess
                     command.Parameters.AddWithValue("@input_email", email);
                     command.Parameters.AddWithValue("@input_password", hashedPass);
 
-                    MySqlParameter user_group_out = new MySqlParameter();
-                    user_group_out.ParameterName = "@user_group_out";
-                    user_group_out.MySqlDbType = MySqlDbType.VarChar;
-                    user_group_out.Size = 10;
-                    user_group_out.Direction = ParameterDirection.Output;
-
-                    command.Parameters.Add(user_group_out);
+                    MySqlParameter o_userID = new MySqlParameter();
+                    o_userID.ParameterName = "@o_userID";
+                    o_userID.MySqlDbType = MySqlDbType.Int32;
+                    o_userID.Size = 11;
+                    o_userID.Direction = ParameterDirection.Output;
+                    
+                    command.Parameters.Add(o_userID);
 
                     connection.Open();
                     command.ExecuteNonQuery();
                     connection.Close();
 
-                    if (command.Parameters["@user_group_out"].Value.ToString() != "")
+
+                    if (command.Parameters["@o_userID"].Value.ToString() != "")
                     {
-                        switch (user_group_out.Value.ToString())
-                        {
-                            case "ADMIN":
-                                userGroup = UserGroup.ADMIN;
-                                break;
-                            case "ADVISOR":
-                                userGroup = UserGroup.ADVISOR;
-                                break;
-                            case "USER":
-                                userGroup = UserGroup.USER;
-                                break;
-                            default:
-                                userGroup = UserGroup.DEFUALT;
-                                break;
-                        }
-                        return userGroup;
+                        user = new User((int)o_userID.Value);
+                        return user;
                     }
                 }
             }
-            return UserGroup.DEFUALT;
+            return user;
         }
 
         //Add a new user to the user, user_password tables.
