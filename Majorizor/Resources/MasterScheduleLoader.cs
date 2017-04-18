@@ -86,14 +86,8 @@ namespace Majorizor.Resources
 
         public void LoadSchedule()
         {
-            try
-            {
-                InputSchedule();
-                DataAccess.ScheduleImport.ImportMasterSchedule(this.ParsedMasterSchedule);
-            } catch (Exception e)
-            {
-                throw new Exception(e.Message, e);
-            }
+            InputSchedule();
+            DataAccess.ScheduleImport.ImportMasterSchedule(this.ParsedMasterSchedule);
         }
     }
 }

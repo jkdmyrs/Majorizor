@@ -14,6 +14,7 @@ namespace Majorizor.Screens.Admins
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Check access
             try
             {
                 if (Resources.UserGroups.userHasAccess(UserGroup.ADMIN, (UserGroup)Session["UserGroup"]) != true)
@@ -24,8 +25,17 @@ namespace Majorizor.Screens.Admins
                 Response.Redirect("~/Default.aspx");
             }
 
-            List<User> users = Resources.User.GetAllUsers();
-            buildUserTableHtml(users);
+            try
+            {
+                List<User> users = Resources.User.GetAllUsers();
+                buildUserTableHtml(users);
+            } catch (Exception ex)
+            {
+                string error = ex.Message;
+                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
+                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
+                // parameters, and to add popup error messages built in clean bootstrap html.
+            }
         }
 
         private void buildUserTableHtml(List<User> users)
@@ -186,7 +196,16 @@ namespace Majorizor.Screens.Admins
                     userGroup = UserGroup.USER;
                     break;
             }
-            UserGroups.UpdateUserGroup(ID, userGroup);
+            try
+            {
+                UserGroups.UpdateUserGroup(ID, userGroup);
+            } catch (Exception ex)
+            {
+                string error = ex.Message;
+                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
+                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
+                // parameters, and to add popup error messages built in clean bootstrap html.
+            }
         }
     }
 }

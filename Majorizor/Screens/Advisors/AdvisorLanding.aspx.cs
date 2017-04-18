@@ -24,8 +24,17 @@ namespace Majorizor.Screens.Advisors
                 Response.Redirect("~/Default.aspx");
             }
 
-            Resources.Advisor currAdvisor = new Resources.Advisor(base.Session["UserName"].ToString());
-            buildAdviseePanelHtml(currAdvisor.AdviseeIDs);
+            try
+            {
+                Resources.Advisor currAdvisor = new Resources.Advisor(base.Session["UserName"].ToString());
+                buildAdviseePanelHtml(currAdvisor.AdviseeIDs);
+            } catch (Exception ex)
+            {
+                string error = ex.Message;
+                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
+                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
+                // parameters, and to add popup error messages built in clean bootstrap html.
+            }
         }
 
         private void buildAdviseePanelHtml(List<int> IDs)
@@ -36,7 +45,7 @@ namespace Majorizor.Screens.Advisors
                 foreach (int ID in IDs)
                 {
                     //Setup variables needed for the HTMLTextWriter 'writer'
-                    Resources.Student student = new Resources.Student(ID);
+                    Student student = new Student(ID);
                     string name;
                     string major;
                     string minor;
