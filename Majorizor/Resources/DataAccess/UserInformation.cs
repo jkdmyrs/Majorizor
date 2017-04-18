@@ -86,13 +86,13 @@ namespace Majorizor.Resources.DataAccess
                     user.setUserGroup(UserGroup.USER);
                     break;
                 case "ADVISOR":
-                    user.setUserGroup(UserGroup.USER);
+                    user.setUserGroup(UserGroup.ADVISOR);
                     break;
                 case "ADMIN":
                     user.setUserGroup(UserGroup.ADMIN);
                     break;
                 default:
-                    user.setUserGroup(UserGroup.USER);
+                    user.setUserGroup(UserGroup.DEFUALT);
                     break;
             }
             return user;
