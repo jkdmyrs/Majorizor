@@ -14,10 +14,10 @@ namespace Majorizor.Screens.Students
         {
             try
             {
-                if (Resources.UserGroups.userHasAccess(UserGroup.USER, (UserGroup)Session["UserGroup"]) != true)
+                if (UserGroups.userHasAccess(UserGroup.USER, (UserGroup)Session["UserGroup"]) != true)
                     Response.Redirect("~/Default.aspx");
             }
-            catch (System.NullReferenceException)
+            catch (NullReferenceException)
             {
                 Response.Redirect("~/Default.aspx");
             }
@@ -25,6 +25,8 @@ namespace Majorizor.Screens.Students
             try
             {
                 Student s = new Student((int)Session["UserID"]);
+                if (s.major1 == Major.NONE)
+                    Response.Redirect("~/Screens/Students/MajorMinorSelection.aspx");
             }
             catch (IndexOutOfRangeException)
             {
