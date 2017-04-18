@@ -8,7 +8,7 @@ using Majorizor.Resources;
 
 namespace Majorizor.Screens.Students
 {
-    public partial class StudentLanding : System.Web.UI.Page
+    public partial class SetStudentInformation : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,11 +24,8 @@ namespace Majorizor.Screens.Students
 
             try
             {
-                Student s = new Student((int)Session["UserID"]);
-            }
-            catch (IndexOutOfRangeException)
-            {
-                Response.Redirect("~/Screens/Students/SetStudentInformation.aspx");
+                // TODO - Setup student info for first-time login
+                // This will set their year, graduation term, and the begin Major/Minor selection proccess
             }
             catch (Exception ex)
             {

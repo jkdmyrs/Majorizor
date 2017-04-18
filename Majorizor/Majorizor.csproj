@@ -76,6 +76,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Screens\Advisors\SelectAdvisees.aspx" />
+    <Content Include="Screens\Students\MajorMinorSelection.aspx" />
+    <Content Include="Screens\Students\SetStudentInformation.aspx" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Majorizor.Master" />
     <Content Include="ClassDiagram1.cd" />
@@ -146,6 +148,20 @@
     </Compile>
     <Compile Include="Screens\Advisors\SelectAdvisees.aspx.designer.cs">
       <DependentUpon>SelectAdvisees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Students\MajorMinorSelection.aspx.cs">
+      <DependentUpon>MajorMinorSelection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Screens\Students\MajorMinorSelection.aspx.designer.cs">
+      <DependentUpon>MajorMinorSelection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Students\SetStudentInformation.aspx.cs">
+      <DependentUpon>SetStudentInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Screens\Students\SetStudentInformation.aspx.designer.cs">
+      <DependentUpon>SetStudentInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Screens\Students\StudentLanding.aspx.cs">
       <DependentUpon>StudentLanding.aspx</DependentUpon>

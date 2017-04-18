@@ -202,9 +202,6 @@ namespace Majorizor.Screens.Admins
             } catch (Exception ex)
             {
                 string error = ex.Message;
-                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
-                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
-                // parameters, and to add popup error messages built in clean bootstrap html.
             }
         }
     }
