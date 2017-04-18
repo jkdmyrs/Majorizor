@@ -6,7 +6,7 @@
     <h2 id="studentGreeting" runat="server"></h2>
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Student Information</div>
+        <div class="panel-heading">Student Profile</div>
         <div class="panel-body">
         </div>
     </div>
@@ -14,6 +14,19 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Schedule Information</div>
         <div class="panel-body">
+        </div>
+    </div>
+    
+    <div class="panel panel-primary">
+        <div class="panel-heading">Progress</div>
+        <div class="panel-body">
+        </div>
+    </div>
+    
+    <div class="panel panel-primary">
+        <div class="panel-heading">Change Major/Minor</div>
+        <div class="panel-body">
+            <!-- Just have a button that redirects to selection page -->
         </div>
     </div>
 
