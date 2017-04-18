@@ -94,23 +94,26 @@ namespace Majorizor.Resources.DataAccess
                     break;
             }
 
-            switch ((string)dr["major1"])
+            if (dr["major1"] != DBNull.Value)
             {
-                case "CE":
-                    student.setMajor1(Major.CE);
-                    break;
-                case "CS":
-                    student.setMajor1(Major.CS);
-                    break;
-                case "EE":
-                    student.setMajor1(Major.EE);
-                    break;
-                case "MA":
-                    student.setMajor1(Major.MA);
-                    break;
-                case "SE":
-                    student.setMajor1(Major.SE);
-                    break;
+                switch ((string)dr["major1"])
+                {
+                    case "CE":
+                        student.setMajor1(Major.CE);
+                        break;
+                    case "CS":
+                        student.setMajor1(Major.CS);
+                        break;
+                    case "EE":
+                        student.setMajor1(Major.EE);
+                        break;
+                    case "MA":
+                        student.setMajor1(Major.MA);
+                        break;
+                    case "SE":
+                        student.setMajor1(Major.SE);
+                        break;
+                }
             }
 
             if (dr["major2"] != DBNull.Value)
