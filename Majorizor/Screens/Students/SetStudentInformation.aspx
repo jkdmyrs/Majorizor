@@ -31,7 +31,7 @@
 
                 <div class="form-group"> 
                     <div class="col-sm-offset-2 col-sm-10">
-                        <asp:Button CssClass="btn btn-primary" ID="button_update" runat="server" Text="Next" />
+                        <asp:Button CssClass="btn btn-primary" ID="button_update" runat="server" Text="Next" OnClick="button_update_Click" />
                     </div>     
                 </div>
             </div>
