@@ -21,8 +21,6 @@ namespace Majorizor.Screens.Students
             {
                 Response.Redirect("~/Default.aspx");
             }
-            Student student = new Student((int)Session["UserID"]);
-            studentGreeting.InnerHtml = "Hello, " + student.firstName + "!";
         }
     }
 }

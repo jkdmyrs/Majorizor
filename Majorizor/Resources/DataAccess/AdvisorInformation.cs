@@ -16,23 +16,29 @@ namespace Majorizor.Resources.DataAccess
         {
             List<int> IDs = new List<int>();
             DataSet ds = new DataSet("adviseeDS");
-
-            using(MySqlConnection connection = new MySqlConnection(connString))
+            try
             {
-                MySqlCommand command = new MySqlCommand("GetAllAdviseeIDs", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@i_email", advisorEmail);
+                using (MySqlConnection connection = new MySqlConnection(connString))
+                {
+                    MySqlCommand command = new MySqlCommand("GetAllAdviseeIDs", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@i_email", advisorEmail);
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = command;
-                adapter.Fill(ds);
-            }
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    adapter.SelectCommand = command;
+                    adapter.Fill(ds);
+                }
 
-            foreach(DataRow dr in ds.Tables[0].Rows)
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    IDs.Add((int)dr["studentID"]);
+                }
+                return IDs;
+            } catch (MySqlException ex)
             {
-                IDs.Add((int)dr["studentID"]);
+                string error = "AdvisorInfromation.GetAllAdviseeIDs failed with error: " + ex.Message;
+                throw new Exception(error, ex);
             }
-            return IDs;
         }
     }
 }

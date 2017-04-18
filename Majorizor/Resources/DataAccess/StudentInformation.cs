@@ -18,18 +18,25 @@ namespace Majorizor.Resources.DataAccess
             Student student = new Student();
             DataSet ds = new DataSet("studentDS");
             
-            using (MySqlConnection connection = new MySqlConnection(connString))
+            try
             {
-                MySqlCommand command = new MySqlCommand("GetStudentByID", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@i_userID", userID);
+                using (MySqlConnection connection = new MySqlConnection(connString))
+                {
+                    MySqlCommand command = new MySqlCommand("GetStudentByID", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@i_userID", userID);
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = command;
-                adapter.Fill(ds);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    adapter.SelectCommand = command;
+                    adapter.Fill(ds);
+                }
+                student = studentClassMapping(ds.Tables[0].Rows[0]);
+                return student;
+            } catch (MySqlException ex)
+            {
+                string error = "StudentInformation.getStudentByID failed with error: " + ex.Message;
+                throw new Exception(error, ex);
             }
-            student = studentClassMapping(ds.Tables[0].Rows[0]);
-            return student;
         }
 
         private static Student studentClassMapping(DataRow _dr)

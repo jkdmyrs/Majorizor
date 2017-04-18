@@ -17,43 +17,57 @@ namespace Majorizor.Resources.DataAccess
             List<User> users = new List<User>();
             DataSet ds = new DataSet("usersDS");
 
-            using (MySqlConnection connection = new MySqlConnection(connString))
+            try
             {
-                MySqlCommand command = new MySqlCommand("GetAllUsers", connection);
-                command.CommandType = CommandType.StoredProcedure;
+                using (MySqlConnection connection = new MySqlConnection(connString))
+                {
+                    MySqlCommand command = new MySqlCommand("GetAllUsers", connection);
+                    command.CommandType = CommandType.StoredProcedure;
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = command;
-                adapter.Fill(ds);
-            }
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    adapter.SelectCommand = command;
+                    adapter.Fill(ds);
+                }
 
-            foreach (DataRow row in ds.Tables[0].Rows)
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    User user = userClassMapping(row);
+                    users.Add(user);
+                }
+
+                return users;
+            } catch (MySqlException ex)
             {
-                User user = userClassMapping(row);
-                users.Add(user);
+                string error = "UserInformation.GetAllUsers failed with error: " + ex.Message;
+                throw new Exception(error, ex);
             }
-
-            return users;
         }
 
         public static User GetUserByID(int userID)
         {
             DataSet ds = new DataSet("userDS");
 
-            using (MySqlConnection connection = new MySqlConnection(connString))
+            try
             {
-                MySqlCommand command = new MySqlCommand("GetUserById", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                
-                command.Parameters.AddWithValue("@i_userID", userID);
+                using (MySqlConnection connection = new MySqlConnection(connString))
+                {
+                    MySqlCommand command = new MySqlCommand("GetUserById", connection);
+                    command.CommandType = CommandType.StoredProcedure;
 
-                MySqlDataAdapter adpater = new MySqlDataAdapter();
-                adpater.SelectCommand = command;
-                adpater.Fill(ds);
+                    command.Parameters.AddWithValue("@i_userID", userID);
+
+                    MySqlDataAdapter adpater = new MySqlDataAdapter();
+                    adpater.SelectCommand = command;
+                    adpater.Fill(ds);
+                }
+                DataRow dr = ds.Tables[0].Rows[0];
+                User user = userClassMapping(dr);
+                return user;
+            } catch (MySqlException ex)
+            {
+                string error = "UserInformation.GetUserByID failed with error: " + ex.Message;
+                throw new Exception(error, ex);
             }
-            DataRow dr = ds.Tables[0].Rows[0];
-            User user = userClassMapping(dr);
-            return user;
         }
 
         private static User userClassMapping(DataRow _dr)

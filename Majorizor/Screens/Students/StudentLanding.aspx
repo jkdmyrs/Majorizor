@@ -8,9 +8,13 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Student Information</div>
         <div class="panel-body">
-            <input type="file" class="file" data-show-upload="false" data-show-preview="false" id="scheduleUpload" runat="server" />
-            <br />
-            <asp:Button ID="uploadBtn" runat="server" Text="Upload" OnClick="upload_Btn_Click" class="btn btn-primary"/>
         </div>
     </div>
+    
+    <div class="panel panel-primary">
+        <div class="panel-heading">Schedule Information</div>
+        <div class="panel-body">
+        </div>
+    </div>
+
 </asp:Content>
