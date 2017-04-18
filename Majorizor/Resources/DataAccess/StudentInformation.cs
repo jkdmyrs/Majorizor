@@ -39,6 +39,34 @@ namespace Majorizor.Resources.DataAccess
             }
         }
 
+        public static List<Student> GetAllStudents()
+        {
+            List<Student> students = new List<Student>();
+            DataSet ds = new DataSet("studentDS");
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connString))
+                {
+                    MySqlCommand command = new MySqlCommand("GetAllStudents", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    MySqlDataAdapter adpater = new MySqlDataAdapter();
+                    adpater.SelectCommand = command;
+                    adpater.Fill(ds);
+                }
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    students.Add(studentClassMapping(dr));
+                }
+
+                return students;
+            }
+            catch (MySqlException ex)
+            {
+                string error = "StudentInformation.GetAllStudents failed with error: " + ex.Message;
+                throw new Exception(error, ex);
+            }
+        }
+
         private static Student studentClassMapping(DataRow _dr)
         {
             Student student = new Student();

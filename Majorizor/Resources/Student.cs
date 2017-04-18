@@ -40,11 +40,6 @@ namespace Majorizor.Resources
             setGraduation(student.graduation);
         }
 
-        private static Student GetStudentByID(int userID)
-        {
-            return StudentInformation.getStudentByID(userID);
-        }
-
         //Setters
         public void setUserID(int ID)
         {
@@ -89,6 +84,17 @@ namespace Majorizor.Resources
         public void setGraduation(string g)
         {
             this.graduation = g;
+        }
+
+        // static methods
+        private static Student GetStudentByID(int userID)
+        {
+            return StudentInformation.getStudentByID(userID);
+        }
+
+        public static List<Student> GetAllStudents()
+        {
+            return StudentInformation.GetAllStudents();
         }
     }
 }

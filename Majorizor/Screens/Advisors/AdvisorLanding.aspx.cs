@@ -26,7 +26,7 @@ namespace Majorizor.Screens.Advisors
 
             try
             {
-                Resources.Advisor currAdvisor = new Resources.Advisor(base.Session["UserName"].ToString());
+                Advisor currAdvisor = new Advisor(base.Session["UserName"].ToString());
                 buildAdviseePanelHtml(currAdvisor.AdviseeIDs);
             } catch (Exception ex)
             {

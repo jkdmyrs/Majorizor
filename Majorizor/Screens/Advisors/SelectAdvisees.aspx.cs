@@ -24,6 +24,7 @@ namespace Majorizor.Screens.Advisors
 
             try
             {
+                LoadAdvisees();
                 // TODO - Select Advisees - Backend
             }
             catch (Exception ex)
@@ -32,6 +33,16 @@ namespace Majorizor.Screens.Advisors
                 // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
                 // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
                 // parameters, and to add popup error messages built in clean bootstrap html.
+            }
+        }
+
+        private void LoadAdvisees()
+        {
+            List<Student> students = Student.GetAllStudents();
+            foreach (Student student in students)
+            {
+                GridView1.DataSource = students;
+                GridView1.DataBind();
             }
         }
     }
