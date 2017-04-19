@@ -71,8 +71,6 @@ namespace Majorizor.Screens.Admins
                     // parameters, and to add popup error messages built in clean bootstrap html.
                 }
             }
-
-
         }
 
         protected void deleteUser_Click(object sender, EventArgs e)
