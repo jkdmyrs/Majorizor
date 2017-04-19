@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Majorizor.Resources;
 using System.IO;
-using System.Web.UI.HtmlControls;
 
 namespace Majorizor.Screens.Admins
 {

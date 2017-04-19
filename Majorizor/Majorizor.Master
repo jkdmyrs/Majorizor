@@ -38,8 +38,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/Screens/Students/StudentLanding.aspx">Student Home</a></li>
                                 <li><a href="/Screens/Students/MajorMinorSelection.aspx">Major & Minor Selection</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">Schedule Builder</a></li>
                             </ul>
                         </li>
                         <li class="dropdown" id="advisor_dropDown" runat="server">
