@@ -33,11 +33,7 @@ namespace Majorizor.Resources
             userGroup = _user.userGroup;
         }
 
-        public static List<User> GetAllUsers()
-        {
-            return UserInformation.GetAllUsers();
-        }
-
+        // Setters
         public void setUserID(int _userID)
         {
             this.userID = _userID;
@@ -61,6 +57,22 @@ namespace Majorizor.Resources
         public void setUserGroup(UserGroup _userGroup)
         {
             this.userGroup = _userGroup;
+        }
+
+        // Static Methods
+        public static List<User> GetAllUsers()
+        {
+            return UserInformation.GetAllUsers();
+        }
+
+        public static void UpdateUserGroup(int userID, UserGroup userGroup)
+        {
+            UserInformation.UpdateUserGroup(userID, userGroup);
+        }
+
+        public static void DeleteUser(int userID)
+        {
+            UserInformation.DeleteUser(userID);
         }
     }
 }

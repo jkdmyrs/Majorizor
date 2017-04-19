@@ -31,13 +31,13 @@ namespace Majorizor.Screens.Admins {
         protected global::System.Web.UI.WebControls.Button uploadBtn;
         
         /// <summary>
-        /// userTable_PlcHldr control.
+        /// Repeater1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder userTable_PlcHldr;
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
         
         /// <summary>
         /// Table1 control.

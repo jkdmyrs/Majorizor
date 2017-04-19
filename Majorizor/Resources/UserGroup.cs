@@ -27,10 +27,5 @@ namespace Majorizor.Resources
             else
                 return false;
         }
-
-        public static void UpdateUserGroup(int userID, UserGroup userGroup)
-        {
-            AccountController.UpdateUserGroup(userID, userGroup);
-        }
     }
 }

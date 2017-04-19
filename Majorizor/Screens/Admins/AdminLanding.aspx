@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Majorizor.Master" AutoEventWireup="true" CodeBehind="AdminLanding.aspx.cs" Inherits="Majorizor.Screens.Admins.AdminLanding" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Majorizor.Master" AutoEventWireup="true" CodeBehind="AdminLanding.aspx.cs" EnableViewState="true" Inherits="Majorizor.Screens.Admins.AdminLanding" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainMaster_Head" runat="server">
     <!-- plugins -->
@@ -31,30 +31,41 @@
                 - Fill UserGroup dropdown list with 3 user groups. Select correct user group
                 - Setup delete button to delete user.
                 -->
-
+            
             <table id="userTable" class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
                         <th>User Group</th>
-                        <th></th>
+                        <th>Change</th>
+                        <th>Delete User</th>
                     </tr>
                 </thead>
                 <tbody>
-                        <asp:PlaceHolder ID="userTable_PlcHldr" runat="server"></asp:PlaceHolder>
-
-                    <%--<tr>
-                        <td>Jackson DeMeyers</td>
-                        <td>demeyejg@clarkson.edu</td>
-                        <td><asp:DropDownList ID="i8" runat="server" OnSelectedIndexChanged="userGroup_ItemChanged" AutoPostBack="True">
-                            <asp:ListItem Value="USER" Selected="True">User</asp:ListItem>
-                            <asp:ListItem Value="ADVISOR">Advisor</asp:ListItem>
-                            <asp:ListItem Value="ADMIN">Admin</asp:ListItem>
-                            </asp:DropDownList></td>
-                        <td><a href="#"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Delete User"></span></a></td>
-                    </tr>--%>
-
+                    <asp:Repeater ID="Repeater1" runat="server">
+                        <ItemTemplate>
+                            <tr>
+                                <td><asp:Label runat="server" Text='<%# Eval("firstName").ToString() + " " + Eval("lastName").ToString() %>'></asp:Label></td>
+                                <td><asp:Label runat="server" Text='<%# Eval("email") %>'></asp:Label></td>
+                                <td><asp:Label runat="server" Text='<%# Eval("userGroup") %>'></asp:Label></td>
+                                <td>
+                                    <asp:DropDownList AutoPostBack="true" OnSelectedIndexChanged="userGroup_ItemChanged" runat="server" CssClass="form-control">
+                                        <asp:ListItem Value="0"> <-UserGroup-> </asp:ListItem>
+                                        <asp:ListItem Value="USER"> User </asp:ListItem>
+                                        <asp:ListItem Value="ADVISOR"> Advisor </asp:ListItem>
+                                        <asp:ListItem Value="ADMIN"> Admin </asp:ListItem>
+                                    </asp:DropDownList>
+                                </td>
+                                <td>
+                                    <asp:LinkButton ID="deleteUser" runat="server" CssClass="btn btn-secondary" OnClick="deleteUser_Click">
+                                        <span class ="glyphicon glyphicon-remove" data-toggle="tooltip" title="Delete User"></span>
+                                    </asp:LinkButton>
+                                </td>
+                                <asp:HiddenField ID="hiddenID" runat="server" Value='<%# Eval("userID") %>' />
+                            </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </tbody>
             </table>
         </div>

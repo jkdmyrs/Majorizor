@@ -122,28 +122,5 @@ namespace Majorizor.Resources.DataAccess
                 throw new Exception(error, ex);
             }
         }
-
-        public static void UpdateUserGroup(int userID, UserGroup userGroup)
-        {
-            try
-            {
-                using (MySqlConnection connection = new MySqlConnection(connString))
-                {
-                    MySqlCommand command = new MySqlCommand("UpdateUserGroup", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    command.Parameters.AddWithValue("@i_userID", userID);
-                    command.Parameters.AddWithValue("@i_userGroup", userGroup.ToString());
-
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-            } catch (MySqlException ex)
-            {
-                string error = "AccountController.UpdateUserGroup failed with error: " + ex.Message;
-                throw new Exception(error,ex);
-            }
-        }
     }
 }
