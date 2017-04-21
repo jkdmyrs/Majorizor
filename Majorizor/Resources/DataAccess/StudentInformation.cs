@@ -117,6 +117,7 @@ namespace Majorizor.Resources.DataAccess
                         break;
                 }
             }
+            else student.setMajor1(MajorType.NONE);
 
             if (dr["major2"] != DBNull.Value)
             {

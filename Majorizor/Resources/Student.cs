@@ -40,6 +40,9 @@ namespace Majorizor.Resources
             setGraduation(student.graduation);
         }
 
+        // == Operator
+
+
         //Setters
         public void setUserID(int ID)
         {
@@ -62,32 +65,27 @@ namespace Majorizor.Resources
         }
 
         public void setMajor1(MajorType m)
-        {
-            if (m != MajorType.NONE)
+    {
+            switch (m)
             {
-                switch (m)
-                {
-                    case MajorType.CE:
-                        major1 = new CE_Major();
-                        break;
-                    case MajorType.CS:
-                        major1 = new CS_Major();
-                        break;
-                    case MajorType.EE:
-                        major1 = new EE_Major();
-                        break;
-                    case MajorType.MA:
-                        major1 = new MA_Major();
-                        break;
-                    case MajorType.SE:
-                        major1 = new SE_Major();
-                        break;
-                }
-            }
-            else
-            {
-                string error = "Student.setMajor1 failed - Invalid MajorType";
-                throw new Exception(error);
+                case MajorType.CE:
+                    major1 = new CE_Major();
+                    break;
+                case MajorType.CS:
+                    major1 = new CS_Major();
+                    break;
+                case MajorType.EE:
+                    major1 = new EE_Major();
+                    break;
+                case MajorType.MA:
+                    major1 = new MA_Major();
+                    break;
+                case MajorType.SE:
+                    major1 = new SE_Major();
+                    break;
+                default:
+                    major1 = new _NULLMAJOR();
+                    break;
             }
         }
 
@@ -110,7 +108,7 @@ namespace Majorizor.Resources
                 case MajorType.SE:
                     major2 = new SE_Major();
                     break;
-                case MajorType.NONE:
+                default:
                     major2 = new _NULLMAJOR();
                     break;
             }
@@ -174,6 +172,24 @@ namespace Majorizor.Resources
         public static List<Student> GetAllStudents()
         {
             return StudentInformation.GetAllStudents();
+        }
+    }
+
+    public class StudentComparer : IEqualityComparer<Student>
+    {
+        public bool Equals(Student x, Student y)
+        {
+            // check whether the objects are the same object
+            if (Object.ReferenceEquals(x, y)) return true;
+
+            // check wheather the objects' userIDs are equal
+            return x != null && y != null && x.userID.Equals(y.userID);
+        }
+
+        public int GetHashCode(Student obj)
+        {
+            // get has for userID feild
+            return obj.userID.GetHashCode();
         }
     }
 }

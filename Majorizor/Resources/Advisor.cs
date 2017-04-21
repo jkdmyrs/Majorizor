@@ -20,5 +20,15 @@ namespace Majorizor.Resources
         {
             return AdvisorInformation.GetAllAdviseeIDs(advisorEmail);
         }
+
+        static public void AddAdvisee(int advisorID, int studentID)
+        {
+            AdvisorInformation.AddAdvisee(advisorID, studentID);
+        }
+
+        static public void RemoveAdvisee(int advisorID, int studentID)
+        {
+            AdvisorInformation.RemoveAdvisee(advisorID, studentID);
+        }
     }
 }

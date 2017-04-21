@@ -40,5 +40,49 @@ namespace Majorizor.Resources.DataAccess
                 throw new Exception(error, ex);
             }
         }
+
+        public static void AddAdvisee(int advisorID, int studentID)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connString))
+                {
+                    MySqlCommand command = new MySqlCommand("AddAdvisee", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@i_student", studentID);
+                    command.Parameters.AddWithValue("@i_advisor", advisorID);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string error = "AdvisorInformation.AddAdvisee failed with error: " + ex.Message;
+                throw new Exception(error, ex);
+            }
+        }
+
+        public static void RemoveAdvisee(int advisorID, int studentID)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connString))
+                {
+                    MySqlCommand command = new MySqlCommand("RemoveAdvisee", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@i_student", studentID);
+                    command.Parameters.AddWithValue("@i_advisor", advisorID);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                string error = "AdvisorInformation.RemoveAdvisee failed with error: " + ex.Message;
+                throw new Exception(error, ex);
+            }
+        }
     }
 }
