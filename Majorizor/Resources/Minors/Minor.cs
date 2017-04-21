@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Majorizor.Resources.Majors
+namespace Majorizor.Resources.Minors
 {
-    public enum MajorType { NONE, CE, CS, EE, MA, SE }
-
-    public abstract class Major
+    public enum MinorType { NONE, CS, EE, MA, SE };
+    public abstract class Minor
     {
-        public MajorType majorType { get; protected set; }
-        public string majorName { get; protected set; }
+        public MinorType minorType { get; protected set; }
+        public string minorName { get; protected set; }
         public List<Course> reqCourses { get; protected set; }
         public bool req_met { get; protected set; }
 

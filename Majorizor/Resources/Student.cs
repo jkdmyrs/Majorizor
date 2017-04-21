@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using Majorizor.Resources.DataAccess;
 using Majorizor.Resources.Majors;
+using Majorizor.Resources.Minors;
 
 namespace Majorizor.Resources
 {
 
     public enum StudentYear { FRESHMAN, SOPHOMORE, JUNIOR, SENIOR };
-    public enum Minor { NONE, CS, EE, MA, SE };
 
     public class Student
     {
@@ -35,8 +35,8 @@ namespace Majorizor.Resources
             setStudentYear(student.year);
             setMajor1(student.major1.majorType);
             setMajor2(student.major2.majorType);
-            setMinor1(student.minor1);
-            setMinor2(student.minor2);
+            setMinor1(student.minor1.minorType);
+            setMinor2(student.minor2.minorType);
             setGraduation(student.graduation);
         }
 
@@ -93,42 +93,71 @@ namespace Majorizor.Resources
 
         public void setMajor2(MajorType m)
         {
-            if (m != MajorType.NONE)
+            switch (m)
             {
-                switch (m)
-                {
-                    case MajorType.CE:
-                        major2 = new CE_Major();
-                        break;
-                    case MajorType.CS:
-                        major2 = new CS_Major();
-                        break;
-                    case MajorType.EE:
-                        major2 = new EE_Major();
-                        break;
-                    case MajorType.MA:
-                        major2 = new MA_Major();
-                        break;
-                    case MajorType.SE:
-                        major2 = new SE_Major();
-                        break;
-                }
-            }
-            else
-            {
-                string error = "Student.setMajor2 failed - Invalid MajorType";
-                throw new Exception(error);
+                case MajorType.CE:
+                    major2 = new CE_Major();
+                    break;
+                case MajorType.CS:
+                    major2 = new CS_Major();
+                    break;
+                case MajorType.EE:
+                    major2 = new EE_Major();
+                    break;
+                case MajorType.MA:
+                    major2 = new MA_Major();
+                    break;
+                case MajorType.SE:
+                    major2 = new SE_Major();
+                    break;
+                case MajorType.NONE:
+                    major2 = new _NULLMAJOR();
+                    break;
             }
         }
 
-        public void setMinor1(Minor m)
+        public void setMinor1(MinorType m)
         {
-            this.minor1 = m;
+            switch (m)
+            {
+                case MinorType.CS:
+                    minor1 = new CS_Minor();
+                    break;
+                case MinorType.EE:
+                    minor1 = new EE_Minor();
+                    break;
+                case MinorType.MA:
+                    minor1 = new MA_Minor();
+                    break;
+                case MinorType.SE:
+                    minor1 = new SE_Minor();
+                    break;
+                case MinorType.NONE:
+                    minor1 = new _NULLMINOR();
+                    break;
+            }
         }
 
-        public void setMinor2(Minor m)
+        public void setMinor2(MinorType m)
         {
-            this.minor2 = m;
+            switch (m)
+            {
+                case MinorType.CS:
+                    minor2 = new CS_Minor();
+                    break;
+                case MinorType.EE:
+                    minor2 = new EE_Minor();
+                    break;
+                case MinorType.MA:
+                    minor2 = new MA_Minor();
+                    break;
+                case MinorType.SE:
+                    minor2 = new SE_Minor();
+                    break;
+                case MinorType.NONE:
+                    minor2 = new _NULLMINOR();
+                    break;
+            }
         }
 
         public void setGraduation(string g)

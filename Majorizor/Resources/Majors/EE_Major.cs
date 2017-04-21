@@ -12,17 +12,12 @@ namespace Majorizor.Resources.Majors
             majorType = MajorType.EE;
             majorName = "Electrical Engineering";
             reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
-            ProcessRequirements();
+            //ProcessRequirements();
         }
 
         protected override void ProcessRequirements()
         {
             throw new NotImplementedException();
-        }
-
-        public override bool RequirementsMet()
-        {
-            return req_met;
         }
     }
 }

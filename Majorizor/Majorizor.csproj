@@ -120,6 +120,7 @@
     <Compile Include="Resources\DataAccess\AccountController.cs" />
     <Compile Include="Resources\DataAccess\AdvisorInformation.cs" />
     <Compile Include="Resources\DataAccess\MajorInformation.cs" />
+    <Compile Include="Resources\DataAccess\MinorInformation.cs" />
     <Compile Include="Resources\DataAccess\ProgressInformation.cs" />
     <Compile Include="Resources\DataAccess\ScheduleImport.cs" />
     <Compile Include="Resources\DataAccess\StudentInformation.cs" />
@@ -131,7 +132,14 @@
     <Compile Include="Resources\Majors\Major.cs" />
     <Compile Include="Resources\Majors\MA_Major.cs" />
     <Compile Include="Resources\Majors\SE_Major.cs" />
+    <Compile Include="Resources\Majors\_NULLMAJOR.cs" />
     <Compile Include="Resources\MasterScheduleLoader.cs" />
+    <Compile Include="Resources\Minors\CS_Minor.cs" />
+    <Compile Include="Resources\Minors\EE_Minor.cs" />
+    <Compile Include="Resources\Minors\MA_Minor.cs" />
+    <Compile Include="Resources\Minors\Minor.cs" />
+    <Compile Include="Resources\Minors\SE_Minor.cs" />
+    <Compile Include="Resources\Minors\_NULLMINOR.cs" />
     <Compile Include="Resources\ProgressTracker.cs" />
     <Compile Include="Resources\Security\Security.cs" />
     <Compile Include="Resources\Student.cs" />

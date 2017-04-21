@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Majorizor.Resources.DataAccess;
 
-namespace Majorizor.Resources.Majors
+namespace Majorizor.Resources.Minors
 {
-    public class MA_Major : Major
+    public class SE_Minor : Minor
     {
-        public MA_Major()
+        public SE_Minor()
         {
-            majorType = MajorType.EE;
-            majorName = "Math";
-            reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
+            minorType = MinorType.SE;
+            minorName = "Software Engineering";
+            reqCourses = MinorInformation.GetCoursesByMinor(minorType);
             //ProcessRequirements();
         }
 

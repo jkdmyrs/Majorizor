@@ -8,6 +8,7 @@ using Majorizor.Resources;
 using Majorizor.Resources.DataAccess;
 using System.IO;
 using Majorizor.Resources.Majors;
+using Majorizor.Resources.Minors;
 
 namespace Majorizor.Screens.Advisors
 {
@@ -54,12 +55,12 @@ namespace Majorizor.Screens.Advisors
                     major = (student.major2.majorType == MajorType.NONE) ? 
                         major = student.major1.majorName : 
                         major = student.major1.majorName + ", " + student.major2.majorName;
-                    if (student.minor1 == Minor.NONE)
+                    if (student.minor1.minorType == MinorType.NONE)
                         minor = "N/A";
-                    else if (student.minor1 != Minor.NONE & student.minor2 == Minor.NONE)
-                        minor = student.minor1.ToString();
+                    else if (student.minor1.minorType != MinorType.NONE & student.minor2.minorType == MinorType.NONE)
+                        minor = student.minor1.minorName;
                     else
-                        minor = student.minor1 + ", " + student.minor2;
+                        minor = student.minor1.minorName + ", " + student.minor2.minorName;
 
                     //TODO - Calculate Progress
                     int progress = 15;

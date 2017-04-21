@@ -10,19 +10,14 @@ namespace Majorizor.Resources.Majors
         public CE_Major()
         {
             majorType = MajorType.EE;
-            majorName = "Electrical Engineering";
+            majorName = "Computer Engineering";
             reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
-            ProcessRequirements();
+            //ProcessRequirements();
         }
 
         protected override void ProcessRequirements()
         {
             throw new NotImplementedException();
-        }
-
-        public override bool RequirementsMet()
-        {
-            return req_met;
         }
     }
 }

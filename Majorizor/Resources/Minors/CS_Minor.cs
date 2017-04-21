@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Majorizor.Resources.DataAccess;
 
-namespace Majorizor.Resources.Majors
+namespace Majorizor.Resources.Minors
 {
-    public class MA_Major : Major
+    public class CS_Minor : Minor
     {
-        public MA_Major()
+        public CS_Minor()
         {
-            majorType = MajorType.EE;
-            majorName = "Math";
-            reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
+            minorType = MinorType.CS;
+            minorName = "Computer Science";
+            reqCourses = MinorInformation.GetCoursesByMinor(minorType);
             //ProcessRequirements();
         }
-
         protected override void ProcessRequirements()
         {
             throw new NotImplementedException();

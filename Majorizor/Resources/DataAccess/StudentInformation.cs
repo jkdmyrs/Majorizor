@@ -6,6 +6,7 @@ using System.Web.Configuration;
 using System.Data;
 using MySql.Data.MySqlClient;
 using Majorizor.Resources.Majors;
+using Majorizor.Resources.Minors;
 
 namespace Majorizor.Resources.DataAccess
 {
@@ -145,40 +146,40 @@ namespace Majorizor.Resources.DataAccess
                 switch ((string)dr["minor1"])
                 {
                     case "CS":
-                        student.setMinor1(Minor.CS);
+                        student.setMinor1(MinorType.CS);
                         break;
                     case "EE":
-                        student.setMinor1(Minor.EE);
+                        student.setMinor1(MinorType.EE);
                         break;
                     case "MA":
-                        student.setMinor1(Minor.MA);
+                        student.setMinor1(MinorType.MA);
                         break;
                     case "SE":
-                        student.setMinor1(Minor.SE);
+                        student.setMinor1(MinorType.SE);
                         break;
                 }
             }
-            else student.setMinor1(Minor.NONE);
+            else student.setMinor1(MinorType.NONE);
 
             if (dr["minor2"] != DBNull.Value)
             {
                 switch ((string)dr["minor2"])
                 {
                     case "CS":
-                        student.setMinor2(Minor.CS);
+                        student.setMinor2(MinorType.CS);
                         break;
                     case "EE":
-                        student.setMinor2(Minor.EE);
+                        student.setMinor2(MinorType.EE);
                         break;
                     case "MA":
-                        student.setMinor2(Minor.MA);
+                        student.setMinor2(MinorType.MA);
                         break;
                     case "SE":
-                        student.setMinor2(Minor.SE);
+                        student.setMinor2(MinorType.SE);
                         break;
                 }
             }
-            else student.setMinor2(Minor.NONE);
+            else student.setMinor2(MinorType.NONE);
 
             return student;
         }

@@ -5,14 +5,12 @@ using System.Web;
 
 namespace Majorizor.Resources.Majors
 {
-    public class CS_Major : Major
+    public class _NULLMAJOR : Major
     {
-        public CS_Major()
+
+        public _NULLMAJOR()
         {
-            majorType = MajorType.EE;
-            majorName = "Computer Science";
-            reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
-           //ProcessRequirements();
+            majorType = MajorType.NONE;
         }
 
         protected override void ProcessRequirements()

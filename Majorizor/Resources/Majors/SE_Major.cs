@@ -18,17 +18,12 @@ namespace Majorizor.Resources.Majors
             majorType = MajorType.SE;
             majorName = "Software Engineering";
             reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
-            ProcessRequirements();
+            //ProcessRequirements();
         }
 
         protected override void ProcessRequirements()
         {
             throw new NotImplementedException();
-        }
-
-        public override bool RequirementsMet()
-        {
-            return req_met;
         }
     }
 }
