@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Majorizor.Resources;
+using Majorizor.Resources.Majors;
 
 namespace Majorizor.Screens.Students
 {
@@ -25,7 +26,7 @@ namespace Majorizor.Screens.Students
             try
             {
                 Student s = new Student((int)Session["UserID"]);
-                if (s.major1 == Major.NONE)
+                if (s.major1.majorType == MajorType.NONE)
                     Response.Redirect("~/Screens/Students/MajorMinorSelection.aspx");
             }
             catch (IndexOutOfRangeException)

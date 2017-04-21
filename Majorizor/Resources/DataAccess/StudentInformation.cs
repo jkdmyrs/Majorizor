@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Data;
 using MySql.Data.MySqlClient;
+using Majorizor.Resources.Majors;
 
 namespace Majorizor.Resources.DataAccess
 {
@@ -99,19 +100,19 @@ namespace Majorizor.Resources.DataAccess
                 switch ((string)dr["major1"])
                 {
                     case "CE":
-                        student.setMajor1(Major.CE);
+                        student.setMajor1(MajorType.CE);
                         break;
                     case "CS":
-                        student.setMajor1(Major.CS);
+                        student.setMajor1(MajorType.CS);
                         break;
                     case "EE":
-                        student.setMajor1(Major.EE);
+                        student.setMajor1(MajorType.EE);
                         break;
                     case "MA":
-                        student.setMajor1(Major.MA);
+                        student.setMajor1(MajorType.MA);
                         break;
                     case "SE":
-                        student.setMajor1(Major.SE);
+                        student.setMajor1(MajorType.SE);
                         break;
                 }
             }
@@ -121,23 +122,23 @@ namespace Majorizor.Resources.DataAccess
                 switch ((string)dr["major2"])
                 {
                     case "CE":
-                        student.setMajor2(Major.CE);
+                        student.setMajor2(MajorType.CE);
                         break;
                     case "CS":
-                        student.setMajor2(Major.CS);
+                        student.setMajor2(MajorType.CS);
                         break;
                     case "EE":
-                        student.setMajor2(Major.EE);
+                        student.setMajor2(MajorType.EE);
                         break;
                     case "MA":
-                        student.setMajor2(Major.MA);
+                        student.setMajor2(MajorType.MA);
                         break;
                     case "SE":
-                        student.setMajor2(Major.SE);
+                        student.setMajor2(MajorType.SE);
                         break;
                 }
             }
-            else student.setMajor2(Major.NONE);
+            else student.setMajor2(MajorType.NONE);
 
             if (dr["minor1"] != DBNull.Value)
             {

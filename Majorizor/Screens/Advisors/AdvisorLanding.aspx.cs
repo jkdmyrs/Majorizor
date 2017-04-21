@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Majorizor.Resources;
 using Majorizor.Resources.DataAccess;
 using System.IO;
+using Majorizor.Resources.Majors;
 
 namespace Majorizor.Screens.Advisors
 {
@@ -50,9 +51,9 @@ namespace Majorizor.Screens.Advisors
                     string major;
                     string minor;
                     name = student.firstName + " " + student.lastName;
-                    major = (student.major2 == Major.NONE) ? 
-                        major = student.major1.ToString() : 
-                        major = student.major1 + ", " + student.major2;
+                    major = (student.major2.majorType == MajorType.NONE) ? 
+                        major = student.major1.majorName : 
+                        major = student.major1.majorName + ", " + student.major2.majorName;
                     if (student.minor1 == Minor.NONE)
                         minor = "N/A";
                     else if (student.minor1 != Minor.NONE & student.minor2 == Minor.NONE)
