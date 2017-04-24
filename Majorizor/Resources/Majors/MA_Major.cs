@@ -11,7 +11,7 @@ namespace Majorizor.Resources.Majors
         {
             majorType = MajorType.EE;
             majorName = "Math";
-            reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
+            //reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
             //ProcessRequirements();
         }
 

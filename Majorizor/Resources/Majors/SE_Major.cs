@@ -17,7 +17,7 @@ namespace Majorizor.Resources.Majors
         {
             majorType = MajorType.SE;
             majorName = "Software Engineering";
-            reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
+            //reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
             //ProcessRequirements();
         }
 

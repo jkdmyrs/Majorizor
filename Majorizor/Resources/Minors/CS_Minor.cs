@@ -12,7 +12,7 @@ namespace Majorizor.Resources.Minors
         {
             minorType = MinorType.CS;
             minorName = "Computer Science";
-            reqCourses = MinorInformation.GetCoursesByMinor(minorType);
+            //reqCourses = MinorInformation.GetCoursesByMinor(minorType);
             //ProcessRequirements();
         }
         protected override void ProcessRequirements()
