@@ -17,7 +17,7 @@ namespace Majorizor.Screens.Students
         {
             try
             {
-                if (UserGroups.userHasAccess(UserGroup.USER, (UserGroup)Session["UserGroup"]) != true)
+                if (UserGroups.userHasAccess(UserGroup.USER, new User((int)Session["UserID"])) != true)
                     Response.Redirect("~/Default.aspx");
             }
             catch (System.NullReferenceException)

@@ -10,11 +10,18 @@ namespace Majorizor.Resources
 {
     public class MasterScheduleLoader
     {
+        #region Member Variables
         public List<Course> ParsedMasterSchedule { get; private set; }
         public List<string> MajorList { get; private set; } 
         public List<string> ES_ElectiveList { get; private set; } 
         public StreamReader reader { get; private set; }
+        #endregion
 
+        /// <summary>
+        /// Sets up a MasterScheduleLoader object to allow for parsing the given Stream
+        /// </summary>
+        /// <requires>MasterSchedule.csv is delimited with "|" (pipes) not "," (commas) </requires>
+        /// <param name="scheduleStream">The MasterSchedule.csv file converted to a Stream</param>
         public MasterScheduleLoader(Stream scheduleStream)
         {
             reader = new StreamReader(scheduleStream);
@@ -23,7 +30,10 @@ namespace Majorizor.Resources
             ES_ElectiveList = new List<string> { "100", "110", "220", "222", "250", "260", "340", "405", "499" };
         }
     
-        private void InputSchedule()
+        /// <summary>
+        /// Proccess information from the reader intoParsedMasterSchedule (List of Course objects)
+        /// </summary>
+        private void ProcessScheduleStream()
         {
             string line;
             while (!reader.EndOfStream)
@@ -84,10 +94,13 @@ namespace Majorizor.Resources
             }
         }
 
+        /// <summary>
+        /// Processes and uploads the MasterSchedule into the database
+        /// </summary>
         public void LoadSchedule()
         {
-            InputSchedule();
-            DataAccess.ScheduleImport.ImportMasterSchedule(this.ParsedMasterSchedule);
+            ProcessScheduleStream();
+            DataAccess.ScheduleImport.ImportMasterSchedule(ParsedMasterSchedule);
         }
     }
 }

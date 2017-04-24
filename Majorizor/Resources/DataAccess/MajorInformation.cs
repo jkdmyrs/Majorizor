@@ -8,9 +8,14 @@ namespace Majorizor.Resources.DataAccess
 {
     public class MajorInformation
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static List<Course> GetCoursesByMajor(MajorType type)
         {
-            return new List<Course>();
+            throw new NotImplementedException();
         }
     }
 }

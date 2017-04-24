@@ -43,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <asp:Repeater ID="Repeater1" runat="server">
+                    <asp:Repeater ID="Repeater_Table" runat="server">
                         <ItemTemplate>
                             <tr>
                                 <td><asp:Label runat="server" Text='<%# Eval("firstName").ToString() + " " + Eval("lastName").ToString() %>'></asp:Label></td>

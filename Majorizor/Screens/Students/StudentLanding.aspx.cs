@@ -13,9 +13,10 @@ namespace Majorizor.Screens.Students
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int userID = (int)Session["UserID"];
             try
             {
-                if (UserGroups.userHasAccess(UserGroup.USER, (UserGroup)Session["UserGroup"]) != true)
+                if (UserGroups.userHasAccess(UserGroup.USER, new User(userID)) != true)
                     Response.Redirect("~/Default.aspx");
             }
             catch (NullReferenceException)
@@ -25,7 +26,7 @@ namespace Majorizor.Screens.Students
 
             try
             {
-                Student s = new Student((int)Session["UserID"]);
+                Student s = new Student(userID);
                 if (s.major1.majorType == MajorType.NONE)
                     Response.Redirect("~/Screens/Students/MajorMinorSelection.aspx");
             }

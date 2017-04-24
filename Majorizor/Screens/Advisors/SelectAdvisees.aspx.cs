@@ -14,17 +14,17 @@ namespace Majorizor.Screens.Advisors
         {
             try
             {
-                if (Resources.UserGroups.userHasAccess(UserGroup.ADVISOR, (UserGroup)Session["UserGroup"]) != true)
+                if (UserGroups.userHasAccess(UserGroup.ADVISOR, new User((int)Session["UserID"])) != true)
                     Response.Redirect("~/Default.aspx");
             }
-            catch (System.NullReferenceException)
+            catch (NullReferenceException)
             {
                 Response.Redirect("~/Default.aspx");
             }
 
             try
             {
-                advisorID = int.Parse(Session["UserID"].ToString());
+                advisorID = (int)Session["UserID"];
                 if (!IsPostBack)
                 {
                     LoadTables();
@@ -41,7 +41,7 @@ namespace Majorizor.Screens.Advisors
 
         private void LoadTables()
         {
-            List<int> adviseeIDs = new Advisor(Session["UserName"].ToString()).AdviseeIDs;
+            List<int> adviseeIDs = new Advisor(advisorID).AdviseeIDs;
             List<Student> currAdvisees = new List<Student>();
             foreach (int id in adviseeIDs)
             {

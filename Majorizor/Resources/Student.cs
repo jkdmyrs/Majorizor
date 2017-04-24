@@ -13,7 +13,7 @@ namespace Majorizor.Resources
 
     public class Student
     {
-
+        #region Member Variables
         public int userID { get; private set; }
         public string firstName { get; private set; }
         public string lastName { get; private set; }
@@ -23,12 +23,21 @@ namespace Majorizor.Resources
         public Minor minor1 { get; private set; }
         public Minor minor2 { get; private set; }
         public string graduation { get; private set; }
+        #endregion
 
+        #region Constructors
+        /// <summary>
+        /// Defualt Constructor
+        /// </summary>
         public Student() { }
 
-        public Student(int ID)
+        /// <summary>
+        /// Initializes a Student with information from the database for the specific userID
+        /// </summary>
+        /// <param name="userID">userID of the Student</param>
+        public Student(int userID)
         {
-            Student student = GetStudentByID(ID);
+            Student student = StudentInformation.getStudentByID(userID);
             setUserID(student.userID);
             setFirstName(student.firstName);
             setLastName(student.lastName);
@@ -39,29 +48,32 @@ namespace Majorizor.Resources
             setMinor2(student.minor2.minorType);
             setGraduation(student.graduation);
         }
+        #endregion
 
-        // == Operator
-
-
-        //Setters
+        #region Setters
+        // Setters
+        //
+        // set private member variables 
+        //
+        // used in DataAccess.StudentInformation class
         public void setUserID(int ID)
         {
-            this.userID = ID;
+            userID = ID;
         }
 
         public void setFirstName(string fN)
         {
-            this.firstName = fN;
+            firstName = fN;
         }
 
         public void setLastName(string lN)
         {
-            this.lastName = lN;
+            lastName = lN;
         }
 
         public void setStudentYear(StudentYear sY)
         {
-            this.year = sY;
+            year = sY;
         }
 
         public void setMajor1(MajorType m)
@@ -160,27 +172,31 @@ namespace Majorizor.Resources
 
         public void setGraduation(string g)
         {
-            this.graduation = g;
+            graduation = g;
         }
+        #endregion
 
-        // static methods
-        private static Student GetStudentByID(int userID)
-        {
-            return StudentInformation.getStudentByID(userID);
-        }
-
+        #region Static Methods
+        /// <summary>
+        /// Gets a list of all Students
+        /// </summary>
+        /// <returns>A list of Student objects initialized for all Students in the system</returns>
         public static List<Student> GetAllStudents()
         {
             return StudentInformation.GetAllStudents();
         }
+        #endregion
     }
-
+    
+    /// <summary>
+    /// Uses the IEqualityComparer interface to allow List.Except() functionality for Student objects
+    /// </summary>
     public class StudentComparer : IEqualityComparer<Student>
     {
         public bool Equals(Student x, Student y)
         {
             // check whether the objects are the same object
-            if (Object.ReferenceEquals(x, y)) return true;
+            if (ReferenceEquals(x, y)) return true;
 
             // check wheather the objects' userIDs are equal
             return x != null && y != null && x.userID.Equals(y.userID);

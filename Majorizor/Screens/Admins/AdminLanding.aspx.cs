@@ -14,10 +14,10 @@ namespace Majorizor.Screens.Admins
             // Check access
             try
             {
-                if (Resources.UserGroups.userHasAccess(UserGroup.ADMIN, (UserGroup)Session["UserGroup"]) != true)
+                if (UserGroups.userHasAccess(UserGroup.ADMIN, new User((int)Session["UserID"])) != true)
                     Response.Redirect("~/Default.aspx");
             }
-            catch (System.NullReferenceException)
+            catch (NullReferenceException)
             {
                 Response.Redirect("~/Default.aspx");
             }
@@ -38,13 +38,21 @@ namespace Majorizor.Screens.Admins
             }
         }
 
+        /// <summary>
+        /// Loads the UserManagement table with information from the database
+        /// </summary>
         protected void LoadTables()
         {
             List<User> users = Resources.User.GetAllUsers();
-            Repeater1.DataSource = users;
-            Repeater1.DataBind();
+            Repeater_Table.DataSource = users;
+            Repeater_Table.DataBind();
         }
 
+        /// <summary>
+        /// Attempts to upload the given file into the system's master schedule
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void upload_Btn_Click(object sender, EventArgs e)
         {
             //const string expctName = "MasterSchedule.csv";
@@ -75,6 +83,11 @@ namespace Majorizor.Screens.Admins
             }
         }
 
+        /// <summary>
+        /// Deletes the selected user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void deleteUser_Click(object sender, EventArgs e)
         {
             bool success = true;
@@ -101,6 +114,11 @@ namespace Majorizor.Screens.Admins
             }
         }
 
+        /// <summary>
+        /// Updates the userGroup of the selected user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void userGroup_ItemChanged(object sender, EventArgs e)
         {
             bool success = true;
@@ -125,7 +143,7 @@ namespace Majorizor.Screens.Admins
                     userGroup = UserGroup.USER;
                     break;
                 default:
-                    userGroup = UserGroup.DEFUALT;
+                    userGroup = UserGroup.NONE;
                     success = false;
                     break;
             }

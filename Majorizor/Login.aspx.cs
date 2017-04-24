@@ -15,7 +15,7 @@ namespace Majorizor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            username_input.Focus();
         }
 
         protected void button_login_Click(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace Majorizor
             User user = Resources.DataAccess.AccountController.Login(email, password);
             
             //If Login was successful, build global application state hashtable
-            if (user.userGroup != UserGroup.DEFUALT)
+            if (user.userGroup != UserGroup.NONE)
             {
                 Session["UserName"] = email;
                 Session["UserGroup"] = user.userGroup;

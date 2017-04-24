@@ -15,6 +15,15 @@ namespace Majorizor.Resources.DataAccess
     {
         static string connString = WebConfigurationManager.ConnectionStrings["MajorizorConnectionString"].ConnectionString;
 
+        /// <summary>
+        /// Handles database code for Resources.Student constructor
+        /// 
+        /// Calls `GetStudentByID` stored procedure
+        /// 
+        /// Catches MySQL exceptions, throws new exception with detalied error 
+        /// </summary>
+        /// <param name="userID">userID of student to initialize</param>
+        /// <returns>Initalized Student with given userID</returns>
         public static Student getStudentByID(int userID)
         {
             Student student = new Student();
@@ -27,7 +36,6 @@ namespace Majorizor.Resources.DataAccess
                     MySqlCommand command = new MySqlCommand("GetStudentByID", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@i_userID", userID);
-
                     MySqlDataAdapter adapter = new MySqlDataAdapter();
                     adapter.SelectCommand = command;
                     adapter.Fill(ds);
@@ -41,6 +49,14 @@ namespace Majorizor.Resources.DataAccess
             }
         }
 
+        /// <summary>
+        /// Handles the database code for Resources.Student.GetAllStudents()
+        /// 
+        /// Calls `GetAllStudents` stored procedure
+        /// 
+        /// Catches MySQL exceptions, throws new exception with detalied error 
+        /// </summary>
+        /// <returns>A List of Student objects initialized for all students in the system</returns>
         public static List<Student> GetAllStudents()
         {
             List<Student> students = new List<Student>();
@@ -69,6 +85,12 @@ namespace Majorizor.Resources.DataAccess
             }
         }
 
+        /// <summary>
+        /// PRIVATE
+        /// Maps the results of a Student query on the database into a Student object
+        /// </summary>
+        /// <param name="_dr">A DataRow returned from a query on the database for a Student object</param>
+        /// <returns>A Student object initalized to the values in the DataRow</returns>
         private static Student studentClassMapping(DataRow _dr)
         {
             Student student = new Student();
@@ -181,7 +203,6 @@ namespace Majorizor.Resources.DataAccess
                 }
             }
             else student.setMinor2(MinorType.NONE);
-
             return student;
         }
     }

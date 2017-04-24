@@ -31,13 +31,13 @@ namespace Majorizor.Screens.Admins {
         protected global::System.Web.UI.WebControls.Button uploadBtn;
         
         /// <summary>
-        /// Repeater1 control.
+        /// Repeater_Table control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.Repeater Repeater_Table;
         
         /// <summary>
         /// Table1 control.

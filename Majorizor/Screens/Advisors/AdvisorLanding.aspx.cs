@@ -16,19 +16,22 @@ namespace Majorizor.Screens.Advisors
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int userID;
             try
             {
-                if (Resources.UserGroups.userHasAccess(UserGroup.ADVISOR, (UserGroup)Session["UserGroup"]) != true)
+                userID = (int)Session["UserID"];
+                if (UserGroups.userHasAccess(UserGroup.ADVISOR, new User(userID)) != true)
                     Response.Redirect("~/Default.aspx");
             }
-            catch (System.NullReferenceException)
+            catch (NullReferenceException)
             {
                 Response.Redirect("~/Default.aspx");
             }
 
             try
             {
-                Advisor currAdvisor = new Advisor(base.Session["UserName"].ToString());
+                userID = (int)Session["UserID"];
+                Advisor currAdvisor = new Advisor(userID);
                 buildAdviseePanelHtml(currAdvisor.AdviseeIDs);
             } catch (Exception ex)
             {
