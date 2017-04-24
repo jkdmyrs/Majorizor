@@ -7,6 +7,7 @@
     <title>Majorizor</title>
     <link rel="stylesheet" type="text/css" href="/Content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/Content/bootstrap-theme.min.css" />
+    <link rel="icon" href="/img/favicon.ico" />
     
     <asp:ContentPlaceHolder ID="MainMaster_Head" runat="server">
     </asp:ContentPlaceHolder>
@@ -26,7 +27,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" id="navBar_Brand" runat="server">Majorizor</a>
+                    <a class="navbar-brand" id="navBar_Brand" runat="server">
+                        <img src="/img/logo.png" style="display: inline-block; height: 25px" />
+                    </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
