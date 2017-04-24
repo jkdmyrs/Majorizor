@@ -21,7 +21,7 @@ namespace Majorizor.Screens.Admins
             {
                 Response.Redirect("~/Default.aspx");
             }
-
+            
             try
             {
                 if(!IsPostBack)
@@ -29,7 +29,8 @@ namespace Majorizor.Screens.Admins
                     LoadTables();
                 }
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 string error = ex.Message;
                 // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
@@ -50,6 +51,8 @@ namespace Majorizor.Screens.Admins
 
         /// <summary>
         /// Attempts to upload the given file into the system's master schedule
+        /// 
+        /// If fails, catch exception
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -85,6 +88,10 @@ namespace Majorizor.Screens.Admins
 
         /// <summary>
         /// Deletes the selected user
+        /// 
+        /// If fails, catch exception
+        /// 
+        /// If success, re-load tables
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -116,6 +123,10 @@ namespace Majorizor.Screens.Admins
 
         /// <summary>
         /// Updates the userGroup of the selected user
+        /// 
+        /// If fails, catch exception
+        /// 
+        /// If success, re-load tables
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

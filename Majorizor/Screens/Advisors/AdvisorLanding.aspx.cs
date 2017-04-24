@@ -42,9 +42,14 @@ namespace Majorizor.Screens.Advisors
             }
         }
 
+        /// <summary>
+        /// Builds Advisee Panels
+        /// 
+        /// TODO - Change this to use an ASP:Repeater instead
+        /// </summary>
+        /// <param name="IDs"></param>
         private void buildAdviseePanelHtml(List<int> IDs)
         {
-            // TODO - this should  eventually be rebuilt using an ASP:repeater
             StringWriter htmlString = new StringWriter();
             using (HtmlTextWriter writer = new HtmlTextWriter(htmlString))
             {

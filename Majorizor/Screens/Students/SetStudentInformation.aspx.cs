@@ -39,6 +39,9 @@ namespace Majorizor.Screens.Students
             }
         }
 
+        /// <summary>
+        /// Load graduation drop down with values from database
+        /// </summary>
         private void LoadGraduation()
         {
             DataTable gradTerms = StudentPageRepository.LoadGraduation();
@@ -49,6 +52,15 @@ namespace Majorizor.Screens.Students
             graduation_ddl.DataBind();
         }
 
+        /// <summary>
+        /// Set the logged-in Student's information with the information selected in the dropdowns
+        /// 
+        /// If  fails, catch the error
+        /// 
+        /// If success, redirect to MajorMinorSelcetion page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void button_update_Click(object sender, EventArgs e)
         {
             bool success = true;
