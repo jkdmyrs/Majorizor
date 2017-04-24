@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Majorizor.Resources.DataAccess;
-
-namespace Majorizor.Resources
+﻿namespace Majorizor.Resources
 {
     public enum UserGroup { NONE, USER, ADVISOR, ADMIN };       // NONE - No user logged in
 

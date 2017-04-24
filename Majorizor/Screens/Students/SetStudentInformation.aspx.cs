@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Majorizor.Resources;
 using Majorizor.Resources.DataAccess;
-using MySql.Data.MySqlClient;
 using System.Data;
 
 namespace Majorizor.Screens.Students

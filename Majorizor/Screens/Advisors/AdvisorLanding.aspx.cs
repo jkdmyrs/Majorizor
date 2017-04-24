@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.IO;
 using System.Web.UI;
+using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using Majorizor.Resources;
-using Majorizor.Resources.DataAccess;
-using System.IO;
 using Majorizor.Resources.Majors;
 using Majorizor.Resources.Minors;
 

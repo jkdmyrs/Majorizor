@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Majorizor.Resources;
 
@@ -54,15 +49,26 @@ namespace Majorizor
             }
         }
 
+        /// <summary>
+        /// Redirect to login page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void loginNavbar_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Login.aspx");
         }
 
+        /// <summary>
+        /// Remove user information from Session, Redirect to Home page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void LogoutNavBar_Click(object sender, EventArgs e)
         {
             Session["UserName"] = null;
             Session["UserGroup"] = null;
+            Session["UserID"] = null;
             Response.Redirect("/Default.aspx");
         }
     }
