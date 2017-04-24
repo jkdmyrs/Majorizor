@@ -54,7 +54,7 @@
                     </ul>
                 
                     <!-- Buttons -->
-                <asp:Button id="loginNavbar" runat="server" class="btn btn-default navbar-btn navbar-right" Text="Login" OnClick="loginNavbar_Click" />
+                <asp:Button id="loginNavbar" runat="server" class="btn btn-default navbar-btn navbar-right" Text="Login/Register" OnClick="loginNavbar_Click" />
                 <asp:Button id="LogoutNavBar" runat="server" class="btn btn-default navbar-btn navbar-right" Text="Logout" OnClick="LogoutNavBar_Click" />
                 
                 </div><!-- /.navbar-collapse -->

@@ -41,6 +41,7 @@ namespace Majorizor.Screens.Advisors
 
         private void buildAdviseePanelHtml(List<int> IDs)
         {
+            // TODO - this should  eventually be rebuilt using an ASP:repeater
             StringWriter htmlString = new StringWriter();
             using (HtmlTextWriter writer = new HtmlTextWriter(htmlString))
             {
@@ -52,9 +53,14 @@ namespace Majorizor.Screens.Advisors
                     string major;
                     string minor;
                     name = student.firstName + " " + student.lastName;
-                    major = (student.major2.majorType == MajorType.NONE) ? 
-                        major = student.major1.majorName : 
+
+                    if (student.major1.majorType == MajorType.NONE)
+                        major = "N/A";
+                    else if (student.major1.majorType != MajorType.NONE & student.major2.majorType == MajorType.NONE)
+                        major = student.major1.majorName;
+                    else
                         major = student.major1.majorName + ", " + student.major2.majorName;
+
                     if (student.minor1.minorType == MinorType.NONE)
                         minor = "N/A";
                     else if (student.minor1.minorType != MinorType.NONE & student.minor2.minorType == MinorType.NONE)

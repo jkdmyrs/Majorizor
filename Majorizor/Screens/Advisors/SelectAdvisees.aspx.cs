@@ -80,7 +80,7 @@ namespace Majorizor.Screens.Advisors
             {
                 if(success)
                 {
-                    Response.Redirect(Request.RawUrl);
+                    LoadTables();
                 }
             }
         }
@@ -108,7 +108,7 @@ namespace Majorizor.Screens.Advisors
             {
                 if (success)
                 {
-                    Response.Redirect(Request.RawUrl);
+                    LoadTables();
                 }
             }
         }

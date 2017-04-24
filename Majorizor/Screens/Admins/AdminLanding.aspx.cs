@@ -26,9 +26,7 @@ namespace Majorizor.Screens.Admins
             {
                 if(!IsPostBack)
                 {
-                    List<User> users = Resources.User.GetAllUsers();
-                    Repeater1.DataSource = users;
-                    Repeater1.DataBind();
+                    LoadTables();
                 }
 
             } catch (Exception ex)
@@ -38,6 +36,13 @@ namespace Majorizor.Screens.Admins
                 // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
                 // parameters, and to add popup error messages built in clean bootstrap html.
             }
+        }
+
+        protected void LoadTables()
+        {
+            List<User> users = Resources.User.GetAllUsers();
+            Repeater1.DataSource = users;
+            Repeater1.DataBind();
         }
 
         protected void upload_Btn_Click(object sender, EventArgs e)
@@ -92,7 +97,7 @@ namespace Majorizor.Screens.Admins
             finally
             {
                 if (success)
-                    Response.Redirect(Request.RawUrl);
+                    LoadTables();
             }
         }
 
@@ -139,7 +144,7 @@ namespace Majorizor.Screens.Admins
             finally
             {
                 if (success)
-                    Response.Redirect(Request.RawUrl);
+                    LoadTables();
             }
         }
     }

@@ -4,12 +4,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainMaster_MainContent" runat="server">
       <div class="container">
         <ul class="nav nav-tabs">
-		    <li class="active"><a  href="#1" data-toggle="tab">Login</a></li>
-		    <li><a href="#2" data-toggle="tab">Register</a></li>
+		    <li class="active"><a  href="#i1" data-toggle="tab">Login</a></li>
+		    <li><a href="#i2" data-toggle="tab">Register</a></li>
 	    </ul>
-
+        
 	    <div class="tab-content">
-		    <div class="tab-pane active" id="1">
+		    <div class="tab-pane active" id="i1">
+            <asp:Panel runat="server" DefaultButton="button_login">
                 <div class="container">
                     <h1>Login</h1>
                     <div class="form-horizontal">
@@ -34,11 +35,13 @@
                             
                         </div>
                     </div>
-                    Not already a member? <a href="#2" data-toggle="tab">Register</a>
+                    Not already a member? <a href="#i2" data-toggle="tab">Register</a>
                 </div>
+            </asp:Panel>
 		    </div>
 
-		    <div class="tab-pane" id="2">
+		    <div class="tab-pane" id="i2">
+                <asp:Panel runat="server" DefaultButton="button_register">
                 <div class="container">
                     <h1>Register</h1>
                     <div class="form-horizontal">
@@ -83,8 +86,20 @@
                             </div>
                         </div>
                     </div>
+                    Already a member? <a href="#i1" data-toggle="tab">Login</a>
                 </div>
+                </asp:Panel>
 		    </div>
 	    </div>
 
+      </div>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="MainMaster_Scripts" runat="server">
+    <script type="text/javascript">
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var target = this.href.split('#');
+            $('.nav a').filter('a[href="#' + target[1] + '"]').tab('show');
+        //})
+    </script>
 </asp:Content>
