@@ -61,6 +61,12 @@
             </div><!-- /.container-fluid -->
         </nav>
         <div class="container">
+            
+        <div class="alert alert-info">
+            <strong>Under Construction!</strong> 
+                <p>This site is currently under construction. You may encounter unfinished pages and bugs. Please be patient while we continue to work on the system.</p>
+                <p>- The Majorizor Team</p>
+        </div>
 
         <asp:ContentPlaceHolder ID="MainMaster_MainContent" runat="server">
         </asp:ContentPlaceHolder>
