@@ -42,6 +42,8 @@ namespace Majorizor.Screens.Advisors
         /// Builds Advisee Panels
         /// 
         /// TODO - Change this to use an ASP:Repeater instead
+        ///      - NOTE: I tried to do this, but it seems like setting the width attribute to the 
+        ///        progress bar was challenging to do with a repeater
         /// </summary>
         /// <param name="IDs"></param>
         private void buildAdviseePanelHtml(List<int> IDs)
@@ -51,11 +53,13 @@ namespace Majorizor.Screens.Advisors
             {
                 foreach (int ID in IDs)
                 {
-                    //Setup variables needed for the HTMLTextWriter 'writer'
+                    // Setup variables needed for the HTMLTextWriter 'writer'
                     Student student = new Student(ID);
                     string name;
                     string major;
                     string minor;
+                    int progress = 0;
+
                     name = student.firstName + " " + student.lastName;
 
                     if (student.major1.majorType == MajorType.NONE)
@@ -72,36 +76,36 @@ namespace Majorizor.Screens.Advisors
                     else
                         minor = student.minor1.minorName + ", " + student.minor2.minorName;
 
-                    //TODO - Calculate Progress
-                    int progress = 15;
+                    // TODO - Calculate Progress
+                    progress = 89;
 
-                    //panel panel-primary
+                    // panel panel-primary
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "panel panel-primary");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
 
-                    //panel heading
+                    // panel heading
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "panel-heading");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
                     writer.Write(name);
                     writer.RenderEndTag(); //end panel-heading
 
-                    //panel-body
+                    // panel-body
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "panel-body");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
 
-                    //row
+                    // row
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "row");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
 
-                        //col-md-4 #1
+                        // col-md-4 #1
                         writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-md-4");
                         writer.RenderBeginTag(HtmlTextWriterTag.Div);
-                            //majors
+                            // majors
                             writer.RenderBeginTag(HtmlTextWriterTag.H4);
                             writer.Write("Majors: ");
                             writer.RenderEndTag();
                             writer.Write(major);
-                            //minors
+                            // minors
                             writer.RenderBeginTag(HtmlTextWriterTag.H4);
                             writer.Write("Minors: ");
                             writer.RenderEndTag();
@@ -109,25 +113,25 @@ namespace Majorizor.Screens.Advisors
 
                         writer.RenderEndTag();//col-md-4 - #1
 
-                        //col-md-4 #2
+                        // col-md-4 #2
                         writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-md-4");
                         writer.RenderBeginTag(HtmlTextWriterTag.Div);
-                            //year
+                            // year
                             writer.RenderBeginTag(HtmlTextWriterTag.H4);
                             writer.Write("Year: ");
                             writer.RenderEndTag();
                             writer.Write(student.year);
-                            //graduation
+                            // graduation
                             writer.RenderBeginTag(HtmlTextWriterTag.H4);
                             writer.Write("Expected Graduation: ");
                             writer.RenderEndTag();
                             writer.Write(student.graduation);
                         writer.RenderEndTag();//col-md-4 - #2
 
-                        //col-md-4 #3
+                        // col-md-4 #3
                         writer.AddAttribute(HtmlTextWriterAttribute.Class, "col-md-4");
                         writer.RenderBeginTag(HtmlTextWriterTag.Div);
-                            //button1
+                            // button1
                             writer.AddAttribute(HtmlTextWriterAttribute.Type, "button");
                             writer.AddAttribute(HtmlTextWriterAttribute.Class, "btn btn-primary");
                             writer.AddAttribute(HtmlTextWriterAttribute.Value, "Select Majors/Minors");
@@ -143,13 +147,13 @@ namespace Majorizor.Screens.Advisors
                             writer.AddAttribute(HtmlTextWriterAttribute.Value, "View Progress");
                             writer.RenderBeginTag(HtmlTextWriterTag.Input);
                             writer.RenderEndTag();
-                            //button3
+                            // button3
                             writer.AddAttribute(HtmlTextWriterAttribute.Type, "button");
                             writer.AddAttribute(HtmlTextWriterAttribute.Class, "btn btn-default");
                             writer.AddAttribute(HtmlTextWriterAttribute.Value, "View Schedule");
                             writer.RenderBeginTag(HtmlTextWriterTag.Input);
                             writer.RenderEndTag();
-                            //button4
+                            // button4
                             writer.AddAttribute(HtmlTextWriterAttribute.Type, "button");
                             writer.AddAttribute(HtmlTextWriterAttribute.Class, "btn btn-default");
                             writer.AddAttribute(HtmlTextWriterAttribute.Value, "Notes");
@@ -163,16 +167,37 @@ namespace Majorizor.Screens.Advisors
                     // <br />
                     writer.WriteBreak();
 
-                    //progress
+                    // progress
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "progress");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
-                    //TODO : conditionals for different progresses;
-                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "progress-bar progress-bar-warning");
-                    writer.AddAttribute(HtmlTextWriterAttribute.Style, "width:"+progress+"%");
-                    writer.AddAttribute("role", "progressbar");
-                    writer.RenderBeginTag(HtmlTextWriterTag.Div);
-                    writer.Write(progress+"%");
-                    writer.RenderEndTag();
+                    // TODO : conditionals for different progresses;
+                    if (progress < 20)
+                    {
+                        writer.AddAttribute(HtmlTextWriterAttribute.Class, "progress-bar progress-bar-danger");
+                        writer.AddAttribute(HtmlTextWriterAttribute.Style, "width:" + progress + "%");
+                        writer.AddAttribute("role", "progressbar");
+                        writer.RenderBeginTag(HtmlTextWriterTag.Div);
+                        writer.Write(progress + "%");
+                        writer.RenderEndTag();
+                    }
+                    else if (progress <80)
+                    {
+                        writer.AddAttribute(HtmlTextWriterAttribute.Class, "progress-bar progress-bar-warning");
+                        writer.AddAttribute(HtmlTextWriterAttribute.Style, "width:" + progress + "%");
+                        writer.AddAttribute("role", "progressbar");
+                        writer.RenderBeginTag(HtmlTextWriterTag.Div);
+                        writer.Write(progress + "%");
+                        writer.RenderEndTag();
+                    }
+                    else
+                    {
+                        writer.AddAttribute(HtmlTextWriterAttribute.Class, "progress-bar progress-bar-success");
+                        writer.AddAttribute(HtmlTextWriterAttribute.Style, "width:" + progress + "%");
+                        writer.AddAttribute("role", "progressbar");
+                        writer.RenderBeginTag(HtmlTextWriterTag.Div);
+                        writer.Write(progress + "%");
+                        writer.RenderEndTag();
+                    }
 
                     writer.RenderEndTag(); //end progress
 
