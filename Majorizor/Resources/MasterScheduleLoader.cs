@@ -29,6 +29,8 @@ namespace Majorizor.Resources
     
         /// <summary>
         /// Proccess information from the reader intoParsedMasterSchedule (List of Course objects)
+        /// 
+        /// Throws an exception if it could not process the data.
         /// </summary>
         private void ProcessScheduleStream()
         {
