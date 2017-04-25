@@ -58,7 +58,7 @@ namespace Majorizor.Screens.Advisors
                     string name;
                     string major;
                     string minor;
-                    int progress = 0;
+                    int progress;
 
                     name = student.firstName + " " + student.lastName;
 
@@ -77,7 +77,17 @@ namespace Majorizor.Screens.Advisors
                         minor = student.minor1.minorName + ", " + student.minor2.minorName;
 
                     // TODO - Calculate Progress
-                    progress = 89;
+                    try
+                    {
+                        ProgressTracker tracker = new ProgressTracker(ID);
+                        progress = tracker.CalculateProgress();
+                    }
+                    catch (Exception e)
+                    {
+                        progress = 0;
+                        ExceptionHandler handler = new ExceptionHandler(e, error_box);
+                        handler.Handle(true);
+                    }
 
                     // panel panel-primary
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "panel panel-primary");
@@ -170,7 +180,6 @@ namespace Majorizor.Screens.Advisors
                     // progress
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "progress");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
-                    // TODO : conditionals for different progresses;
                     if (progress < 20)
                     {
                         writer.AddAttribute(HtmlTextWriterAttribute.Class, "progress-bar progress-bar-danger");
@@ -191,7 +200,7 @@ namespace Majorizor.Screens.Advisors
                     }
                     else
                     {
-                        writer.AddAttribute(HtmlTextWriterAttribute.Class, "progress-bar progress-bar-success");
+                        writer.AddAttribute(HtmlTextWriterAttribute.Class, "progress-bar progress-bar-success progress-bar-striped active");
                         writer.AddAttribute(HtmlTextWriterAttribute.Style, "width:" + progress + "%");
                         writer.AddAttribute("role", "progressbar");
                         writer.RenderBeginTag(HtmlTextWriterTag.Div);

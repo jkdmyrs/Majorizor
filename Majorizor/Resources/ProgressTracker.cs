@@ -40,16 +40,26 @@ namespace Majorizor.Resources
         /// 
         /// Calculate progress as percent
         /// </summary>
-        public void CalculateProgress()
+        /// <returns>progress as a percent</returns>
+        public int CalculateProgress()
         {
-            int requiredTotal, takenNum;
-            requiredCourses = ProgressInformation.GetRequiredCourses(studentID);
-            requiredTotal = requiredCourses.Count;
-            takenCourses = ProgressInformation.GetTakenCourses(studentID);
-            takenNum = takenCourses.Count;
-            requiredCourses = requiredCourses.Except(takenCourses, new CourseComparer()).ToList();
+            try
+            {
+                int requiredTotal, takenNum;
+                requiredCourses = ProgressInformation.GetRequiredCourses(studentID);
+                requiredTotal = requiredCourses.Count;
+                takenCourses = ProgressInformation.GetTakenCourses(studentID);
+                takenNum = takenCourses.Count;
+                requiredCourses = requiredCourses.Except(takenCourses, new CourseComparer()).ToList();
 
-            progress = takenNum / requiredTotal * 100;
+                progress = takenNum / requiredTotal * 100;
+                return progress;
+            }
+            catch (DivideByZeroException zeroEx)
+            {
+                string error = "ProgressTracker.CalculateProgress failed. No required courses found for userID: " + studentID + ". Has the user selected a Major?";
+                throw new Exception(error, zeroEx);
+            }
         }
     }
 }
