@@ -123,6 +123,7 @@
     <Compile Include="Resources\DataAccess\AdvisorInformation.cs" />
     <Compile Include="Resources\DataAccess\MajorInformation.cs" />
     <Compile Include="Resources\DataAccess\MinorInformation.cs" />
+    <Compile Include="Resources\DataAccess\ProgressInformation.cs" />
     <Compile Include="Resources\DataAccess\ScheduleImport.cs" />
     <Compile Include="Resources\DataAccess\StudentInformation.cs" />
     <Compile Include="Resources\DataAccess\StudentPageRepository.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Resources\Minors\Minor.cs" />
     <Compile Include="Resources\Minors\SE_Minor.cs" />
     <Compile Include="Resources\Minors\_NULLMINOR.cs" />
+    <Compile Include="Resources\ProgressTracker.cs" />
     <Compile Include="Resources\Security\Security.cs" />
     <Compile Include="Resources\Student.cs" />
     <Compile Include="Resources\UserGroup.cs" />

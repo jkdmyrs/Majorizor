@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Majorizor.Resources
 {
@@ -42,5 +43,26 @@ namespace Majorizor.Resources
             days = _days;
         }
         #endregion
+    }
+
+    /// <summary>
+    /// Uses the IEqualityComparer interface to allow List.Except functionality
+    /// </summary>
+    public class CourseComparer : IEqualityComparer<Course>
+    {
+        public bool Equals(Course x, Course y)
+        {
+            // check whether the objects are the same
+            if (ReferenceEquals(x, y)) return true;
+
+            // check whether the objects' IDs are equal
+            return x != null && y != null && x.id.Equals(y.id);
+        }
+
+        public int GetHashCode(Course obj)
+        {
+            // get hash for id field
+            return obj.id.GetHashCode();
+        }
     }
 }

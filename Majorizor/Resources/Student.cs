@@ -195,13 +195,13 @@ namespace Majorizor.Resources
             // check whether the objects are the same object
             if (ReferenceEquals(x, y)) return true;
 
-            // check wheather the objects' userIDs are equal
+            // check whether the objects' userIDs are equal
             return x != null && y != null && x.userID.Equals(y.userID);
         }
 
         public int GetHashCode(Student obj)
         {
-            // get has for userID feild
+            // get hash for userID field
             return obj.userID.GetHashCode();
         }
     }

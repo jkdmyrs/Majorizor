@@ -18,7 +18,7 @@
         <div class="panel-body">
             <input type="file" class="file" data-show-upload="false" data-show-preview="false" id="scheduleUpload" runat="server" />
             <br />
-            <asp:Button ID="uploadBtn" runat="server" Text="Upload" OnClick="upload_Btn_Click" class="btn btn-primary"/>
+            <asp:Button ID="uploadBtn" runat="server" Text="Upload" OnClick="upload_Btn_Click" CssClass="btn btn-primary"/>
         </div>
     </div>
 
