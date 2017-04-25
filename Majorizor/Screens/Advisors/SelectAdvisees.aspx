@@ -13,7 +13,6 @@
             <p>Use this panel to select which students you would like to see on your landing page.</p>
 
             <h3>Current Advisees</h3>
-            
             <table id="addTable" class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
@@ -39,7 +38,6 @@
             </table>
 
             <h3>Add Advisees</h3>
-            
             <table id="currTable" class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
@@ -66,12 +64,13 @@
         </div>
     </div>
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="MainMaster_Scripts" runat="server">
     <!-- plugins -->
     <script src="/Scripts/jquery.dataTables.min.js"></script>
     <script src="/Scripts/dataTables.bootstrap.min.js"></script>
     <script src="/Scripts/fileinput.min.js"></script>
-
+    <!-- setup tables -->
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function () {
             $('#addTable').DataTable();

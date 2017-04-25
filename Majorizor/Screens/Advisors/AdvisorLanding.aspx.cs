@@ -75,8 +75,7 @@ namespace Majorizor.Screens.Advisors
                         minor = student.minor1.minorName;
                     else
                         minor = student.minor1.minorName + ", " + student.minor2.minorName;
-
-                    // TODO - Calculate Progress
+                    
                     try
                     {
                         ProgressTracker tracker = new ProgressTracker(ID);

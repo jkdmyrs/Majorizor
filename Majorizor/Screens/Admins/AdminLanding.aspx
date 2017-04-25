@@ -7,7 +7,6 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainMaster_MainContent" runat="server">
-    
     <asp:PlaceHolder ID="error_box" runat="server"></asp:PlaceHolder>
 
     <h1>Admin Portal</h1>
@@ -26,13 +25,6 @@
         <div class="panel-heading">User Management</div>
         <div class="panel-body">
             <h3>User Management</h3>
-            Search for users by Name or Email
-
-            <!--TODO:
-                - Fill this table with all users. 
-                - Fill UserGroup dropdown list with 3 user groups. Select correct user group
-                - Setup delete button to delete user.
-                -->
             
             <table id="userTable" class="table table-striped table-hover table-bordered">
                 <thead>
@@ -72,8 +64,6 @@
             </table>
         </div>
     </div>
-<asp:Table ID="Table1" runat="server"></asp:Table>
-
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="MainMaster_Scripts" runat="server">
