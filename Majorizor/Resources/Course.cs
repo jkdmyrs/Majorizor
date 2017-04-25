@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+
 
 namespace Majorizor.Resources
 {
@@ -19,6 +21,17 @@ namespace Majorizor.Resources
         #region Constructors
         // Default constructor
         public Course() { }
+
+        /// <summary>
+        /// Constructor used to pass a DataRow with "subject", "catalog", and "name" fields
+        /// </summary>
+        /// <param name="dr">DataRow with "subject", "catalog", and "name"</param>
+        public Course(DataRow dr)
+        {
+            subject = dr["subject"].ToString();
+            catalog = dr["catalog"].ToString();
+            name = dr["name"].ToString();
+        }
 
         /// <summary>
         /// Initializes a Course object with the given values

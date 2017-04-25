@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Majorizor.Resources;
 using Majorizor.Resources.DataAccess;
 
 namespace Majorizor.Resources
@@ -11,8 +9,11 @@ namespace Majorizor.Resources
     /// TODO - In the future, this interface should be improved. 
     /// 
     /// Reccomended Improvements:
-    ///  - Calculate the progress of each major/minor separately
+    ///  - Calculate the progress of each major/minor separately 
+    ///    The Major and Minor classes are designed so that this should be relatively easy. 
+    ///    
     ///  - Calculate progress with credits instead of number of courses
+    ///  
     ///  - track required/taken courses for each major/minor separtely
     ///  
     /// The UI of the Advisor and Student panels should also be improved to use these features
@@ -22,7 +23,7 @@ namespace Majorizor.Resources
         public int studentID { get; private set; }
         public int progress { get; private set; }                       // progress as %, calculated by (# taken courses)/(totalCourses)*100 
                                                                         // TODO - Calculate this with credits instead of courses
-        public List<Course> takenCourses { get; private set; }           // courses the student has taken
+        public List<Course> takenCourses { get; private set; }          // courses the student has taken
         public List<Course> requiredCourses { get; private set; }       // Courses the student is required to take (EXCEPT taken courses)
                                                                         // TODO - extend IEqualityComparer for Course to allow List.Except()
                                                                         
@@ -52,14 +53,16 @@ namespace Majorizor.Resources
                 takenNum = takenCourses.Count;
                 requiredCourses = requiredCourses.Except(takenCourses, new CourseComparer()).ToList();
 
-                progress = takenNum / requiredTotal * 100;
+                progress = takenNum*100 / requiredTotal;
                 return progress;
             }
             catch (DivideByZeroException zeroEx)
             {
                 string error = "ProgressTracker.CalculateProgress failed. No required courses found for userID: " + studentID + ". Has the user selected a Major?";
-                throw new Exception(error, zeroEx);
+                throw new DivideByZeroException(error, zeroEx);
             }
         }
+
+
     }
 }

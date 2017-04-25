@@ -82,7 +82,7 @@ namespace Majorizor.Screens.Advisors
                         ProgressTracker tracker = new ProgressTracker(ID);
                         progress = tracker.CalculateProgress();
                     }
-                    catch (Exception e)
+                    catch (DivideByZeroException e)
                     {
                         progress = 0;
                         ExceptionHandler handler = new ExceptionHandler(e, error_box);
