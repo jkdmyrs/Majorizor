@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainMaster_Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainMaster_MainContent" runat="server">
+    
+    <asp:PlaceHolder ID="error_box" runat="server"></asp:PlaceHolder>
 
     <h1>Advisor Portal</h1>
     <!-- Panels for each student that is an advisee -->

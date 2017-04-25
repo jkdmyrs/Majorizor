@@ -14,11 +14,11 @@ namespace Majorizor.Screens.Advisors
             try
             {
                 if (UserGroups.userHasAccess(UserGroup.ADVISOR, new User((int)Session["UserID"])) != true)
-                    Response.Redirect("~/Default.aspx");
+                    Response.Redirect("~/Default.aspx", false);
             }
             catch (NullReferenceException)
             {
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/Default.aspx", false);
             }
 
             try
@@ -31,10 +31,8 @@ namespace Majorizor.Screens.Advisors
             }
             catch (Exception ex)
             {
-                string error = ex.Message;
-                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
-                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
-                // parameters, and to add popup error messages built in clean bootstrap html.
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
         }
 
@@ -85,10 +83,8 @@ namespace Majorizor.Screens.Advisors
             catch (Exception ex)
             {
                 success = false;
-                string error = ex.Message;
-                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
-                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
-                // parameters, and to add popup error messages built in clean bootstrap html.
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
             finally
             {
@@ -119,10 +115,8 @@ namespace Majorizor.Screens.Advisors
             catch (Exception ex)
             {
                 success = false;
-                string error = ex.Message;
-                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
-                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
-                // parameters, and to add popup error messages built in clean bootstrap html.
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
             finally
             {

@@ -53,6 +53,11 @@ namespace Majorizor.Resources.DataAccess
                         }
                     }
                 }
+                if (user.userGroup == UserGroup.NONE)
+                {
+                    string error = "Username or password are incorrect. Please try again.";
+                    throw new Exception(error);
+                }
                 return user;
             }
             catch (MySqlException ex)

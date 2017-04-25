@@ -127,6 +127,7 @@
     <Compile Include="Resources\DataAccess\StudentInformation.cs" />
     <Compile Include="Resources\DataAccess\StudentPageRepository.cs" />
     <Compile Include="Resources\DataAccess\UserInformation.cs" />
+    <Compile Include="Resources\ExceptionHandler.cs" />
     <Compile Include="Resources\Majors\CE_Major.cs" />
     <Compile Include="Resources\Majors\CS_Major.cs" />
     <Compile Include="Resources\Majors\EE_Major.cs" />

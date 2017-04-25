@@ -7,6 +7,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainMaster_MainContent" runat="server">
+    
+    <asp:PlaceHolder ID="error_box" runat="server"></asp:PlaceHolder>
 
     <h1>Admin Portal</h1>
 

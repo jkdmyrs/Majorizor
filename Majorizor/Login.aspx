@@ -3,6 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainMaster_MainContent" runat="server">
       <div class="container">
+
+          <asp:PlaceHolder ID="error_box" runat="server"></asp:PlaceHolder>
+
         <ul class="nav nav-tabs">
 		    <li class="active"><a  href="#i1" data-toggle="tab">Login</a></li>
 		    <li><a href="#i2" data-toggle="tab">Register</a></li>

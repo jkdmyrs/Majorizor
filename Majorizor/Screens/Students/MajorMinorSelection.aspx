@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainMaster_Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainMaster_MainContent" runat="server">
+    
+    <asp:PlaceHolder ID="error_box" runat="server"></asp:PlaceHolder>
+
     <h1>Major and Minor Selection</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainMaster_Scripts" runat="server">
