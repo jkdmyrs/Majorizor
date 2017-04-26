@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Web.Configuration;
@@ -12,7 +10,16 @@ namespace Majorizor.Resources.DataAccess
     {
         static string connString = WebConfigurationManager.ConnectionStrings["MajorizorConnectionString"].ConnectionString;
 
-        public static List<int> GetAllAdviseeIDs(string advisorEmail)
+        /// <summary>
+        /// Handles the database code for the Resources.Advisor constructor
+        /// 
+        /// Calls `GetAllAdviseeIDs` stored procedure
+        /// 
+        /// Catches MySQL exceptions, throws new exception with detalied error 
+        /// </summary>
+        /// <param name="userID">usreID of the Advisor</param>
+        /// <returns>A list of integers which correspond to the userIDs of the students which are the given Advisor's advisees</returns>
+        public static List<int> GetAllAdviseeIDs(int userID)
         {
             List<int> IDs = new List<int>();
             DataSet ds = new DataSet("adviseeDS");
@@ -22,8 +29,7 @@ namespace Majorizor.Resources.DataAccess
                 {
                     MySqlCommand command = new MySqlCommand("GetAllAdviseeIDs", connection);
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@i_email", advisorEmail);
-
+                    command.Parameters.AddWithValue("@i_userID", userID);
                     MySqlDataAdapter adapter = new MySqlDataAdapter();
                     adapter.SelectCommand = command;
                     adapter.Fill(ds);
@@ -41,6 +47,15 @@ namespace Majorizor.Resources.DataAccess
             }
         }
 
+        /// <summary>
+        /// Hanldes database code for Resources.Advisor.AddAdvisee
+        /// 
+        /// Calls `AddAdvisee` stored procedure
+        /// 
+        /// Catches MySQL exceptions, throws new exception with detalied error 
+        /// </summary>
+        /// <param name="advisorID"></param>
+        /// <param name="studentID"></param>
         public static void AddAdvisee(int advisorID, int studentID)
         {
             try
@@ -63,6 +78,15 @@ namespace Majorizor.Resources.DataAccess
             }
         }
 
+        /// <summary>
+        /// Hanldes database code for Resources.Advisor.RemoveAdvisee
+        /// 
+        /// Calls `RemoveAdvisee` stored procedure
+        /// 
+        /// Catches MySQL exceptions, throws new exception with detalied error 
+        /// </summary>
+        /// <param name="advisorID"></param>
+        /// <param name="studentID"></param>
         public static void RemoveAdvisee(int advisorID, int studentID)
         {
             try

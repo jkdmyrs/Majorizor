@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Majorizor.Resources;
-using System.Web;
 using System.Web.UI.WebControls;
 using System.Linq;
 
@@ -14,17 +13,17 @@ namespace Majorizor.Screens.Advisors
         {
             try
             {
-                if (Resources.UserGroups.userHasAccess(UserGroup.ADVISOR, (UserGroup)Session["UserGroup"]) != true)
-                    Response.Redirect("~/Default.aspx");
+                if (UserGroups.userHasAccess(UserGroup.ADVISOR, new User((int)Session["UserID"])) != true)
+                    Response.Redirect("~/Default.aspx", false);
             }
-            catch (System.NullReferenceException)
+            catch (NullReferenceException)
             {
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/Default.aspx", false);
             }
 
             try
             {
-                advisorID = int.Parse(Session["UserID"].ToString());
+                advisorID = (int)Session["UserID"];
                 if (!IsPostBack)
                 {
                     LoadTables();
@@ -32,16 +31,19 @@ namespace Majorizor.Screens.Advisors
             }
             catch (Exception ex)
             {
-                string error = ex.Message;
-                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
-                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
-                // parameters, and to add popup error messages built in clean bootstrap html.
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
         }
 
+        /// <summary>
+        /// Load Current Advisees and Add Advisees tables with correct students
+        /// 
+        /// Add Advisees should not display students in Current Advisees table
+        /// </summary>
         private void LoadTables()
         {
-            List<int> adviseeIDs = new Advisor(Session["UserName"].ToString()).AdviseeIDs;
+            List<int> adviseeIDs = new Advisor(advisorID).AdviseeIDs;
             List<Student> currAdvisees = new List<Student>();
             foreach (int id in adviseeIDs)
             {
@@ -57,11 +59,21 @@ namespace Majorizor.Screens.Advisors
             repeater_add.DataBind();
         }
 
+        /// <summary>
+        /// Add the selected Student to the logged-in Advisor's advisee list
+        /// 
+        /// If fails, catch error
+        /// 
+        /// If success, re-load tables
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void button_add_Click(object sender, EventArgs e)
         {
             bool success = true;
             Button b = (Button)sender;
             RepeaterItem item = (RepeaterItem)b.NamingContainer;
+            // get hiddenID from HTML
             HiddenField hiddenID = (HiddenField)item.FindControl("add_hiddenID");
             int studentID = int.Parse(hiddenID.Value);
             try
@@ -71,25 +83,29 @@ namespace Majorizor.Screens.Advisors
             catch (Exception ex)
             {
                 success = false;
-                string error = ex.Message;
-                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
-                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
-                // parameters, and to add popup error messages built in clean bootstrap html.
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
             finally
             {
                 if(success)
                 {
-                    Response.Redirect(Request.RawUrl);
+                    LoadTables();
                 }
             }
         }
 
+        /// <summary>
+        /// Remove the selected Student from the logged-in Advisor's advisee list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void button_remove_Click(object sender, EventArgs e)
         {
             bool success = true;
             Button b = (Button)sender;
             RepeaterItem item = (RepeaterItem)b.NamingContainer;
+            // get hideenID from HTML
             HiddenField hiddenID = (HiddenField)item.FindControl("curr_hiddenID");
             int studentID = int.Parse(hiddenID.Value);
             try
@@ -99,16 +115,14 @@ namespace Majorizor.Screens.Advisors
             catch (Exception ex)
             {
                 success = false;
-                string error = ex.Message;
-                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
-                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
-                // parameters, and to add popup error messages built in clean bootstrap html.
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
             finally
             {
                 if (success)
                 {
-                    Response.Redirect(Request.RawUrl);
+                    LoadTables();
                 }
             }
         }

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Majorizor.Resources;
 using Majorizor.Resources.Majors;
 
@@ -13,19 +8,20 @@ namespace Majorizor.Screens.Students
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int userID = (int)Session["UserID"];
             try
             {
-                if (UserGroups.userHasAccess(UserGroup.USER, (UserGroup)Session["UserGroup"]) != true)
-                    Response.Redirect("~/Default.aspx");
+                if (UserGroups.userHasAccess(UserGroup.USER, new User(userID)) != true)
+                    Response.Redirect("~/Default.aspx", false);
             }
             catch (NullReferenceException)
             {
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/Default.aspx", false);
             }
 
             try
             {
-                Student s = new Student((int)Session["UserID"]);
+                Student s = new Student(userID);
                 if (s.major1.majorType == MajorType.NONE)
                     Response.Redirect("~/Screens/Students/MajorMinorSelection.aspx");
             }
@@ -35,10 +31,8 @@ namespace Majorizor.Screens.Students
             }
             catch (Exception ex)
             {
-                string error = ex.Message;
-                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
-                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
-                // parameters, and to add popup error messages built in clean bootstrap html.
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
         }
 

@@ -69,6 +69,8 @@
     <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="img\favicon.ico" />
+    <Content Include="img\logo.png" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -124,10 +126,12 @@
     <Compile Include="Resources\DataAccess\AdvisorInformation.cs" />
     <Compile Include="Resources\DataAccess\MajorInformation.cs" />
     <Compile Include="Resources\DataAccess\MinorInformation.cs" />
+    <Compile Include="Resources\DataAccess\ProgressInformation.cs" />
     <Compile Include="Resources\DataAccess\ScheduleImport.cs" />
     <Compile Include="Resources\DataAccess\StudentInformation.cs" />
     <Compile Include="Resources\DataAccess\StudentPageRepository.cs" />
     <Compile Include="Resources\DataAccess\UserInformation.cs" />
+    <Compile Include="Resources\ExceptionHandler.cs" />
     <Compile Include="Resources\Majors\CE_Major.cs" />
     <Compile Include="Resources\Majors\CS_Major.cs" />
     <Compile Include="Resources\Majors\EE_Major.cs" />
@@ -142,6 +146,7 @@
     <Compile Include="Resources\Minors\Minor.cs" />
     <Compile Include="Resources\Minors\SE_Minor.cs" />
     <Compile Include="Resources\Minors\_NULLMINOR.cs" />
+    <Compile Include="Resources\ProgressTracker.cs" />
     <Compile Include="Resources\Security\Security.cs" />
     <Compile Include="Resources\Student.cs" />
     <Compile Include="Resources\UserGroup.cs" />

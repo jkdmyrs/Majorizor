@@ -7,6 +7,7 @@
     <title>Majorizor</title>
     <link rel="stylesheet" type="text/css" href="/Content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/Content/bootstrap-theme.min.css" />
+    <link rel="icon" href="/img/favicon.ico" />
     
     <asp:ContentPlaceHolder ID="MainMaster_Head" runat="server">
     </asp:ContentPlaceHolder>
@@ -26,7 +27,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" id="navBar_Brand" runat="server">Majorizor</a>
+                    <a class="navbar-brand" id="navBar_Brand" runat="server">
+                        <img src="/img/logo.png" style="display: inline-block; height: 25px" />
+                    </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -54,13 +57,19 @@
                     </ul>
                 
                     <!-- Buttons -->
-                <asp:Button id="loginNavbar" runat="server" class="btn btn-default navbar-btn navbar-right" Text="Login" OnClick="loginNavbar_Click" />
+                <asp:Button id="loginNavbar" runat="server" class="btn btn-default navbar-btn navbar-right" Text="Login/Register" OnClick="loginNavbar_Click" />
                 <asp:Button id="LogoutNavBar" runat="server" class="btn btn-default navbar-btn navbar-right" Text="Logout" OnClick="LogoutNavBar_Click" />
                 
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
         <div class="container">
+            
+        <div class="alert alert-info">
+            <strong>Under Construction!</strong> 
+                <p>This site is currently under construction. You may encounter unfinished pages and bugs. Please be patient while we continue to work on the system.</p>
+                <p>Thanks, <br /> The Majorizor Team</p>
+        </div>
 
         <asp:ContentPlaceHolder ID="MainMaster_MainContent" runat="server">
         </asp:ContentPlaceHolder>

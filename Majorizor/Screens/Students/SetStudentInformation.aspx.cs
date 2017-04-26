@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Majorizor.Resources;
 using Majorizor.Resources.DataAccess;
-using MySql.Data.MySqlClient;
 using System.Data;
 
 namespace Majorizor.Screens.Students
@@ -17,12 +11,12 @@ namespace Majorizor.Screens.Students
         {
             try
             {
-                if (UserGroups.userHasAccess(UserGroup.USER, (UserGroup)Session["UserGroup"]) != true)
-                    Response.Redirect("~/Default.aspx");
+                if (UserGroups.userHasAccess(UserGroup.USER, new User((int)Session["UserID"])) != true)
+                    Response.Redirect("~/Default.aspx", false);
             }
             catch (System.NullReferenceException)
             {
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/Default.aspx", false);
             }
 
             try
@@ -32,13 +26,14 @@ namespace Majorizor.Screens.Students
             }
             catch (Exception ex)
             {
-                string error = ex.Message;
-                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
-                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
-                // parameters, and to add popup error messages built in clean bootstrap html.
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
         }
 
+        /// <summary>
+        /// Load graduation drop down with values from database
+        /// </summary>
         private void LoadGraduation()
         {
             DataTable gradTerms = StudentPageRepository.LoadGraduation();
@@ -49,6 +44,15 @@ namespace Majorizor.Screens.Students
             graduation_ddl.DataBind();
         }
 
+        /// <summary>
+        /// Set the logged-in Student's information with the information selected in the dropdowns
+        /// 
+        /// If  fails, catch the error
+        /// 
+        /// If success, redirect to MajorMinorSelcetion page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void button_update_Click(object sender, EventArgs e)
         {
             bool success = true;
@@ -63,10 +67,8 @@ namespace Majorizor.Screens.Students
             catch (Exception ex)
             {
                 success = false;
-                string error = ex.Message;
-                // TODO - C# Bootstrap exception framework???? Maybe something like this exists. 
-                // Otherwise it would be neat to eventually build a class to take (errorType, error message) as
-                // parameters, and to add popup error messages built in clean bootstrap html.
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
             finally
             {

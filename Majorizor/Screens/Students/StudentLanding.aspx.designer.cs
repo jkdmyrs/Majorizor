@@ -13,6 +13,15 @@ namespace Majorizor.Screens.Students {
     public partial class StudentLanding {
         
         /// <summary>
+        /// error_box control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder error_box;
+        
+        /// <summary>
         /// studentGreeting control.
         /// </summary>
         /// <remarks>

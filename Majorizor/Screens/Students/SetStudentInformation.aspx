@@ -2,8 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainMaster_Head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainMaster_MainContent" runat="server">
-    <h1>First Time Student Setup</h1>
+    <asp:PlaceHolder ID="error_box" runat="server"></asp:PlaceHolder>
 
+    <h1>First Time Student Setup</h1>
     <div class="panel panel-primary">
         <div class="panel-heading">Basic Information</div>
         <div class="panel-body">
@@ -38,5 +39,6 @@
         </div>
     </div>
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="MainMaster_Scripts" runat="server">
 </asp:Content>

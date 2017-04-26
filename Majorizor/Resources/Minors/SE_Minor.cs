@@ -12,7 +12,7 @@ namespace Majorizor.Resources.Minors
         {
             minorType = MinorType.SE;
             minorName = "Software Engineering";
-            reqCourses = MinorInformation.GetCoursesByMinor(minorType);
+            //reqCourses = MinorInformation.GetCoursesByMinor(minorType);
             //ProcessRequirements();
         }
 
