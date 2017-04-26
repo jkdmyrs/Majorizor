@@ -41,5 +41,15 @@ namespace Majorizor.Screens.Students
                 // parameters, and to add popup error messages built in clean bootstrap html.
             }
         }
+
+        protected void button_viewCurriculum_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Screens/Students/CurriculumView.aspx");
+        }
+
+        protected void button_viewSchedule_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Screens/Students/CurriculumView.aspx");
+        }
     }
 }

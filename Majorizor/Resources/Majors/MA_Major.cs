@@ -9,7 +9,7 @@ namespace Majorizor.Resources.Majors
     {
         public MA_Major()
         {
-            majorType = MajorType.EE;
+            majorType = MajorType.MA;
             majorName = "Math";
             reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
             //ProcessRequirements();

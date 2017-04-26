@@ -23,6 +23,8 @@ namespace Majorizor.Resources
         public Minor minor1 { get; private set; }
         public Minor minor2 { get; private set; }
         public string graduation { get; private set; }
+        public List<CourseName> coursesTaken { get; private set; }
+        public List<CourseName> requiredCourses { get; private set; }
 
         public Student() { }
 
@@ -164,7 +166,7 @@ namespace Majorizor.Resources
         }
 
         // static methods
-        private static Student GetStudentByID(int userID)
+        public static Student GetStudentByID(int userID)
         {
             return StudentInformation.getStudentByID(userID);
         }
@@ -173,6 +175,7 @@ namespace Majorizor.Resources
         {
             return StudentInformation.GetAllStudents();
         }
+        
     }
 
     public class StudentComparer : IEqualityComparer<Student>

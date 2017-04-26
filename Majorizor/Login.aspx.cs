@@ -33,6 +33,7 @@ namespace Majorizor
                 Session["UserName"] = email;
                 Session["UserGroup"] = user.userGroup;
                 Session["UserID"] = user.userID;
+                Session["User"] = user;
 
                 switch(user.userGroup)
                 {

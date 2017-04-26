@@ -9,7 +9,7 @@ namespace Majorizor.Resources.Majors
     {
         public CE_Major()
         {
-            majorType = MajorType.EE;
+            majorType = MajorType.CE;
             majorName = "Computer Engineering";
             reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
             //ProcessRequirements();
@@ -19,5 +19,6 @@ namespace Majorizor.Resources.Majors
         {
             throw new NotImplementedException();
         }
+        
     }
 }
