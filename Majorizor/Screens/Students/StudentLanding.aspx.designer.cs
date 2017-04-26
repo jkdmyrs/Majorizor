@@ -31,6 +31,60 @@ namespace Majorizor.Screens.Students {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl studentGreeting;
         
         /// <summary>
+        /// label_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_name;
+        
+        /// <summary>
+        /// label_advisor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_advisor;
+        
+        /// <summary>
+        /// label_year control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_year;
+        
+        /// <summary>
+        /// label_graduation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_graduation;
+        
+        /// <summary>
+        /// label_majors control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_majors;
+        
+        /// <summary>
+        /// label_minors control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_minors;
+        
+        /// <summary>
         /// button_viewSemesterSchedule control.
         /// </summary>
         /// <remarks>

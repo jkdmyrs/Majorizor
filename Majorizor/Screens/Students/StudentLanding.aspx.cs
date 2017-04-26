@@ -1,6 +1,7 @@
 ﻿using System;
 using Majorizor.Resources;
 using Majorizor.Resources.Majors;
+using Majorizor.Resources.Minors;
 
 namespace Majorizor.Screens.Students
 {
@@ -24,6 +25,16 @@ namespace Majorizor.Screens.Students
                 Student s = new Student(userID);
                 if (s.major1.majorType == MajorType.NONE)
                     Response.Redirect("~/Screens/Students/MajorMinorSelection.aspx");
+                else
+                {
+                    label_name.Text = s.getFullName();
+                    label_majors.Text = s.getMajors();
+                    label_minors.Text = s.getMinors();
+                    label_year.Text = s.year.ToString();
+                    label_graduation.Text = s.graduation;
+                    // TODO - Improve this to show more advisor information (email, office number?)
+                    label_advisor.Text = s.getAdvisorName();
+                }
             }
             catch (IndexOutOfRangeException)
             {

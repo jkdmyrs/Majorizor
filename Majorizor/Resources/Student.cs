@@ -195,6 +195,47 @@ namespace Majorizor.Resources {
         {
             return firstName + " " + lastName;
         }
+
+        /// <summary>
+        /// Get student's advisor's name
+        /// </summary>
+        /// <returns>Advisor Name</returns>
+        public string getAdvisorName()
+        {
+            return StudentInformation.GetAdvisorName(userID);
+        }
+
+        /// <summary>
+        /// Get Major names as nicely formatted string
+        /// </summary>
+        /// <returns>If only 1 major, returns "majorname"
+        ///          Otherwise returns "majorname1, majorname2"</returns>
+        public string getMajors()
+        {
+            if (major1.majorType != MajorType.NONE && major2.majorType == MajorType.NONE)
+                return major1.majorName;
+            if (major1.majorType == MajorType.NONE && major2.majorType != MajorType.NONE)
+                return major2.majorName;
+            if (major1.majorType != MajorType.NONE && major2.majorType != MajorType.NONE)
+                return major1.majorName + ", " + major2.majorName;
+            return "N/A";
+        }
+
+        /// <summary>
+        /// Get Minor names as nicely formatted string
+        /// </summary>
+        /// <returns>If only 1 minor, returns "minorname"
+        ///          Otherwise returns "minorname1, minorname2"</returns>
+        public string getMinors()
+        {
+            if (minor1.minorType != MinorType.NONE && minor2.minorType == MinorType.NONE)
+                return minor1.minorName;
+            if (minor1.minorType == MinorType.NONE && minor2.minorType != MinorType.NONE)
+                return minor2.minorName;
+            if (minor1.minorType != MinorType.NONE && minor2.minorType != MinorType.NONE)
+                return minor1.minorName + ", " + minor2.minorName;
+            return "N/A";
+        }
         #endregion
     }
 

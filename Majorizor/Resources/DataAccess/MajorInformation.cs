@@ -12,10 +12,10 @@ namespace Majorizor.Resources.DataAccess
         static string connString = WebConfigurationManager.ConnectionStrings["MajorizorConnectionString"].ConnectionString;
 
         /// <summary>
-        /// Get a List of ALL 
+        /// Get a List of all required Courses for a given Major
         /// </summary>
         /// <param name="type"></param>
-        /// <returns></returns>
+        /// <returns>List of required Courses</returns>
         public static List<Course> GetRequiredCourses(MajorType type)
         {
             List<Course> courses = new List<Course>();

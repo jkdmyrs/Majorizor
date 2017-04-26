@@ -55,26 +55,7 @@ namespace Majorizor.Screens.Advisors
                 {
                     // Setup variables needed for the HTMLTextWriter 'writer'
                     Student student = new Student(ID);
-                    string name;
-                    string major;
-                    string minor;
                     int progress;
-
-                    name = student.firstName + " " + student.lastName;
-
-                    if (student.major1.majorType == MajorType.NONE)
-                        major = "N/A";
-                    else if (student.major1.majorType != MajorType.NONE & student.major2.majorType == MajorType.NONE)
-                        major = student.major1.majorName;
-                    else
-                        major = student.major1.majorName + ", " + student.major2.majorName;
-
-                    if (student.minor1.minorType == MinorType.NONE)
-                        minor = "N/A";
-                    else if (student.minor1.minorType != MinorType.NONE & student.minor2.minorType == MinorType.NONE)
-                        minor = student.minor1.minorName;
-                    else
-                        minor = student.minor1.minorName + ", " + student.minor2.minorName;
                     
                     try
                     {
@@ -95,7 +76,7 @@ namespace Majorizor.Screens.Advisors
                     // panel heading
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "panel-heading");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
-                    writer.Write(name);
+                    writer.Write(student.getFullName());
                     writer.RenderEndTag(); //end panel-heading
 
                     // panel-body
@@ -113,12 +94,12 @@ namespace Majorizor.Screens.Advisors
                             writer.RenderBeginTag(HtmlTextWriterTag.H4);
                             writer.Write("Majors: ");
                             writer.RenderEndTag();
-                            writer.Write(major);
+                            writer.Write(student.getMajors());
                             // minors
                             writer.RenderBeginTag(HtmlTextWriterTag.H4);
                             writer.Write("Minors: ");
                             writer.RenderEndTag();
-                            writer.Write(minor);
+                            writer.Write(student.getMinors());
 
                         writer.RenderEndTag();//col-md-4 - #1
 
