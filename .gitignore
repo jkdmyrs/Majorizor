@@ -9,6 +9,7 @@ DatabaseDesign.xlsx
 *.userosscache
 *.sln.docstates
 .vs/
+*.VC.db
 
 # Build results
 [Dd]ebug/
