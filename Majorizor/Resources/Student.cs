@@ -17,8 +17,8 @@ namespace Majorizor.Resources {
         public Minor minor1 { get; private set; }
         public Minor minor2 { get; private set; }
         public string graduation { get; private set; }
-        public List<CourseName> coursesTaken { get; private set; }
-        public List<CourseName> requiredCourses { get; private set; }
+        public List<Course> coursesTaken { get; private set; }
+        public List<Course> requiredCourses { get; private set; }
         #endregion
         #region Constructors
         /// <summary>
@@ -185,6 +185,15 @@ namespace Majorizor.Resources {
         public static List<Student> GetAllStudents()
         {
             return StudentInformation.GetAllStudents();
+        }
+
+        /// <summary>
+        /// Get students full name
+        /// </summary>
+        /// <returns>Full name as string</returns>
+        public string getFullName()
+        {
+            return firstName + " " + lastName;
         }
         #endregion
     }

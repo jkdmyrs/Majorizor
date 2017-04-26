@@ -11,7 +11,7 @@ namespace Majorizor.Resources.Majors
         {
             majorType = MajorType.CS;
             majorName = "Computer Science";
-            //reqCourses = DataAccess.MajorInformation.GetCoursesByMajor(majorType);
+            reqCourses = DataAccess.MajorInformation.GetRequiredCourses(majorType);
            //ProcessRequirements();
         }
 

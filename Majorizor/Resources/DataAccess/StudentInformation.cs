@@ -92,15 +92,14 @@ namespace Majorizor.Resources.DataAccess
         private static Student studentClassMapping(DataRow _dr)
         {
             Student student = new Student();
-            DataRow dr = _dr;
 
             //Class Mapping code
-            student.setUserID((int)dr["userID"]);
-            student.setFirstName((string)dr["first_name"]);
-            student.setLastName((string)dr["last_name"]);
-            student.setGraduation((string)dr["graduation"]);
+            student.setUserID((int)_dr["userID"]);
+            student.setFirstName((string)_dr["first_name"]);
+            student.setLastName((string)_dr["last_name"]);
+            student.setGraduation((string)_dr["graduation"]);
 
-            switch ((string)dr["year"])
+            switch ((string)_dr["year"])
             {
                 case "Freshman":
                     student.setStudentYear(StudentYear.FRESHMAN);
@@ -116,9 +115,9 @@ namespace Majorizor.Resources.DataAccess
                     break;
             }
 
-            if (dr["major1"] != DBNull.Value)
+            if (_dr["major1"] != DBNull.Value)
             {
-                switch ((string)dr["major1"])
+                switch ((string)_dr["major1"])
                 {
                     case "CE":
                         student.setMajor1(MajorType.CE);
@@ -139,9 +138,9 @@ namespace Majorizor.Resources.DataAccess
             }
             else student.setMajor1(MajorType.NONE);
 
-            if (dr["major2"] != DBNull.Value)
+            if (_dr["major2"] != DBNull.Value)
             {
-                switch ((string)dr["major2"])
+                switch ((string)_dr["major2"])
                 {
                     case "CE":
                         student.setMajor2(MajorType.CE);
@@ -162,9 +161,9 @@ namespace Majorizor.Resources.DataAccess
             }
             else student.setMajor2(MajorType.NONE);
 
-            if (dr["minor1"] != DBNull.Value)
+            if (_dr["minor1"] != DBNull.Value)
             {
-                switch ((string)dr["minor1"])
+                switch ((string)_dr["minor1"])
                 {
                     case "CS":
                         student.setMinor1(MinorType.CS);
@@ -182,9 +181,9 @@ namespace Majorizor.Resources.DataAccess
             }
             else student.setMinor1(MinorType.NONE);
 
-            if (dr["minor2"] != DBNull.Value)
+            if (_dr["minor2"] != DBNull.Value)
             {
-                switch ((string)dr["minor2"])
+                switch ((string)_dr["minor2"])
                 {
                     case "CS":
                         student.setMinor2(MinorType.CS);

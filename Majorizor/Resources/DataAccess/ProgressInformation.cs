@@ -28,22 +28,15 @@ namespace Majorizor.Resources.DataAccess
             {
                 using (MySqlConnection connection = new MySqlConnection(connString))
                 {
-                    MySqlCommand command = new MySqlCommand("GetRequiredCourses", connection);
+                    MySqlCommand command = new MySqlCommand("GetReqCoursesByUserID", connection);
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@i_studentID", studentID);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                     adapter.Fill(ds);
                 }
-                foreach (DataTable table in ds.Tables)
+                foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    foreach (DataRow dr in table.Rows)
-                    {
-                        Course c = new Course(dr);
-                        if (!courses.Contains(c))
-                        {
-                            courses.Add(c);
-                        }
-                    }
+                    courses.Add(CourseInformation.partial_courseinfoClassMapping(dr));
                 }
                 return courses;
             }
@@ -81,7 +74,7 @@ namespace Majorizor.Resources.DataAccess
                 
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    courses.Add(new Course(dr));
+                    courses.Add(CourseInformation.partial_courseinfoClassMapping(dr));
                 }
                 return courses;
             }

@@ -7,14 +7,14 @@ namespace Majorizor.Resources
 {
     public class StudentSchedule
     {
-        public List<CourseName> requiredCourseNames { get; set; }
+        public List<Course> requiredCourseNames { get; set; }
         public List<Course> courses { get; set; }
 
         public StudentSchedule() { }
 
         public StudentSchedule(Student student_) {
-            List<CourseName> coursesToTake = student_.requiredCourses;
-            List<CourseName> coursesTaken = student_.coursesTaken;
+            List<Course> coursesToTake = student_.requiredCourses;
+            List<Course> coursesTaken = student_.coursesTaken;
 
 
         }

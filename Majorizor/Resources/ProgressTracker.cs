@@ -20,7 +20,7 @@ namespace Majorizor.Resources
     /// </summary>
     class ProgressTracker
     {
-        public int studentID { get; private set; }
+        public Student student { get; private set; }
         public int progress { get; private set; }                       // progress as %, calculated by (# taken courses)/(totalCourses)*100 
                                                                         // TODO - Calculate this with credits instead of courses
         public List<Course> takenCourses { get; private set; }          // courses the student has taken
@@ -29,7 +29,7 @@ namespace Majorizor.Resources
                                                                         
         public ProgressTracker(int userID)
         {
-            studentID = userID;
+            student = new Student(userID);
         }
 
         /// <summary>
@@ -47,18 +47,19 @@ namespace Majorizor.Resources
             try
             {
                 int requiredTotal, takenNum;
-                requiredCourses = ProgressInformation.GetRequiredCourses(studentID);
+                requiredCourses = ProgressInformation.GetRequiredCourses(student.userID);
                 requiredTotal = requiredCourses.Count;
-                takenCourses = ProgressInformation.GetTakenCourses(studentID);
+                takenCourses = ProgressInformation.GetTakenCourses(student.userID);
                 takenNum = takenCourses.Count;
                 requiredCourses = requiredCourses.Except(takenCourses, new CourseComparer()).ToList();
+                
 
                 progress = takenNum*100 / requiredTotal;
                 return progress;
             }
             catch (DivideByZeroException zeroEx)
             {
-                string error = "ProgressTracker.CalculateProgress failed. No required courses found for userID: " + studentID + ". Has the user selected a Major?";
+                string error = "ProgressTracker.CalculateProgress failed. No required courses found for " + student.getFullName() + "(" + student.userID + ") . Has the user selected a Major?";
                 throw new DivideByZeroException(error, zeroEx);
             }
         }

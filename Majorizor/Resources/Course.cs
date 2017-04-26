@@ -26,11 +26,12 @@ namespace Majorizor.Resources
         /// Constructor used to pass a DataRow with "subject", "catalog", and "name" fields
         /// </summary>
         /// <param name="dr">DataRow with "subject", "catalog", and "name"</param>
-        public Course(DataRow dr)
+        public Course(string _subject, string _catalog, string _name)
         {
-            subject = dr["subject"].ToString();
-            catalog = dr["catalog"].ToString();
-            name = dr["name"].ToString();
+            subject = _subject;
+            catalog = _catalog;
+            name = _name;
+            id = -1;
         }
 
         /// <summary>
@@ -58,6 +59,7 @@ namespace Majorizor.Resources
         #endregion
     }
 
+    #region IEqualityComparer
     /// <summary>
     /// Uses the IEqualityComparer interface to allow List.Except functionality
     /// </summary>
@@ -67,9 +69,15 @@ namespace Majorizor.Resources
         {
             // check whether the objects are the same
             if (ReferenceEquals(x, y)) return true;
-
-            // check whether the objects' IDs are equal
-            return x != null && y != null && x.id.Equals(y.id);
+            
+            // check if they are both is a partial course object
+            if(x.id == -1 && y.id == -1)
+            {
+                return x.catalog.Equals(y.catalog) && x.subject.Equals(y.subject);
+            }
+            else
+                // check whether the objects' IDs are equal
+                return x != null && y != null && x.id.Equals(y.id);
         }
 
         public int GetHashCode(Course obj)
@@ -78,4 +86,5 @@ namespace Majorizor.Resources
             return obj.id.GetHashCode();
         }
     }
+    #endregion
 }
