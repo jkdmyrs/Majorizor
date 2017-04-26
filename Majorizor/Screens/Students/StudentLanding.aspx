@@ -29,9 +29,11 @@
     
     <div class="panel panel-primary">
         <div class="panel-heading">Schedule Information</div>
-            <asp:Button CssClass="btn btn-primary" ID="button_viewSemesterSchedule" runat="server" Text="View Semester Schedule" OnClick="button_viewSchedule_Click"  />
-            <asp:Button CssClass="btn btn-primary" ID="button_viewCurriculum" runat="server" Text="View Curriculum Outline" OnClick="button_viewCurriculum_Click"  />
         <div class="panel-body">
+        <h4>View Current Semester Schedule: </h4>
+            <asp:Button CssClass="btn btn-primary" ID="button_viewSemesterSchedule" runat="server" Text="View Semester Schedule" OnClick="button_viewSchedule_Click" />
+        <h4>View Curriculum Outline: </h4>
+            <asp:Button CssClass="btn btn-primary" ID="button_viewCurriculum" runat="server" Text="View Curriculum Outline" OnClick="button_viewCurriculum_Click"  />
         </div>
     </div>
     
