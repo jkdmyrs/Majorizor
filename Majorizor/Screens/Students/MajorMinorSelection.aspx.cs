@@ -184,5 +184,23 @@ namespace Majorizor.Screens.Students
             student = manager.DropMinor2();
             bindAllData();
         }
+
+        protected void next_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (manager.HasMajor())
+                    Response.Redirect("~/Screens/Students/StudentLanding.aspx");
+                else
+                {
+                    throw new Exception("You must select atleast one Major before continuing.");
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle(true);
+            }
+        }
     }
 }

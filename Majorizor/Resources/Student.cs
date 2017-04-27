@@ -199,7 +199,8 @@ namespace Majorizor.Resources {
         /// <summary>
         /// Get student's advisor's name
         /// </summary>
-        /// <returns>Advisor Name</returns>
+        /// <returns>Advisor Name, 
+        ///          "" if no Advisor</returns>
         public string getAdvisorName()
         {
             return StudentInformation.GetAdvisorName(userID);

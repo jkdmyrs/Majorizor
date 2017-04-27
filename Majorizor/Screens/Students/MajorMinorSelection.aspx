@@ -76,6 +76,8 @@
             </div>
         </div>
     </div>
+
+    <asp:Button CssClass="btn btn-primary" ID="btn_next" runat="server" Text="Next" OnClick="next_Click" />
     
     <!-- Modal - Add Major -->
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>

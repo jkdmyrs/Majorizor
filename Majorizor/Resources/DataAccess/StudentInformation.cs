@@ -113,6 +113,10 @@ namespace Majorizor.Resources.DataAccess
                 fullName = fName + " " + lName;
                 return fullName;
             }
+            catch (IndexOutOfRangeException)
+            {
+                return "N/A";
+            }
             catch (MySqlException ex)
             {
                 string error = "StudentInformation.GetAdvisorName failed with error: " + ex.Message;

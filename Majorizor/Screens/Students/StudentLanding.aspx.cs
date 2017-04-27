@@ -15,10 +15,9 @@ namespace Majorizor.Screens.Students
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            int userID;
+            int userID = (int)Session["UserID"];
             try
             {
-                userID = (int)Session["UserID"];
                 if (UserGroups.userHasAccess(UserGroup.USER, new User(userID)) != true)
                     Response.Redirect("~/Default.aspx", false);
             }
@@ -29,7 +28,7 @@ namespace Majorizor.Screens.Students
 
             try
             {
-                student = new Student((int)Session["UserID"]);
+                student = new Student(userID);
                 manager = new MajorMinorManager(student);
 
                 if (!IsPostBack)

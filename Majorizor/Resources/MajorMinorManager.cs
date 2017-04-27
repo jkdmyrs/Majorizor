@@ -7,6 +7,7 @@ namespace Majorizor.Resources
 {
     public class MajorMinorManager
     {
+        #region Member Variables
         public Student student { get; private set; }
 
         /// <summary>
@@ -22,6 +23,7 @@ namespace Majorizor.Resources
         ///-1 - if no minor available
         /// </summary>
         public int availableMinor { get; private set; }
+        #endregion
 
         #region Constructor
 
@@ -38,6 +40,11 @@ namespace Majorizor.Resources
         #endregion
 
         #region Methods
+
+        public bool HasMajor()
+        {
+            return student.major1.majorType != MajorType.NONE || student.major2.majorType != MajorType.NONE;
+        }
 
         public Student DropMajor1()
         {

@@ -121,6 +121,7 @@ namespace Majorizor.Resources.DataAccess
         {
             List<Minor> minors = new List<Minor>();
             List<string> minorNames = new List<string>();
+            minorNames.Add("< Select a Minor >");
             DataSet ds = new DataSet();
             using (MySqlConnection connection = new MySqlConnection(connString))
             {
