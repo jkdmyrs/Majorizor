@@ -110,6 +110,34 @@ namespace Majorizor.Resources
             return CourseInformation.GetAllRequiredCourses();
         }
 
+        public static String toString(Course c) {
+            String courseStr = c.subject + c.catalog + " " + c.name + "  " + c.days + " " + c.startTime.ToShortTimeString() + " - " c.endTime.ToShortTimeString();
+            return courseStr;
+        }
+
+        public static bool noConflicts(Course a, Course b, Course c, Course d, Course e) {
+            List<Course> courses = new List<Course>();
+            courses.Add(a);
+            courses.Add(b);
+            courses.Add(c);
+            courses.Add(d);
+            courses.Add(e);
+
+            for (int i = 0; i < courses.Count - 1; ++i) {
+                for (int j = i+1; j < courses.Count; ++j) {
+                    // If the two courses are on the same days and there is a time conflict
+                    if (courses[i].days.Equals(courses[j].days,StringComparison.Ordinal) &&
+                        (courses[i].startTime.CompareTo(courses[j].startTime) < 0 && 
+                            courses[i].endTime.CompareTo(courses[j].startTime) > 0 ) ||
+                        (courses[j].startTime.CompareTo(courses[i].startTime) < 0 && 
+                            courses[j].endTime.CompareTo(courses[i].startTime) > 0 )) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         #endregion
     }
 

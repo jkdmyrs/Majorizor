@@ -78,6 +78,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Screens\Advisors\SelectAdvisees.aspx" />
+    <Content Include="Screens\Students\ScheduleCreation.aspx" />
     <Content Include="Screens\Students\CurriculumView.aspx" />
     <Content Include="Screens\Students\MajorMinorSelection.aspx" />
     <Content Include="Screens\Students\SetStudentInformation.aspx" />
@@ -173,6 +174,13 @@
     </Compile>
     <Compile Include="Screens\Advisors\SelectAdvisees.aspx.designer.cs">
       <DependentUpon>SelectAdvisees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Students\ScheduleCreation.aspx.cs">
+      <DependentUpon>ScheduleCreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Screens\Students\ScheduleCreation.aspx.designer.cs">
+      <DependentUpon>ScheduleCreation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Screens\Students\CurriculumView.aspx.cs">
       <DependentUpon>CurriculumView.aspx</DependentUpon>
