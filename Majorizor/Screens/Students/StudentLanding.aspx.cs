@@ -116,79 +116,127 @@ namespace Majorizor.Screens.Students
 
         protected void ddl_majors_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList ddl = (DropDownList)sender;
-            string majorName = ddl.SelectedValue;
-            if (manager.MajorAvailable())
+            try
             {
-                switch (majorName)
+                DropDownList ddl = (DropDownList)sender;
+                string majorName = ddl.SelectedValue;
+                if (manager.MajorAvailable())
                 {
-                    case "Software Engineering":
-                        student = manager.SetMajor(MajorType.SE);
-                        break;
-                    case "Electrical Engineering":
-                        student = manager.SetMajor(MajorType.EE);
-                        break;
-                    case "Computer Engineering":
-                        student = manager.SetMajor(MajorType.CE);
-                        break;
-                    case "Math":
-                        student = manager.SetMajor(MajorType.MA);
-                        break;
-                    case "Computer Science":
-                        student = manager.SetMajor(MajorType.CS);
-                        break;
+                    switch (majorName)
+                    {
+                        case "Software Engineering":
+                            student = manager.SetMajor(MajorType.SE);
+                            break;
+                        case "Electrical Engineering":
+                            student = manager.SetMajor(MajorType.EE);
+                            break;
+                        case "Computer Engineering":
+                            student = manager.SetMajor(MajorType.CE);
+                            break;
+                        case "Math":
+                            student = manager.SetMajor(MajorType.MA);
+                            break;
+                        case "Computer Science":
+                            student = manager.SetMajor(MajorType.CS);
+                            break;
+                    }
+                    bindAllData();
                 }
-                bindAllData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
         }
 
         protected void ddl_minors_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList ddl = (DropDownList)sender;
-            string minorName = ddl.SelectedValue;
-            if (manager.MinorAvailable())
+            try
             {
-                switch (minorName)
+                DropDownList ddl = (DropDownList)sender;
+                string minorName = ddl.SelectedValue;
+                if (manager.MinorAvailable())
                 {
-                    case "Software Engineering":
-                        student = manager.SetMinor(MinorType.SE);
-                        break;
-                    case "Electrical Engineering":
-                        student = manager.SetMinor(MinorType.EE);
-                        break;
-                    case "Math":
-                        student = manager.SetMinor(MinorType.MA);
-                        break;
-                    case "Computer Science":
-                        student = manager.SetMinor(MinorType.CS);
-                        break;
+                    switch (minorName)
+                    {
+                        case "Software Engineering":
+                            student = manager.SetMinor(MinorType.SE);
+                            break;
+                        case "Electrical Engineering":
+                            student = manager.SetMinor(MinorType.EE);
+                            break;
+                        case "Math":
+                            student = manager.SetMinor(MinorType.MA);
+                            break;
+                        case "Computer Science":
+                            student = manager.SetMinor(MinorType.CS);
+                            break;
+                    }
+                    bindAllData();
                 }
-                bindAllData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
         }
 
         protected void btn_dropMajor1_Click(object sender, EventArgs e)
         {
-            student = manager.DropMajor1();
-            bindAllData();
+            try
+            {
+                student = manager.DropMajor1();
+                bindAllData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
+            }
         }
 
         protected void btn_dropMajor2_Click(object sender, EventArgs e)
         {
-            student = manager.DropMajor2();
-            bindAllData();
+            try
+            {
+                student = manager.DropMajor2();
+                bindAllData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
+            }
         }
 
         protected void btn_dropMinor1_Click(object sender, EventArgs e)
         {
-            student = manager.DropMinor1();
-            bindAllData();
+            try
+            {
+                student = manager.DropMinor1();
+                bindAllData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
+            }
         }
 
         protected void btn_dropMinor2_Click(object sender, EventArgs e)
         {
-            student = manager.DropMinor2();
-            bindAllData();
+            try
+            {
+                student = manager.DropMinor2();
+                bindAllData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
+            }
         }
 
         protected void button_viewCurriculum_Click(object sender, EventArgs e)

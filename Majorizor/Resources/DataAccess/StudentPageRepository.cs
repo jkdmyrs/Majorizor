@@ -125,7 +125,7 @@ namespace Majorizor.Resources.DataAccess
             DataSet ds = new DataSet();
             using (MySqlConnection connection = new MySqlConnection(connString))
             {
-                MySqlCommand command = new MySqlCommand("GetAvailableMajors", connection);
+                MySqlCommand command = new MySqlCommand("GetAvailableMinors", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@i_studentID", studentID);
                 command.Parameters.AddWithValue("@i_degreeType", "MIN");

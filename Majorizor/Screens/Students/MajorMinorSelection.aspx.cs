@@ -45,7 +45,23 @@ namespace Majorizor.Screens.Students
             }
         }
 
-
+        protected void next_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (manager.HasMajor())
+                    Response.Redirect("~/Screens/Students/StudentLanding.aspx");
+                else
+                {
+                    throw new Exception("You must select atleast one Major before continuing.");
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle(true);
+            }
+        }
 
         private void bindAllData()
         {
@@ -110,96 +126,126 @@ namespace Majorizor.Screens.Students
 
         protected void ddl_majors_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList ddl = (DropDownList)sender;
-            string majorName = ddl.SelectedValue;
-            if (manager.MajorAvailable())
-            {
-                switch (majorName)
-                {
-                    case "Software Engineering":
-                        student = manager.SetMajor(MajorType.SE);
-                        break;
-                    case "Electrical Engineering":
-                        student = manager.SetMajor(MajorType.EE);
-                        break;
-                    case "Computer Engineering":
-                        student = manager.SetMajor(MajorType.CE);
-                        break;
-                    case "Math":
-                        student = manager.SetMajor(MajorType.MA);
-                        break;
-                    case "Computer Science":
-                        student = manager.SetMajor(MajorType.CS);
-                        break;
-                }
-                bindAllData();
-            }
-        }
-
-        protected void ddl_minors_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DropDownList ddl = (DropDownList)sender;
-            string minorName = ddl.SelectedValue;
-            if (manager.MinorAvailable())
-            {
-                switch (minorName)
-                {
-                    case "Software Engineering":
-                        student = manager.SetMinor(MinorType.SE);
-                        break;
-                    case "Electrical Engineering":
-                        student = manager.SetMinor(MinorType.EE);
-                        break;
-                    case "Math":
-                        student = manager.SetMinor(MinorType.MA);
-                        break;
-                    case "Computer Science":
-                        student = manager.SetMinor(MinorType.CS);
-                        break;
-                }
-                bindAllData();
-            }
-        }
-
-        protected void btn_dropMajor1_Click(object sender, EventArgs e)
-        {
-            student = manager.DropMajor1();
-            bindAllData();
-        }
-
-        protected void btn_dropMajor2_Click(object sender, EventArgs e)
-        {
-            student = manager.DropMajor2();
-            bindAllData();
-        }
-
-        protected void btn_dropMinor1_Click(object sender, EventArgs e)
-        {
-            student = manager.DropMinor1();
-            bindAllData();
-        }
-
-        protected void btn_dropMinor2_Click(object sender, EventArgs e)
-        {
-            student = manager.DropMinor2();
-            bindAllData();
-        }
-
-        protected void next_Click(object sender, EventArgs e)
-        {
             try
             {
-                if (manager.HasMajor())
-                    Response.Redirect("~/Screens/Students/StudentLanding.aspx");
-                else
+                DropDownList ddl = (DropDownList)sender;
+                string majorName = ddl.SelectedValue;
+                if (manager.MajorAvailable())
                 {
-                    throw new Exception("You must select atleast one Major before continuing.");
+                    switch (majorName)
+                    {
+                        case "Software Engineering":
+                            student = manager.SetMajor(MajorType.SE);
+                            break;
+                        case "Electrical Engineering":
+                            student = manager.SetMajor(MajorType.EE);
+                            break;
+                        case "Computer Engineering":
+                            student = manager.SetMajor(MajorType.CE);
+                            break;
+                        case "Math":
+                            student = manager.SetMajor(MajorType.MA);
+                            break;
+                        case "Computer Science":
+                            student = manager.SetMajor(MajorType.CS);
+                            break;
+                    }
+                    bindAllData();
                 }
             }
             catch (Exception ex)
             {
                 ExceptionHandler handler = new ExceptionHandler(ex, error_box);
-                handler.Handle(true);
+                handler.Handle();
+            }
+        }
+
+        protected void ddl_minors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DropDownList ddl = (DropDownList)sender;
+                string minorName = ddl.SelectedValue;
+                if (manager.MinorAvailable())
+                {
+                    switch (minorName)
+                    {
+                        case "Software Engineering":
+                            student = manager.SetMinor(MinorType.SE);
+                            break;
+                        case "Electrical Engineering":
+                            student = manager.SetMinor(MinorType.EE);
+                            break;
+                        case "Math":
+                            student = manager.SetMinor(MinorType.MA);
+                            break;
+                        case "Computer Science":
+                            student = manager.SetMinor(MinorType.CS);
+                            break;
+                    }
+                    bindAllData();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
+            }
+        }
+
+        protected void btn_dropMajor1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                student = manager.DropMajor1();
+                bindAllData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
+            }
+        }
+
+        protected void btn_dropMajor2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                student = manager.DropMajor2();
+                bindAllData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
+            }
+        }
+
+        protected void btn_dropMinor1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                student = manager.DropMinor1();
+                bindAllData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
+            }
+        }
+
+        protected void btn_dropMinor2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                student = manager.DropMinor2();
+                bindAllData();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler handler = new ExceptionHandler(ex, error_box);
+                handler.Handle();
             }
         }
     }

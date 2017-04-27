@@ -27,20 +27,28 @@ namespace Majorizor.Resources.DataAccess
 
         public static List<Course> GetAllRequiredCourses()
         {
-            List<Course> courses = new List<Course>();
-            DataSet ds = new DataSet();
-            using (MySqlConnection connection = new MySqlConnection(connString))
+            try
             {
-                MySqlCommand command = new MySqlCommand("GetAllRequiredCourses", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                adapter.Fill(ds);
+                List<Course> courses = new List<Course>();
+                DataSet ds = new DataSet();
+                using (MySqlConnection connection = new MySqlConnection(connString))
+                {
+                    MySqlCommand command = new MySqlCommand("GetAllRequiredCourses", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    adapter.Fill(ds);
+                }
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    courses.Add(courseClassMapping(dr));
+                }
+                return courses;
             }
-            foreach (DataRow dr in ds.Tables[0].Rows)
+            catch (MySqlException ex)
             {
-                courses.Add(courseClassMapping(dr));
+                string error = "CourseInformation.GetAllRequiredCourses failed with error: " + ex.Message;
+                throw new Exception(error, ex);
             }
-            return courses;
         }
 
         /// <summary>
