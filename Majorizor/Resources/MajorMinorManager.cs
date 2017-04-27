@@ -39,6 +39,33 @@ namespace Majorizor.Resources
 
         #region Methods
 
+        public Student DropMajor1()
+        {
+            MajorMinorSetter.dropMajor1(student.userID);
+            student.setMajor1(MajorType.NONE);
+            return student;
+        }
+        public Student DropMajor2()
+        {
+            MajorMinorSetter.dropMajor2(student.userID);
+            student.setMajor2(MajorType.NONE);
+            return student;
+        }
+
+        public Student DropMinor1()
+        {
+            MajorMinorSetter.dropMinor1(student.userID);
+            student.setMinor1(MinorType.NONE);
+            return student;
+        }
+
+        public Student DropMinor2()
+        {
+            MajorMinorSetter.dropMinor2(student.userID);
+            student.setMinor2(MinorType.NONE);
+            return student;
+        }
+
         /// <summary>
         /// Gets whether or not there is an available major spot for the student
         /// Majorizor allows 2 spots
@@ -69,7 +96,7 @@ namespace Majorizor.Resources
         /// If the major cannot be set, an exception will be thrown (there is an exception for each case)
         /// </summary>
         /// <param name="type">Major type to be set</param>
-        public void SetMajor(MajorType type)
+        public Student SetMajor(MajorType type)
         {
             switch (availableMajor)
             {
@@ -81,11 +108,11 @@ namespace Majorizor.Resources
                     }
                     else
                     {
-                        MajorMinorSetter.setMajor1(type);
+                        MajorMinorSetter.setMajor1(type, student.userID);
                         student.setMajor1(type);
                         // update availableMajor
                         isMajorAvailable();
-                        break;
+                        return student;
                     }
                 case 2:
                     if (student.major1.majorType == type)
@@ -95,11 +122,11 @@ namespace Majorizor.Resources
                     }
                     else
                     {
-                        MajorMinorSetter.setMajor1(type);
-                        student.setMajor1(type);
+                        MajorMinorSetter.setMajor2(type, student.userID);
+                        student.setMajor2(type);
                         // update availableMajor
                         isMajorAvailable();
-                        break;
+                        return student;
                     }
                 default:
                     string error2 = student.getFullName() + " already has two Majors. Before adding a new Major, an existing Major must be dropped.";
@@ -113,7 +140,7 @@ namespace Majorizor.Resources
         /// If the minor cannot be set, an exception will be thrown (there is an exception for each case)
         /// </summary>
         /// <param name="type">Major type to be set</param>
-        public void SetMinor(MinorType type)
+        public Student SetMinor(MinorType type)
         {
             switch(availableMinor)
             {
@@ -125,11 +152,11 @@ namespace Majorizor.Resources
                     }
                     else
                     {
-                        MajorMinorSetter.setMinor1(type);
+                        MajorMinorSetter.setMinor1(type, student.userID);
                         student.setMinor1(type);
                         // update availableMinor
                         isMinorAvailable();
-                        break;
+                        return student;
                     }
                 case 2:
                     if (student.minor1.minorType == type)
@@ -139,11 +166,11 @@ namespace Majorizor.Resources
                     }
                     else
                     {
-                        MajorMinorSetter.setMinor1(type);
-                        student.setMinor1(type);
+                        MajorMinorSetter.setMinor2(type, student.userID);
+                        student.setMinor2(type);
                         // update availableMinor
                         isMinorAvailable();
-                        break;
+                        return student;
                     }
                 default:
                     string error2 = "You already have two Minors. Before adding a new Minor, you must drop an existing one.";
