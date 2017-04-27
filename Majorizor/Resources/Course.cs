@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using Majorizor.Resources.DataAccess;
 
 
 namespace Majorizor.Resources
@@ -56,6 +57,59 @@ namespace Majorizor.Resources
             endTime = _end;
             days = _days;
         }
+        #endregion
+
+        #region Setters
+
+        public void setID(int _id)
+        {
+            id = _id;
+        }
+
+        public void setSubject(string _subject)
+        {
+            subject = _subject;
+        }
+
+        public void setCatalog(string _catalog)
+        {
+            catalog = _catalog;
+        }
+
+        public void setSection(string _section)
+        {
+            section = _section;
+        }
+
+        public void setName(string _name)
+        {
+            name = _name;
+        }
+
+        public void setStartTime(DateTime _startTime)
+        {
+            startTime = _startTime;
+        }
+
+        public void setEndTime(DateTime _endTime)
+        {
+            endTime = _endTime;
+        }
+
+        public void setDays(string _days)
+        {
+            _days = days;
+        }
+
+        #endregion
+
+        #region Static Methods
+
+        public static List<Course> GetAllRequiredCourses()
+        {
+            return CourseInformation.GetAllRequiredCourses();
+        }
+
         #endregion
     }
 
