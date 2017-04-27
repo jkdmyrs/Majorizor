@@ -19,6 +19,7 @@ namespace Majorizor.Resources {
         public string graduation { get; private set; }
         public List<Course> coursesTaken { get; private set; }
         public List<Course> requiredCourses { get; private set; }
+        public StudentSchedule schedule;
         #endregion
         #region Constructors
         /// <summary>
@@ -94,6 +95,8 @@ namespace Majorizor.Resources {
                     major1 = new _NULLMAJOR();
                     break;
             }
+            setRequiredCourses();
+        
         }
 
         public void setMajor2(MajorType m)
@@ -119,6 +122,7 @@ namespace Majorizor.Resources {
                     major2 = new _NULLMAJOR();
                     break;
             }
+            setRequiredCourses();
         }
 
         public void setMinor1(MinorType m)
@@ -141,6 +145,7 @@ namespace Majorizor.Resources {
                     minor1 = new _NULLMINOR();
                     break;
             }
+            setRequiredCourses();
         }
 
         public void setMinor2(MinorType m)
@@ -163,11 +168,31 @@ namespace Majorizor.Resources {
                     minor2 = new _NULLMINOR();
                     break;
             }
+            setRequiredCourses();
         }
 
         public void setGraduation(string g)
         {
             this.graduation = g;
+        }
+
+        public void setRequiredCourses() {
+            requiredCourses.Clear();
+            requiredCourses.AddRange(major1.reqCourses);
+            requiredCourses.AddRange(major2.reqCourses);
+            requiredCourses.AddRange(minor1.reqCourses);
+            requiredCourses.AddRange(minor2.reqCourses);
+
+            int length = requiredCourses.Count;
+
+            for (int i = 0; i < length; ++i) {
+                for (int j = 1; j < length; ++j) {
+                    if (requiredCourses[i] == requiredCourses[j]) {
+                        requiredCourses.RemoveAt(j);
+                        --length;
+                        }
+                    }
+                }
         }
 
         // static methods
