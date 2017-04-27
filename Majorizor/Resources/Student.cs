@@ -4,7 +4,7 @@ using Majorizor.Resources.Majors;
 using Majorizor.Resources.Minors;
 
 namespace Majorizor.Resources {
-    public enum StudentYear { FRESHMAN, SOPHOMORE, JUNIOR, SENIOR };
+    public enum StudentYear { Freshman, Sophomore, Junior, Senior };
 
     public class Student {
         #region Member Variables

@@ -30,10 +30,17 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Schedule Information</div>
         <div class="panel-body">
-        <h4>View Current Semester Schedule: </h4>
-            <asp:Button CssClass="btn btn-primary" ID="button_viewSemesterSchedule" runat="server" Text="View Semester Schedule" OnClick="button_viewSchedule_Click" />
-        <h4>View Curriculum Outline: </h4>
-            <asp:Button CssClass="btn btn-primary" ID="button_viewCurriculum" runat="server" Text="View Curriculum Outline" OnClick="button_viewCurriculum_Click"  />
+            <div class="row">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+                    <h4>View Scheudle History: </h4>
+                        <asp:Button CssClass="btn btn-primary btn-sm" ID="button_viewSemesterSchedule" runat="server" Text="View Semester Schedule" OnClick="button_viewSchedule_Click" />
+                    <h4>View Curriculum Outline: </h4>
+                        <asp:Button CssClass="btn btn-primary btn-sm" ID="button_viewCurriculum" runat="server" Text="View Curriculum Outline" OnClick="button_viewCurriculum_Click"  />
+                </div>
+            </div>
         </div>
     </div>
     
@@ -47,8 +54,75 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Change Major/Minor</div>
         <div class="panel-body">
-            <!-- Just have a button that redirects to selection page -->
+            <h3>Select Majors</h3>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class ="row">
+                        <label class="control-label col-md-2">Major 1:</label>
+                        <div class="col-md-10"><asp:TextBox ID="TextBox1" runat="server" Width="100%" CssClass="form-control" Enabled="False"></asp:TextBox></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                            <asp:LinkButton ID="LinkButton4" runat="server" CssClass="btn btn-secondary">
+                                <span class ="glyphicon glyphicon-remove" data-toggle="tooltip" title="Drop Major"></span>
+                            </asp:LinkButton>
+                    <input type="button" class="btn btn-primary btn-sm" value="Add" />
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-md-8">
+                    <div class ="row">
+                        <label class="control-label col-md-2">Major 2:</label>
+                        <div class="col-md-10"><asp:TextBox ID="TextBox2" runat="server" Width="100%" CssClass="form-control" Enabled="False"></asp:TextBox></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                            <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-secondary">
+                                <span class ="glyphicon glyphicon-remove" data-toggle="tooltip" title="Drop Major"></span>
+                            </asp:LinkButton>
+                    <input type="button" class="btn btn-primary btn-sm" value="Add" />
+                </div>
+            </div>
+                
+            <hr />
+                    <h3>Select Minors</h3>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class ="row">
+                                <label class="control-label col-md-2">Minor 1:</label>
+                                <div class="col-md-10"><asp:TextBox ID="TextBox3" runat="server" Width="100%" CssClass="form-control" Enabled="False"></asp:TextBox></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-secondary">
+                                <span class ="glyphicon glyphicon-remove" data-toggle="tooltip" title="Drop Minor"></span>
+                            </asp:LinkButton>
+                            <input type="button" class="btn btn-primary btn-sm" value="Add" />
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class ="row">
+                                <label class="control-label col-md-2">Minor 2:</label>
+                                <div class="col-md-10"><asp:TextBox ID="TextBox4" runat="server" Width="100%" CssClass="form-control" Enabled="False"></asp:TextBox></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-secondary">
+                                <span class ="glyphicon glyphicon-remove" data-toggle="tooltip" title="Drop Minor"></span>
+                            </asp:LinkButton>
+                            <input type="button" class="btn btn-primary btn-sm" value="Add" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
 
 </asp:Content>

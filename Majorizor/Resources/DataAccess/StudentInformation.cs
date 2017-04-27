@@ -139,16 +139,16 @@ namespace Majorizor.Resources.DataAccess
             switch ((string)_dr["year"])
             {
                 case "Freshman":
-                    student.setStudentYear(StudentYear.FRESHMAN);
+                    student.setStudentYear(StudentYear.Freshman);
                     break;
                 case "Sophomore":
-                    student.setStudentYear(StudentYear.SOPHOMORE);
+                    student.setStudentYear(StudentYear.Sophomore);
                     break;
                 case "Junior":
-                    student.setStudentYear(StudentYear.JUNIOR);
+                    student.setStudentYear(StudentYear.Junior);
                     break;
                 case "Senior":
-                    student.setStudentYear(StudentYear.SENIOR);
+                    student.setStudentYear(StudentYear.Senior);
                     break;
             }
 

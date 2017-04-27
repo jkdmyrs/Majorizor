@@ -7,11 +7,15 @@ namespace Majorizor.Screens.Students
 {
     public partial class StudentLanding : System.Web.UI.Page
     {
+        Student student;
+        MajorMinorManager manager;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            int userID = (int)Session["UserID"];
+            int userID;
             try
             {
+                userID = (int)Session["UserID"];
                 if (UserGroups.userHasAccess(UserGroup.USER, new User(userID)) != true)
                     Response.Redirect("~/Default.aspx", false);
             }
@@ -22,19 +26,15 @@ namespace Majorizor.Screens.Students
 
             try
             {
-                Student s = new Student(userID);
-                if (s.major1.majorType == MajorType.NONE)
-                    Response.Redirect("~/Screens/Students/MajorMinorSelection.aspx");
-                else
-                {
-                    label_name.Text = s.getFullName();
-                    label_majors.Text = s.getMajors();
-                    label_minors.Text = s.getMinors();
-                    label_year.Text = s.year.ToString();
-                    label_graduation.Text = s.graduation;
-                    // TODO - Improve this to show more advisor information (email, office number?)
-                    label_advisor.Text = s.getAdvisorName();
-                }
+                student = new Student((int)Session["UserID"]);
+                manager = new MajorMinorManager(student);
+
+                label_advisor.Text = student.getAdvisorName();
+                label_graduation.Text = student.graduation;
+                label_majors.Text = student.getMajors();
+                label_minors.Text = student.getMinors();
+                label_name.Text = student.getFullName();
+                label_year.Text = student.year.ToString();
             }
             catch (IndexOutOfRangeException)
             {
