@@ -36,9 +36,9 @@
                 </div>
                 <div class="col-md-4">
                     <h4>View Scheudle History: </h4>
-                        <asp:Button CssClass="btn btn-primary btn-sm" ID="button_viewSemesterSchedule" runat="server" Text="View Semester Schedule" OnClick="button_viewSchedule_Click" />
+                        <asp:Button CssClass="btn btn-primary btn-sm" ID="button_viewSemesterSchedule" runat="server" Text="View Semester Schedule"/>
                     <h4>View Curriculum Outline: </h4>
-                        <asp:Button CssClass="btn btn-primary btn-sm" ID="button_viewCurriculum" runat="server" Text="View Curriculum Outline" OnClick="button_viewCurriculum_Click"  />
+                        <asp:Button CssClass="btn btn-primary btn-sm" ID="button_viewCurriculum" runat="server" Text="View Curriculum Outline"/>
                 </div>
             </div>
         </div>
