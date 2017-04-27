@@ -111,7 +111,7 @@ namespace Majorizor.Resources
         }
 
         public static String toString(Course c) {
-            String courseStr = c.subject + c.catalog + " " + c.name + "  " + c.days + " " + c.startTime.ToShortTimeString() + " - " c.endTime.ToShortTimeString();
+            String courseStr = c.subject + c.catalog + " " + c.name + "  " + c.days + " " + c.startTime.ToShortTimeString() + " - " + c.endTime.ToShortTimeString();
             return courseStr;
         }
 
