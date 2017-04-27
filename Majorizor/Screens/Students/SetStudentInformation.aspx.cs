@@ -21,13 +21,27 @@ namespace Majorizor.Screens.Students
 
             try
             {
-                //bind graduation drop down
-                LoadGraduation();
+                Student student = new Student((int)Session["UserID"]);
+                MajorMinorManager manager = new MajorMinorManager(student);
+                if (student.graduation != "" && manager.HasMajor())
+                {
+                    Response.Redirect("~/Screens/Students/StudentLanding.aspx");
+                }
+                else if (student.graduation != "" && !manager.HasMajor())
+                {
+                    Response.Redirect("~/Screens/Students/MajorMinorSelection.aspx");
+                }
             }
+            catch (IndexOutOfRangeException) { }
             catch (Exception ex)
             {
                 ExceptionHandler handler = new ExceptionHandler(ex, error_box);
                 handler.Handle();
+            }
+            finally
+            {
+                //bind graduation drop down
+                LoadGraduation();
             }
         }
 

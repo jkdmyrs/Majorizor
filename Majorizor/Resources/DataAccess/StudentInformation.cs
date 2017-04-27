@@ -84,6 +84,47 @@ namespace Majorizor.Resources.DataAccess
         }
 
         /// <summary>
+        /// Handles database code for Student.GetAdvisorName()
+        /// 
+        /// Calls `GetAdvisorName` stored procedure
+        /// 
+        /// Catches MySQL exceptions, throws new exception with detalied error 
+        /// </summary>
+        /// <param name="studentID">studentID to get Advisor name for</param>
+        /// <returns>Advisor name as string</returns>
+        public static string GetAdvisorName(int studentID)
+        {
+            string fName, lName, fullName;
+            DataSet ds = new DataSet();
+            DataRow dr;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connString))
+                {
+                    MySqlCommand command = new MySqlCommand("GetAdvisorName", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@i_studentID", studentID);
+                    MySqlDataAdapter adpater = new MySqlDataAdapter(command);
+                    adpater.Fill(ds);
+                }
+                dr = ds.Tables[0].Rows[0];
+                fName = dr["firstName"].ToString();
+                lName = dr["lastName"].ToString();
+                fullName = fName + " " + lName;
+                return fullName;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                return "N/A";
+            }
+            catch (MySqlException ex)
+            {
+                string error = "StudentInformation.GetAdvisorName failed with error: " + ex.Message;
+                throw new Exception(error, ex);
+            }
+        }
+
+        /// <summary>
         /// PRIVATE
         /// Maps the results of a Student query on the database into a Student object
         /// </summary>
@@ -102,16 +143,16 @@ namespace Majorizor.Resources.DataAccess
             switch ((string)_dr["year"])
             {
                 case "Freshman":
-                    student.setStudentYear(StudentYear.FRESHMAN);
+                    student.setStudentYear(StudentYear.Freshman);
                     break;
                 case "Sophomore":
-                    student.setStudentYear(StudentYear.SOPHOMORE);
+                    student.setStudentYear(StudentYear.Sophomore);
                     break;
                 case "Junior":
-                    student.setStudentYear(StudentYear.JUNIOR);
+                    student.setStudentYear(StudentYear.Junior);
                     break;
                 case "Senior":
-                    student.setStudentYear(StudentYear.SENIOR);
+                    student.setStudentYear(StudentYear.Senior);
                     break;
             }
 

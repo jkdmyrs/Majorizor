@@ -102,6 +102,6 @@
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             var target = this.href.split('#');
             $('.nav a').filter('a[href="#' + target[1] + '"]').tab('show');
-        //})
-    </script>
+            })
+       </script>
 </asp:Content>

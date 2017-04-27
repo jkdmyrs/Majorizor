@@ -2,6 +2,9 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Web.Configuration;
+using Majorizor.Resources.Majors;
+using Majorizor.Resources.Minors;
+using System.Collections.Generic;
 
 namespace Majorizor.Resources.DataAccess
 {
@@ -69,6 +72,89 @@ namespace Majorizor.Resources.DataAccess
                 string error = "StudentPageRepository.SetStudentInformation failed with error: " + ex.Message;
                 throw new Exception(error, ex);
             }
+        }
+
+        static public List<string> LoadMajorsDdl(int studentID)
+        {
+            List<Major> majors = new List<Major>();
+            List<string> majorNames = new List<string>();
+            majorNames.Add("< Select a Major >");
+            DataSet ds = new DataSet();
+            using (MySqlConnection connection = new MySqlConnection(connString))
+            {
+                MySqlCommand command = new MySqlCommand("GetAvailableMajors", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@i_studentID", studentID);
+                command.Parameters.AddWithValue("@i_degreeType", "MAJ");
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(ds);
+            }
+            foreach(DataRow dr in ds.Tables[0].Rows)
+            {
+                switch (dr["major"].ToString())
+                {
+                    case "SE":
+                        majors.Add(new SE_Major());
+                        break;
+                    case "EE":
+                        majors.Add(new EE_Major());
+                        break;
+                    case "CE":
+                        majors.Add(new CE_Major());
+                        break;
+                    case "MA":
+                        majors.Add(new MA_Major());
+                        break;
+                    case "CS":
+                        majors.Add(new CS_Major());
+                        break;
+                }
+            }
+            foreach (Major major in majors)
+            {
+                majorNames.Add(major.majorName);
+            }
+            return majorNames;
+        }
+
+        static public List<string> LoadMinorsDdl(int studentID)
+        {
+            List<Minor> minors = new List<Minor>();
+            List<string> minorNames = new List<string>();
+            minorNames.Add("< Select a Minor >");
+            DataSet ds = new DataSet();
+            using (MySqlConnection connection = new MySqlConnection(connString))
+            {
+                MySqlCommand command = new MySqlCommand("GetAvailableMajors", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@i_studentID", studentID);
+                command.Parameters.AddWithValue("@i_degreeType", "MIN");
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                adapter.Fill(ds);
+            }
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                switch (dr["major"].ToString())
+                {
+                    case "SE":
+                        minors.Add(new SE_Minor());
+                        break;
+                    case "EE":
+                        minors.Add(new EE_Minor());
+                        break;
+                    case "MA":
+                        minors.Add(new MA_Minor());
+                        break;
+                    case "CS":
+                        minors.Add(new CS_Minor());
+                        break;
+                }
+            }
+            foreach (Minor minor in minors)
+            {
+                minorNames.Add(minor.minorName);
+            }
+            return minorNames;
         }
     }
 }
