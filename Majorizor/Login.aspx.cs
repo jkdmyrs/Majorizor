@@ -17,14 +17,29 @@ namespace Majorizor
 
         protected void button_login_Click(object sender, EventArgs e)
         {
+            bool isYellow = false;
+            string error;
             try
             {
-                UserLogin(username_input.Value, password_input.Value);
+                if (username_input.Value=="")
+                {
+                    isYellow = true;
+                    error = "Please enter the email you used to Register with Majorizor.";
+                    throw new Exception(error);
+                }
+                else if (password_input.Value=="")
+                {
+                    isYellow = true;
+                    error = "Please enter your password.";
+                    throw new Exception(error);
+                }
+                else
+                    UserLogin(username_input.Value, password_input.Value);
             }
             catch (Exception ex)
             {
                 ExceptionHandler handler = new ExceptionHandler(ex, error_box);
-                handler.Handle();
+                handler.Handle(isYellow);
             }
         }
         
@@ -38,8 +53,6 @@ namespace Majorizor
                 Session["UserName"] = email;
                 Session["UserGroup"] = user.userGroup;
                 Session["UserID"] = user.userID;
-                Session["User"] = user;
-
                 switch (user.userGroup)
                 {
                     case UserGroup.USER:

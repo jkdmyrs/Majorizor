@@ -94,8 +94,6 @@ namespace Majorizor.Resources {
                     major1 = new _NULLMAJOR();
                     break;
             }
-
-            setRequiredCourses();
         }
 
         public void setMajor2(MajorType m)
@@ -121,8 +119,6 @@ namespace Majorizor.Resources {
                     major2 = new _NULLMAJOR();
                     break;
             }
-
-            setRequiredCourses();
         }
 
         public void setMinor1(MinorType m)
@@ -145,8 +141,6 @@ namespace Majorizor.Resources {
                     minor1 = new _NULLMINOR();
                     break;
             }
-
-            setRequiredCourses();
         }
 
         public void setMinor2(MinorType m)
@@ -169,8 +163,6 @@ namespace Majorizor.Resources {
                     minor2 = new _NULLMINOR();
                     break;
             }
-
-            setRequiredCourses();
         }
 
         public void setGraduation(string g)
