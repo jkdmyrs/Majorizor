@@ -172,7 +172,29 @@ namespace Majorizor.Resources {
         #endregion
 
         #region Static Methods
-        ///
+        public void setRequiredCourses()
+        {
+            requiredCourses.Clear();
+            requiredCourses.AddRange(major1.reqCourses);
+            requiredCourses.AddRange(major2.reqCourses);
+            requiredCourses.AddRange(minor1.reqCourses);
+            requiredCourses.AddRange(minor2.reqCourses);
+
+            int length = requiredCourses.Count;
+
+            for (int i = 0; i < length; ++i)
+            {
+                for (int j = 1; j < length; ++j)
+                {
+                    if (requiredCourses[i] == requiredCourses[j])
+                    {
+                        requiredCourses.RemoveAt(j);
+                        --length;
+                    }
+                }
+            }
+        }
+
         public static Student GetStudentByID(int userID)
         {
             return StudentInformation.getStudentByID(userID);

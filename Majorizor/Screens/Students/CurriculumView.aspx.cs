@@ -8,7 +8,7 @@ using Majorizor.Resources;
 
 namespace Majorizor.Screens.Students
 {
-    public partial class ViewSchedule : System.Web.UI.Page
+    public partial class ViewCurriculum : System.Web.UI.Page
     {
 
         protected void Page_Load(object sender, EventArgs e)

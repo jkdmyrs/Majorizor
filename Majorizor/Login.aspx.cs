@@ -17,14 +17,29 @@ namespace Majorizor
 
         protected void button_login_Click(object sender, EventArgs e)
         {
+            bool isYellow = false;
+            string error;
             try
             {
-                UserLogin(username_input.Value, password_input.Value);
+                if (username_input.Value=="")
+                {
+                    isYellow = true;
+                    error = "Please enter the email you used to Register with Majorizor.";
+                    throw new Exception(error);
+                }
+                else if (password_input.Value=="")
+                {
+                    isYellow = true;
+                    error = "Please enter your password.";
+                    throw new Exception(error);
+                }
+                else
+                    UserLogin(username_input.Value, password_input.Value);
             }
             catch (Exception ex)
             {
                 ExceptionHandler handler = new ExceptionHandler(ex, error_box);
-                handler.Handle();
+                handler.Handle(isYellow);
             }
         }
         
@@ -38,8 +53,6 @@ namespace Majorizor
                 Session["UserName"] = email;
                 Session["UserGroup"] = user.userGroup;
                 Session["UserID"] = user.userID;
-                Session["User"] = user;
-
                 switch (user.userGroup)
                 {
                     case UserGroup.USER:
@@ -57,6 +70,7 @@ namespace Majorizor
 
         protected void button_register_Click(object sender, EventArgs e)
         {
+            bool isYellow = true;
             try
             {
                 string firstName = firstname_input.Value.ToString();
@@ -65,28 +79,37 @@ namespace Majorizor
                 string password = passwordRegister_input.Value.ToString();
                 string verifyPassword = passwordVerify_input.Value.ToString();
 
-                if (password == verifyPassword)
+                if (!(firstName=="" || lastName=="" || email=="" || password==""))
                 {
-                    //salt and hash password, then store user information & Login
-                    string hashedPass;
-                    string salt;
+                    if (password == verifyPassword)
+                    {
+                        isYellow = false;
+                        //salt and hash password, then store user information & Login
+                        string hashedPass;
+                        string salt;
 
-                    salt = Security.generateSalt(10);
-                    hashedPass = Security.generateHash(password, salt);
+                        salt = Security.generateSalt(10);
+                        hashedPass = Security.generateHash(password, salt);
 
-                    Resources.DataAccess.AccountController.RegisterUser(firstName, lastName, email, hashedPass, salt);
-                    UserLogin(email, password);
+                        Resources.DataAccess.AccountController.RegisterUser(firstName, lastName, email, hashedPass, salt);
+                        UserLogin(email, password);
+                    }
+                    else
+                    {
+                        string error = "Passwords do not match. Please try again.";
+                        throw new Exception(error);
+                    }
                 }
                 else
                 {
-                    string error = "Passwords do not match. Please try again.";
+                    string error = "Please fill in all fields.";
                     throw new Exception(error);
                 }
             }
             catch (Exception registerEx)
             {
                 ExceptionHandler handler = new ExceptionHandler(registerEx, error_box);
-                handler.Handle();
+                handler.Handle(isYellow);
             }
         }
     }
