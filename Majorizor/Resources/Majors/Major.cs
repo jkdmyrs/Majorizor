@@ -12,7 +12,7 @@ namespace Majorizor.Resources.Majors
         public MajorType majorType { get; protected set; }
         public string majorName { get; protected set; }
         public List<Course> reqCourses { get; protected set; }
-        public bool req_met { get; protected set; }
+        public bool reqMet { get; protected set; }
 
         abstract protected void ProcessRequirements();
     }

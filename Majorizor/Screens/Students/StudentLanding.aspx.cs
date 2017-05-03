@@ -48,11 +48,11 @@ namespace Majorizor.Screens.Students
 
         private void bindAllData()
         {
-            label_advisor.Text = student.getAdvisorName();
+            label_advisor.Text = student.AdvisorNameStr();
             label_graduation.Text = student.graduation;
-            label_majors.Text = student.getMajors();
-            label_minors.Text = student.getMinors();
-            label_name.Text = student.getFullName();
+            label_majors.Text = student.MajorsStr();
+            label_minors.Text = student.MinorsStr();
+            label_name.Text = student.FullNameStr();
             label_year.Text = student.year.ToString();
 
             ddl_majors.DataSource = StudentPageRepository.LoadMajorsDdl(student.userID);

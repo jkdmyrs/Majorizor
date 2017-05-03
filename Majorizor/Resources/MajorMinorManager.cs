@@ -110,7 +110,7 @@ namespace Majorizor.Resources
                 case 1:
                     if (student.major2.majorType == type)
                     {
-                        string error = "Cannot add a " + student.major2.majorName + " Major because " + student.getFullName() +" already has it selected as a major.";
+                        string error = "Cannot add a " + student.major2.majorName + " Major because " + student.FullNameStr() +" already has it selected as a major.";
                         throw new Exception(error);
                     }
                     else
@@ -124,7 +124,7 @@ namespace Majorizor.Resources
                 case 2:
                     if (student.major1.majorType == type)
                     {
-                        string error1 = "Cannot add a " + student.major1.majorName + " Major because " + student.getFullName() + " already has it selected as a major.";
+                        string error1 = "Cannot add a " + student.major1.majorName + " Major because " + student.FullNameStr() + " already has it selected as a major.";
                         throw new Exception(error1);
                     }
                     else
@@ -136,7 +136,7 @@ namespace Majorizor.Resources
                         return student;
                     }
                 default:
-                    string error2 = student.getFullName() + " already has two Majors. Before adding a new Major, an existing Major must be dropped.";
+                    string error2 = student.FullNameStr() + " already has two Majors. Before adding a new Major, an existing Major must be dropped.";
                     throw new Exception(error2);
             }
         }
@@ -154,7 +154,7 @@ namespace Majorizor.Resources
                 case 1:
                     if (student.minor2.minorType == type)
                     {
-                        string error = "Cannot add a " + student.minor2.minorName + " Minor becuase " + student.getFullName() + " already has it selected as a minor.";
+                        string error = "Cannot add a " + student.minor2.minorName + " Minor becuase " + student.FullNameStr() + " already has it selected as a minor.";
                         throw new Exception(error);
                     }
                     else
@@ -168,7 +168,7 @@ namespace Majorizor.Resources
                 case 2:
                     if (student.minor1.minorType == type)
                     {
-                        string error = "Cannot add a " + student.minor1.minorName + " Minor becuase " + student.getFullName() + " already has it selected as a minor.";
+                        string error = "Cannot add a " + student.minor1.minorName + " Minor becuase " + student.FullNameStr() + " already has it selected as a minor.";
                         throw new Exception(error);
                     }
                     else

@@ -169,15 +169,14 @@ namespace Majorizor.Resources {
         {
             this.graduation = g;
         }
+        #endregion
 
-        // static methods
+        #region Static Methods
+        ///
         public static Student GetStudentByID(int userID)
         {
             return StudentInformation.getStudentByID(userID);
         }
-        #endregion
-
-        #region Static Methods
         /// <summary>
         /// Gets a list of all Students
         /// </summary>
@@ -191,7 +190,7 @@ namespace Majorizor.Resources {
         /// Get students full name
         /// </summary>
         /// <returns>Full name as string</returns>
-        public string getFullName()
+        public string FullNameStr()
         {
             return firstName + " " + lastName;
         }
@@ -200,7 +199,7 @@ namespace Majorizor.Resources {
         /// Get student's advisor's name
         /// </summary>
         /// <returns>Advisor Name</returns>
-        public string getAdvisorName()
+        public string AdvisorNameStr()
         {
             return StudentInformation.GetAdvisorName(userID);
         }
@@ -210,7 +209,7 @@ namespace Majorizor.Resources {
         /// </summary>
         /// <returns>If only 1 major, returns "majorname"
         ///          Otherwise returns "majorname1, majorname2"</returns>
-        public string getMajors()
+        public string MajorsStr()
         {
             if (major1.majorType != MajorType.NONE && major2.majorType == MajorType.NONE)
                 return major1.majorName;
@@ -226,7 +225,7 @@ namespace Majorizor.Resources {
         /// </summary>
         /// <returns>If only 1 minor, returns "minorname"
         ///          Otherwise returns "minorname1, minorname2"</returns>
-        public string getMinors()
+        public string MinorsStr()
         {
             if (minor1.minorType != MinorType.NONE && minor2.minorType == MinorType.NONE)
                 return minor1.minorName;
