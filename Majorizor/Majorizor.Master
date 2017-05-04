@@ -39,7 +39,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
 								aria-haspopup="true" aria-expanded="false">Students <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/Screens/Students/StudentLanding.aspx">Student Home</a></li>
+                                <li><a href="/Screens/Students/StudentLanding.aspx">Student Portal</a></li>
                                 <li><a href="/Screens/Students/MajorMinorSelection.aspx">Major & Minor Selection</a></li>
                                 <li><a href="#">Schedule Builder</a></li>
                             </ul>
@@ -48,11 +48,11 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
 								aria-haspopup="true" aria-expanded="false">Advisors <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/Screens/Advisors/AdvisorLanding.aspx">Advisor Home</a></li>
+                                <li><a href="/Screens/Advisors/AdvisorLanding.aspx">Advisor Portal</a></li>
                                 <li><a href="/Screens/Advisors/SelectAdvisees.aspx">Select Advisees</a></li>
                             </ul>
                         </li>
-                        <li id="admin_dropDown" runat="server"><a href="/Screens/Admins/AdminLanding.aspx">Admins </a></li>
+                        <li id="admin_dropDown" runat="server"><a href="/Screens/Admins/AdminLanding.aspx">Admins</a></li>
 
                     </ul>
                 
