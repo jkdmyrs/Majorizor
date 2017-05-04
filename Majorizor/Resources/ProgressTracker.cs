@@ -6,7 +6,7 @@ using Majorizor.Resources.DataAccess;
 namespace Majorizor.Resources
 {
     /// <summary>
-    /// TODO - In the future, this interface should be improved. 
+    /// TODO - In the future, this class should be improved. 
     /// 
     /// Reccomended Improvements:
     ///  - Calculate the progress of each major/minor separately 
@@ -20,7 +20,7 @@ namespace Majorizor.Resources
     /// </summary>
     class ProgressTracker
     {
-        public Student student { get; private set; }
+        public Student student {  get; private set; }
         public int progress { get; private set; }                       // progress as %, calculated by (# taken courses)/(totalCourses)*100 
                                                                         // TODO - Calculate this with credits instead of courses
         public List<Course> takenCourses { get; private set; }          // courses the student has taken
@@ -59,7 +59,7 @@ namespace Majorizor.Resources
             }
             catch (DivideByZeroException zeroEx)
             {
-                string error = "ProgressTracker.CalculateProgress failed. No required courses found for " + student.getFullName() + "(" + student.userID + ") . Has the user selected a Major?";
+                string error = "ProgressTracker.CalculateProgress failed. No required courses found for " + student.FullNameStr() + "(" + student.userID + ") . Has the user selected a Major?";
                 throw new DivideByZeroException(error, zeroEx);
             }
         }

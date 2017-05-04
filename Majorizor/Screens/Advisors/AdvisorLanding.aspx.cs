@@ -76,7 +76,7 @@ namespace Majorizor.Screens.Advisors
                     // panel heading
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "panel-heading");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
-                    writer.Write(student.getFullName());
+                    writer.Write(student.FullNameStr());
                     writer.RenderEndTag(); //end panel-heading
 
                     // panel-body
@@ -94,12 +94,12 @@ namespace Majorizor.Screens.Advisors
                             writer.RenderBeginTag(HtmlTextWriterTag.H4);
                             writer.Write("Majors: ");
                             writer.RenderEndTag();
-                            writer.Write(student.getMajors());
+                            writer.Write(student.MajorsStr());
                             // minors
                             writer.RenderBeginTag(HtmlTextWriterTag.H4);
                             writer.Write("Minors: ");
                             writer.RenderEndTag();
-                            writer.Write(student.getMinors());
+                            writer.Write(student.MinorsStr());
 
                         writer.RenderEndTag();//col-md-4 - #1
 
